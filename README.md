@@ -125,6 +125,6 @@ Phân phối theo Giấy phép MIT. Xem `LICENSE` để biết thêm thông tin.
 
 ## 📞 Liên hệ
 
-Tên của bạn - your.email@example.com
+Tên của bạn - sonysam.contacts@gmail.com
 
 Liên kết dự án: [repo của dự án](https://github.com/CoderSaiya/BE_MovieStream)
