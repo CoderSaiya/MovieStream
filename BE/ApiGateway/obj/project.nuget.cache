@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "9bY1o98SWn9PAm2xC+YCeQbotYZxZLsjo8rvmJpOXdHsiD1mXC3jb4rvq8N14j0jcLqCzzafZPv1hibunuisdQ==",
+  "dgSpecHash": "pUCjJi3ZaSc=",
   "success": true,
   "projectFilePath": "C:\\Users\\admin\\Documents\\WorkSpace\\ProjectNET\\git\\BE_MovieStream\\BE\\ApiGateway\\ApiGateway.csproj",
   "expectedPackageFiles": [
@@ -11,5 +11,16 @@
     "C:\\Users\\admin\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.2.3\\swashbuckle.aspnetcore.swaggergen.6.2.3.nupkg.sha512",
     "C:\\Users\\admin\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.2.3\\swashbuckle.aspnetcore.swaggerui.6.2.3.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1902",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'Swashbuckle.AspNetCore.SwaggerUI' 6.2.3 has a known moderate severity vulnerability, https://github.com/advisories/GHSA-qrmm-w75w-3wpx",
+      "libraryId": "Swashbuckle.AspNetCore.SwaggerUI",
+      "targetGraphs": [
+        "net6.0"
+      ]
+    }
+  ]
 }

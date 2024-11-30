@@ -1,3 +1,11 @@
+C:\Users\admin\Documents\WorkSpace\ProjectNET\git\BE_MovieStream\BE\UserService\obj\Debug\net8.0\UserService.csproj.AssemblyReference.cache
+C:\Users\admin\Documents\WorkSpace\ProjectNET\git\BE_MovieStream\BE\UserService\obj\Debug\net8.0\UserService.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\admin\Documents\WorkSpace\ProjectNET\git\BE_MovieStream\BE\UserService\obj\Debug\net8.0\UserService.AssemblyInfoInputs.cache
+C:\Users\admin\Documents\WorkSpace\ProjectNET\git\BE_MovieStream\BE\UserService\obj\Debug\net8.0\UserService.AssemblyInfo.cs
+C:\Users\admin\Documents\WorkSpace\ProjectNET\git\BE_MovieStream\BE\UserService\obj\Debug\net8.0\UserService.csproj.CoreCompileInputs.cache
+C:\Users\admin\Documents\WorkSpace\ProjectNET\git\BE_MovieStream\BE\UserService\obj\Debug\net8.0\UserService.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\admin\Documents\WorkSpace\ProjectNET\git\BE_MovieStream\BE\UserService\obj\Debug\net8.0\UserService.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\admin\Documents\WorkSpace\ProjectNET\git\BE_MovieStream\BE\UserService\obj\Debug\net8.0\UserService.sourcelink.json
 C:\Users\admin\Documents\WorkSpace\ProjectNET\git\BE_MovieStream\BE\UserService\bin\Debug\net8.0\appsettings.Development.json
 C:\Users\admin\Documents\WorkSpace\ProjectNET\git\BE_MovieStream\BE\UserService\bin\Debug\net8.0\appsettings.json
 C:\Users\admin\Documents\WorkSpace\ProjectNET\git\BE_MovieStream\BE\UserService\bin\Debug\net8.0\global.json
@@ -116,14 +124,6 @@ C:\Users\admin\Documents\WorkSpace\ProjectNET\git\BE_MovieStream\BE\UserService\
 C:\Users\admin\Documents\WorkSpace\ProjectNET\git\BE_MovieStream\BE\UserService\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
 C:\Users\admin\Documents\WorkSpace\ProjectNET\git\BE_MovieStream\BE\UserService\bin\Debug\net8.0\SharedLibrary.dll
 C:\Users\admin\Documents\WorkSpace\ProjectNET\git\BE_MovieStream\BE\UserService\bin\Debug\net8.0\SharedLibrary.pdb
-C:\Users\admin\Documents\WorkSpace\ProjectNET\git\BE_MovieStream\BE\UserService\obj\Debug\net8.0\UserService.csproj.AssemblyReference.cache
-C:\Users\admin\Documents\WorkSpace\ProjectNET\git\BE_MovieStream\BE\UserService\obj\Debug\net8.0\UserService.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\admin\Documents\WorkSpace\ProjectNET\git\BE_MovieStream\BE\UserService\obj\Debug\net8.0\UserService.AssemblyInfoInputs.cache
-C:\Users\admin\Documents\WorkSpace\ProjectNET\git\BE_MovieStream\BE\UserService\obj\Debug\net8.0\UserService.AssemblyInfo.cs
-C:\Users\admin\Documents\WorkSpace\ProjectNET\git\BE_MovieStream\BE\UserService\obj\Debug\net8.0\UserService.csproj.CoreCompileInputs.cache
-C:\Users\admin\Documents\WorkSpace\ProjectNET\git\BE_MovieStream\BE\UserService\obj\Debug\net8.0\UserService.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\admin\Documents\WorkSpace\ProjectNET\git\BE_MovieStream\BE\UserService\obj\Debug\net8.0\UserService.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\admin\Documents\WorkSpace\ProjectNET\git\BE_MovieStream\BE\UserService\obj\Debug\net8.0\UserService.sourcelink.json
 C:\Users\admin\Documents\WorkSpace\ProjectNET\git\BE_MovieStream\BE\UserService\obj\Debug\net8.0\staticwebassets.build.json
 C:\Users\admin\Documents\WorkSpace\ProjectNET\git\BE_MovieStream\BE\UserService\obj\Debug\net8.0\staticwebassets.development.json
 C:\Users\admin\Documents\WorkSpace\ProjectNET\git\BE_MovieStream\BE\UserService\obj\Debug\net8.0\staticwebassets\msbuild.UserService.Microsoft.AspNetCore.StaticWebAssets.props
