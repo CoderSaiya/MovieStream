@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "shoQp5GYVQbDrPn3qHy30fj7TpAWU63q1SL4/U/sf7MVATQ6jm0XRvwuitcczzS6gSYv+hqcGC/rn4eHy8GkMg==",
+  "dgSpecHash": "+1SlYfFGEhXI01Gs4cPjqL9DmWVwmwPABNW68fQ3K+rzdyMIvit8qHrLtWNl2TW/V9X5s8ZUBps/Yc1AeheUvQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\admin\\Documents\\WorkSpace\\ProjectNET\\MovieStream\\RecommendationService\\RecommendationService.csproj",
+  "projectFilePath": "C:\\Users\\admin\\Documents\\WorkSpace\\ProjectNET\\git\\BE_MovieStream\\BE\\RecommendationService\\RecommendationService.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\admin\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
     "C:\\Users\\admin\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",

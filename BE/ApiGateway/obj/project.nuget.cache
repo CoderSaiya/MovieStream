@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "nwyve1nxWpnLi9lq0/f5tTK45w+PZqNWI1vTVBqanNSUgulmlP7kUugOxpTGsJEzlPLN/ECHfxJBvNC/nhHDXg==",
+  "dgSpecHash": "9bY1o98SWn9PAm2xC+YCeQbotYZxZLsjo8rvmJpOXdHsiD1mXC3jb4rvq8N14j0jcLqCzzafZPv1hibunuisdQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\admin\\Documents\\WorkSpace\\ProjectNET\\MovieStream\\ApiGateway\\ApiGateway.csproj",
+  "projectFilePath": "C:\\Users\\admin\\Documents\\WorkSpace\\ProjectNET\\git\\BE_MovieStream\\BE\\ApiGateway\\ApiGateway.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\admin\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
     "C:\\Users\\admin\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",

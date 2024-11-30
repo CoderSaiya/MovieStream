@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\admin\\Documents\\WorkSpace\\ProjectNET\\MovieStream\\SharedLibrary\\SharedLibrary.csproj": {}
+    "C:\\Users\\admin\\Documents\\WorkSpace\\ProjectNET\\git\\BE_MovieStream\\BE\\SharedLibrary\\SharedLibrary.csproj": {}
   },
   "projects": {
-    "C:\\Users\\admin\\Documents\\WorkSpace\\ProjectNET\\MovieStream\\SharedLibrary\\SharedLibrary.csproj": {
+    "C:\\Users\\admin\\Documents\\WorkSpace\\ProjectNET\\git\\BE_MovieStream\\BE\\SharedLibrary\\SharedLibrary.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\admin\\Documents\\WorkSpace\\ProjectNET\\MovieStream\\SharedLibrary\\SharedLibrary.csproj",
+        "projectUniqueName": "C:\\Users\\admin\\Documents\\WorkSpace\\ProjectNET\\git\\BE_MovieStream\\BE\\SharedLibrary\\SharedLibrary.csproj",
         "projectName": "SharedLibrary",
-        "projectPath": "C:\\Users\\admin\\Documents\\WorkSpace\\ProjectNET\\MovieStream\\SharedLibrary\\SharedLibrary.csproj",
+        "projectPath": "C:\\Users\\admin\\Documents\\WorkSpace\\ProjectNET\\git\\BE_MovieStream\\BE\\SharedLibrary\\SharedLibrary.csproj",
         "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\admin\\Documents\\WorkSpace\\ProjectNET\\MovieStream\\SharedLibrary\\obj\\",
+        "outputPath": "C:\\Users\\admin\\Documents\\WorkSpace\\ProjectNET\\git\\BE_MovieStream\\BE\\SharedLibrary\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -34,6 +34,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -50,12 +55,26 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[6.0.36, 6.0.36]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[6.0.36, 6.0.36]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[6.0.36, 6.0.36]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.404\\RuntimeIdentifierGraph.json"
         }
       }
     }

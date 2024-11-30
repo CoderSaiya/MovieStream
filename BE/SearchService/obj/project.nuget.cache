@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Gxv2pW8FGxtQp6YgcVgpGhcfP7KuQEOl9HQqmRsLqc0c3JhKBPHrflcp34pVwb8D/+27YgvcUNBZ09yh+Xupfg==",
+  "dgSpecHash": "3Vb/hPBM+59hmCnD7mpk4TMWlhlD8tRfhHTBu11/ey+pubvXgTcT/yB+N9S6N4m7yH4yysJAkmIlBpvDxWcFGg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\admin\\Documents\\WorkSpace\\ProjectNET\\MovieStream\\SearchService\\SearchService.csproj",
+  "projectFilePath": "C:\\Users\\admin\\Documents\\WorkSpace\\ProjectNET\\git\\BE_MovieStream\\BE\\SearchService\\SearchService.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\admin\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
     "C:\\Users\\admin\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",

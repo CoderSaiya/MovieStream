@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Vs6mkThvCosParaGov78mMqKNBe4kl2/eYy58lAxW+lI088ZkLgWuPN7oim9RxSKtYcv0ZLP9JZl34Wx8dt34g==",
+  "dgSpecHash": "j+HCESoIQEdsvgVX+HuiJYyfBIeoBlaDcf33Am2o4YhOJknvL79kJJ30V4NAOb0xTirG+/lzxFXUJdYrfOL8jw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\admin\\Documents\\WorkSpace\\ProjectNET\\MovieStream\\MovieService\\MovieService.csproj",
+  "projectFilePath": "C:\\Users\\admin\\Documents\\WorkSpace\\ProjectNET\\git\\BE_MovieStream\\BE\\MovieService\\MovieService.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\admin\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
     "C:\\Users\\admin\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",

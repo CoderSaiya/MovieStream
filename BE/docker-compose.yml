@@ -1,0 +1,55 @@
+version: '3.8'
+services:
+  apigateway:
+    image: apigateway:latest
+    build:
+      context: ./ApiGateway
+    ports:
+      - "8000:80"
+    depends_on:
+      - userservice
+      - movieservice
+      - playbackservice
+      - recommendationservice
+      - searchservice
+
+  userservice:
+    image: userservice:latest
+    build:
+      context: ./Services/UserService
+    ports:
+      - "8001:80"
+
+  movieservice:
+    image: movieservice:latest
+    build:
+      context: ./Services/MovieService
+    ports:
+      - "8002:80"
+
+  playbackservice:
+    image: playbackservice:latest
+    build:
+      context: ./Services/PlaybackService
+    ports:
+      - "8003:80"
+
+  recommendationservice:
+    image: recommendationservice:latest
+    build:
+      context: ./Services/RecommendationService
+    ports:
+      - "8004:80"
+
+  searchservice:
+    image: searchservice:latest
+    build:
+      context: ./Services/SearchService
+    ports:
+      - "8005:80"
+
+  rabbitmq:
+    image: rabbitmq:management
+    ports:
+      - "5173:5173"   # Management UI
+      - "5672:5672"   # Message Broker

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\admin\\Documents\\WorkSpace\\ProjectNET\\MovieStream\\ApiGateway\\ApiGateway.csproj": {}
+    "C:\\Users\\admin\\Documents\\WorkSpace\\ProjectNET\\git\\BE_MovieStream\\BE\\ApiGateway\\ApiGateway.csproj": {}
   },
   "projects": {
-    "C:\\Users\\admin\\Documents\\WorkSpace\\ProjectNET\\MovieStream\\ApiGateway\\ApiGateway.csproj": {
+    "C:\\Users\\admin\\Documents\\WorkSpace\\ProjectNET\\git\\BE_MovieStream\\BE\\ApiGateway\\ApiGateway.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\admin\\Documents\\WorkSpace\\ProjectNET\\MovieStream\\ApiGateway\\ApiGateway.csproj",
+        "projectUniqueName": "C:\\Users\\admin\\Documents\\WorkSpace\\ProjectNET\\git\\BE_MovieStream\\BE\\ApiGateway\\ApiGateway.csproj",
         "projectName": "ApiGateway",
-        "projectPath": "C:\\Users\\admin\\Documents\\WorkSpace\\ProjectNET\\MovieStream\\ApiGateway\\ApiGateway.csproj",
+        "projectPath": "C:\\Users\\admin\\Documents\\WorkSpace\\ProjectNET\\git\\BE_MovieStream\\BE\\ApiGateway\\ApiGateway.csproj",
         "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\admin\\Documents\\WorkSpace\\ProjectNET\\MovieStream\\ApiGateway\\obj\\",
+        "outputPath": "C:\\Users\\admin\\Documents\\WorkSpace\\ProjectNET\\git\\BE_MovieStream\\BE\\ApiGateway\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\admin\\AppData\\Roaming\\NuGet\\NuGet.Config",

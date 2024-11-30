@@ -1,15 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "5uWfmuodbGzsW4ocBDWx8cD4xZFMITbVAZiYVh9iTKRv/AN9ZA/Tw+ao0P3FJbMug/sO7AjvVZRg5+qXvZ7QfQ==",
+  "dgSpecHash": "RPelsmqnNx8HGsGy7JCwkMuc9SdbIyoPWY7tvoEyeWJZnqXAhQSgbcgizkiE6eJWZg9B8WU+0CODqJt/OFgKgQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\admin\\Documents\\WorkSpace\\ProjectNET\\MovieStream\\UserService\\UserService.csproj",
-  "expectedPackageFiles": [
-    "C:\\Users\\admin\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
-    "C:\\Users\\admin\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
-    "C:\\Users\\admin\\.nuget\\packages\\swashbuckle.aspnetcore\\6.2.3\\swashbuckle.aspnetcore.6.2.3.nupkg.sha512",
-    "C:\\Users\\admin\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.2.3\\swashbuckle.aspnetcore.swagger.6.2.3.nupkg.sha512",
-    "C:\\Users\\admin\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.2.3\\swashbuckle.aspnetcore.swaggergen.6.2.3.nupkg.sha512",
-    "C:\\Users\\admin\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.2.3\\swashbuckle.aspnetcore.swaggerui.6.2.3.nupkg.sha512"
-  ],
+  "projectFilePath": "C:\\Users\\admin\\Documents\\WorkSpace\\ProjectNET\\git\\BE_MovieStream\\BE\\UserService\\UserService.csproj",
+  "expectedPackageFiles": [],
   "logs": []
 }
