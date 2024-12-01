@@ -1,11 +1,31 @@
+using Microsoft.EntityFrameworkCore;
+using MovieService.Data;
+using MovieService.Events;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+// Add DbContext for SQL Server
+builder.Services.AddDbContext<MovieDbContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+});
+
+// Add RabbitMQ Event Bus
+builder.Services.AddSingleton<IEventBus, EventBus>(sp =>
+{
+    var serviceProvider = sp.GetRequiredService<IServiceProvider>();
+    var hostName = builder.Configuration["RabbitMQ:HostName"] ?? "localhost";
+    return new EventBus(serviceProvider, hostName);
+});
+
+// Register Event Handlers
+builder.Services.AddTransient<MovieCreatedEventHandler>();
+builder.Services.AddTransient<MovieViewedEventHandler>();
 
 var app = builder.Build();
 
@@ -17,9 +37,15 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
 app.UseAuthorization();
-
 app.MapControllers();
+
+// Subscribe to Events
+app.Lifetime.ApplicationStarted.Register(() =>
+{
+    var eventBus = app.Services.GetRequiredService<IEventBus>();
+    eventBus.Subscribe<MovieCreatedIntegrationEvent, MovieCreatedEventHandler>();
+    eventBus.Subscribe<MovieViewedIntegrationEvent, MovieViewedEventHandler>();
+});
 
 app.Run();

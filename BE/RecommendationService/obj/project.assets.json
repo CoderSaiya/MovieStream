@@ -91,7 +91,7 @@
       },
       "SharedLibrary/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v6.0",
+        "framework": "Unsupported,Version=v0.0",
         "compile": {
           "bin/placeholder/SharedLibrary.dll": {}
         },
@@ -328,6 +328,15 @@
       "warningLevel": 1,
       "message": "Package 'Swashbuckle.AspNetCore.SwaggerUI' 6.2.3 has a known moderate severity vulnerability, https://github.com/advisories/GHSA-qrmm-w75w-3wpx",
       "libraryId": "Swashbuckle.AspNetCore.SwaggerUI",
+      "targetGraphs": [
+        "net6.0"
+      ]
+    },
+    {
+      "code": "NU1201",
+      "level": "Error",
+      "message": "Project SharedLibrary is not compatible with net6.0 (.NETCoreApp,Version=v6.0). Project SharedLibrary supports: net8.0 (.NETCoreApp,Version=v8.0)",
+      "libraryId": "SharedLibrary",
       "targetGraphs": [
         "net6.0"
       ]
