@@ -1,4 +1,4 @@
-﻿namespace MovieService.Events
+﻿namespace SharedLibrary
 {
     public interface IIntegrationEventHandler<in TEvent> where TEvent : IntegrationEvent
     {

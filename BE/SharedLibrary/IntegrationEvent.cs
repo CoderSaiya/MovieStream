@@ -1,6 +1,4 @@
-﻿using System.Text.Json.Serialization;
-
-namespace MovieService.Events
+﻿namespace SharedLibrary
 {
     public class IntegrationEvent
     {

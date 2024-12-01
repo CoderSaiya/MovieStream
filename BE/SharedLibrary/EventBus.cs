@@ -6,7 +6,7 @@ using System;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MovieService.Events
+namespace SharedLibrary
 {
     public class EventBus : IEventBus, IDisposable
     {
