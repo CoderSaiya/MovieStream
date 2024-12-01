@@ -2,6 +2,7 @@
 using MovieService.Data;
 using MovieService.Events;
 using MovieService.Models;
+using SharedLibrary;
 
 [ApiController]
 [Route("api/[controller]")]

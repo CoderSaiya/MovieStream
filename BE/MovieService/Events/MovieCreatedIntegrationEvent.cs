@@ -1,4 +1,6 @@
-﻿namespace MovieService.Events
+﻿using SharedLibrary;
+
+namespace MovieService.Events
 {
     public class MovieCreatedIntegrationEvent : IntegrationEvent
     {
