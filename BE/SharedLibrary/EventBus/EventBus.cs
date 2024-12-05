@@ -2,16 +2,15 @@
 using RabbitMQ.Client.Events;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
-using System;
 using System.Text;
-using System.Threading.Tasks;
+using SharedLibrary.Integration;
 
-namespace SharedLibrary
+namespace SharedLibrary.EventBus
 {
     public class EventBus : IEventBus, IDisposable
     {
         private readonly IServiceProvider _serviceProvider;
-        private readonly RabbitMQ.Client.IModel _channel;
+        private readonly IModel _channel;
         private readonly IConnection _connection;
 
         public EventBus(IServiceProvider serviceProvider, string hostName)

@@ -1,4 +1,4 @@
-﻿namespace SharedLibrary
+﻿namespace SharedLibrary.Integration
 {
     public class IntegrationEvent
     {
