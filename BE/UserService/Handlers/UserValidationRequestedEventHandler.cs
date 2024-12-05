@@ -1,9 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using SharedLibrary;
+using SharedLibrary.EventBus;
 using SharedLibrary.Events;
+using SharedLibrary.Integration;
 using UserService.Data;
 
-namespace UserService.Events
+namespace UserService.Handlers
 {
     public class UserValidationRequestedEventHandler : IIntegrationEventHandler<UserValidationRequestedEvent>
     {

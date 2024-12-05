@@ -1,7 +1,8 @@
 using UserService.Data;
 using Microsoft.EntityFrameworkCore;
-using SharedLibrary;
 using UserService.Events;
+using SharedLibrary.EventBus;
+using UserService.Handlers;
 
 var builder = WebApplication.CreateBuilder(args);
 

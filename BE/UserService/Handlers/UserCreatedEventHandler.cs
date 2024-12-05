@@ -1,6 +1,7 @@
-﻿using SharedLibrary;
+﻿using SharedLibrary.Integration;
+using UserService.Events;
 
-namespace UserService.Events
+namespace UserService.Handlers
 {
     public class UserCreatedEventHandler : IIntegrationEventHandler<UserCreatedIntegrationEvent>
     {

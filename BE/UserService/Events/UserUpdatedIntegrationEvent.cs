@@ -1,4 +1,4 @@
-﻿using SharedLibrary;
+﻿using SharedLibrary.Integration;
 namespace UserService.Events
 {
     public class UserUpdatedIntegrationEvent : IntegrationEvent

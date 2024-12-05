@@ -1,14 +1,14 @@
 ﻿using UserService.Models;
 using UserService.DTOs;
 using Microsoft.AspNetCore.Mvc;
-using SharedLibrary;
 using UserService.Data;
 using UserService.Events;
+using SharedLibrary.EventBus;
 
 namespace UserService.Controllers
 {
     [ApiController]
-    [Route("api/users")]
+    [Route("api/[controller]")]
     public class UsersController : ControllerBase
     {
         private readonly UserDbContext _context;
