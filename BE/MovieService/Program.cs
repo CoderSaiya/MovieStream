@@ -1,6 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using MovieService.Data;
 using MovieService.Events;
+using MovieService.Repositories;
+using SharedLibrary.EventBus;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +16,8 @@ builder.Services.AddDbContext<MovieDbContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
+
+builder.Services.AddScoped<IMovie, MovieRepo>();
 
 // Add RabbitMQ Event Bus
 builder.Services.AddSingleton<IEventBus, EventBus>(sp =>

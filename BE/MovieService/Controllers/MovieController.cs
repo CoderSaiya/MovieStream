@@ -2,7 +2,8 @@
 using MovieService.Data;
 using MovieService.Events;
 using MovieService.Models;
-using SharedLibrary;
+using MovieService.Repositories;
+using SharedLibrary.EventBus;
 
 [ApiController]
 [Route("api/[controller]")]
@@ -11,58 +12,38 @@ public class MovieController : ControllerBase
     private readonly MovieDbContext _context;
     private readonly IHttpClientFactory _httpClientFactory;
     private readonly IEventBus _eventBus;
+    private readonly IMovie _movieRepo;
 
-    public MovieController(MovieDbContext context, IHttpClientFactory httpClientFactory, IEventBus eventBus)
+    public MovieController(MovieDbContext context, IHttpClientFactory httpClientFactory, IEventBus eventBus, IMovie movieRepo)
     {
         _context = context;
         _httpClientFactory = httpClientFactory;
         _eventBus = eventBus;
+        _movieRepo = movieRepo;
+    }
+
+    [HttpGet]
+    public async Task<IActionResult> GetAllMovies()
+    {
+        var movies = await _movieRepo.GetAllMoviesAsync();
+        return Ok(movies);
     }
 
     [HttpGet("{id}")]
-    public async Task<IActionResult> GetMovie(int id)
+    public async Task<IActionResult> GetMovie(int id, [FromQuery] string userId)
     {
-        var movie = await _context.Movies.FindAsync(id);
+        var movie = await _movieRepo.GetMovieAsync(id, userId);
         if (movie == null)
         {
             return NotFound();
         }
-
-        var client = _httpClientFactory.CreateClient();
-        var response = await client.GetAsync("https://authservice/checkvip");
-        if (!response.IsSuccessStatusCode)
-        {
-            return StatusCode((int)response.StatusCode);
-        }
-
-        var isVip = await response.Content.ReadFromJsonAsync<bool>();
-
-        if (!isVip)
-        {
-            movie.FileUrl = LimitVideoQuality(movie.FileUrl);
-        }
-
-        var userId = "user123";
-        var movieViewedEvent = new MovieViewedIntegrationEvent(movie.MovieId, userId);
-        _eventBus.Publish(movieViewedEvent);
-
         return Ok(movie);
-    }
-
-    private string LimitVideoQuality(string url)
-    {
-        return url.Replace("high", "low");
     }
 
     [HttpPost]
-    public IActionResult CreateMovie(Movie movie)
+    public async Task<IActionResult> CreateMovie(Movie movie)
     {
-        _context.Movies.Add(movie);
-        _context.SaveChanges();
-
-        var @event = new MovieCreatedIntegrationEvent(movie.MovieId, movie.Title);
-        _eventBus.Publish(@event);
-
-        return Ok(movie);
+        await _movieRepo.AddMovieAsync(movie);
+        return CreatedAtAction(nameof(GetMovie), new { id = movie.MovieId }, movie);
     }
 }

@@ -1,5 +1,5 @@
 ﻿using Newtonsoft.Json;
-using SharedLibrary;
+using SharedLibrary.Integration;
 
 namespace MovieService.Events
 {
