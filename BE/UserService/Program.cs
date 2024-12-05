@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using UserService.Events;
 using SharedLibrary.EventBus;
 using UserService.Handlers;
+using UserService.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,6 +17,8 @@ builder.Services.AddDbContext<UserDbContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
+
+builder.Services.AddScoped<IUser, UserRepo>();
 
 // Add RabbitMQ Event Bus
 builder.Services.AddSingleton<IEventBus, EventBus>(sp =>
