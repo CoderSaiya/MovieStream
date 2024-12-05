@@ -1,4 +1,4 @@
-﻿using MovieService.Events;
+﻿using SharedLibrary;
 
 namespace UserService.Events
 {

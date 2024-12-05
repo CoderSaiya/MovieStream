@@ -1,7 +1,7 @@
 ﻿using UserService.Models;
 using UserService.DTOs;
 using Microsoft.AspNetCore.Mvc;
-using MovieService.Events;
+using SharedLibrary;
 using UserService.Data;
 using UserService.Events;
 

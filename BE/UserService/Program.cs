@@ -1,6 +1,6 @@
 using UserService.Data;
 using Microsoft.EntityFrameworkCore;
-using MovieService.Events;
+using SharedLibrary;
 using UserService.Events;
 
 var builder = WebApplication.CreateBuilder(args);
