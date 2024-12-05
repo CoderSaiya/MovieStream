@@ -12,6 +12,7 @@ namespace MovieService.Models
         public string Title { get; set; } = null!;
 
         public string Description { get; set; } = string.Empty;
+        public int Views { get; set; } = 0;
 
         [Required]
         public QualityLevel Quality { get; set; } = QualityLevel.Low;

@@ -18,6 +18,11 @@ namespace MovieService.Repositories
             _httpClientFactory = httpClientFactory;
             _eventBus = eventBus;
         }
+
+        private async Task<Movie?> GetMovieByIdAsync(int id)
+        {
+            return await _context.Movies.FindAsync(id);
+        }
         public async Task AddMovieAsync(Movie movie)
         {
             await _context.Movies.AddAsync(movie);
@@ -33,7 +38,7 @@ namespace MovieService.Repositories
 
         public async Task<Movie?> GetMovieAsync(int id, string userId)
         {
-            var movie = await _context.Movies.FindAsync(id);
+            var movie = await GetMovieByIdAsync(id);
             if (movie == null) return null;
 
             var isVip = await CheckVipStatusAsync(userId);
@@ -68,6 +73,27 @@ namespace MovieService.Repositories
         {
             var @event = new MovieViewedIntegrationEvent(movieId, userId);
             _eventBus.Publish(@event);
+        }
+
+        public async Task UpdateMovieAsync(Movie movie)
+        {
+            _context.Movies.Update(movie);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task DeleteMovieAsync(int id)
+        {
+            var movie = await GetMovieByIdAsync(id);
+            if (movie != null)
+            {
+                _context.Movies.Remove(movie);
+                await _context.SaveChangesAsync();
+            }
+        }
+
+        public async Task<List<Movie>> GetTrendingMoviesAsync()
+        {
+            return await _context.Movies.OrderByDescending(m => m.Views).Take(10).ToListAsync();
         }
     }
 }

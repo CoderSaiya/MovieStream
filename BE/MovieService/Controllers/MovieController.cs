@@ -46,4 +46,26 @@ public class MovieController : ControllerBase
         await _movieRepo.AddMovieAsync(movie);
         return CreatedAtAction(nameof(GetMovie), new { id = movie.MovieId }, movie);
     }
+
+    [HttpPut("{id}")]
+    public async Task<IActionResult> UpdateMovie(int id, Movie movie)
+    {
+        if (id != movie.MovieId) return BadRequest();
+        await _movieRepo.UpdateMovieAsync(movie);
+        return NoContent();
+    }
+
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeleteMovie(int id)
+    {
+        await _movieRepo.DeleteMovieAsync(id);
+        return NoContent();
+    }
+
+    [HttpGet("trending")]
+    public async Task<IActionResult> GetTrendingMovies()
+    {
+        var movies = await _movieRepo.GetTrendingMoviesAsync();
+        return Ok(movies);
+    }
 }
