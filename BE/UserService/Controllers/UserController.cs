@@ -1,9 +1,9 @@
 ﻿using UserService.Models;
 using UserService.DTOs;
 using Microsoft.AspNetCore.Mvc;
-using UserService.Data;
 using UserService.Events;
 using SharedLibrary.EventBus;
+using UserService.Repository;
 
 namespace UserService.Controllers
 {
@@ -11,12 +11,12 @@ namespace UserService.Controllers
     [Route("api/[controller]")]
     public class UsersController : ControllerBase
     {
-        private readonly UserDbContext _context;
+        private readonly IUser _userRepository;
         private readonly IEventBus _eventBus;
 
-        public UsersController(UserDbContext context, IEventBus eventBus)
+        public UsersController(IUser userRepository, IEventBus eventBus)
         {
-            _context = context;
+            _userRepository = userRepository;
             _eventBus = eventBus;
         }
 
@@ -33,8 +33,10 @@ namespace UserService.Controllers
                 Email = userRequest.Email,
             };
 
-            _context.Users.Add(user);
-            await _context.SaveChangesAsync();
+            await _userRepository.AddUserAsync(user);
+            var success = await _userRepository.SaveChangesAsync();
+
+            if (!success) return StatusCode(500, "Error saving user");
 
             var userCreatedEvent = new UserCreatedIntegrationEvent(user.Id, user.Email, user.IsVip);
             _eventBus.Publish(userCreatedEvent);
@@ -43,9 +45,9 @@ namespace UserService.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetUserById(int id)
+        public async Task<IActionResult> GetUserById(Guid id)
         {
-            var user = await _context.Users.FindAsync(id);
+            var user = await _userRepository.GetUserByIdAsync(id);
             if (user == null) return NotFound();
 
             return Ok(user);
@@ -56,12 +58,16 @@ namespace UserService.Controllers
         {
             if (id != user.Id) return BadRequest();
 
-            var existingUser = await _context.Users.FindAsync(id);
+            var existingUser = await _userRepository.GetUserByIdAsync(id);
             if (existingUser == null) return NotFound();
 
             existingUser.Email = user.Email;
             existingUser.IsVip = user.IsVip;
-            await _context.SaveChangesAsync();
+
+            await _userRepository.UpdateUserAsync(existingUser);
+            var success = await _userRepository.SaveChangesAsync();
+
+            if (!success) return StatusCode(500, "Error updating user");
 
             var userUpdatedEvent = new UserUpdatedIntegrationEvent(user.Id, user.IsVip);
             _eventBus.Publish(userUpdatedEvent);
