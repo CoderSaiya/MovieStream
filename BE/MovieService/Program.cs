@@ -48,7 +48,7 @@ app.MapControllers();
 app.Lifetime.ApplicationStarted.Register(() =>
 {
     var eventBus = app.Services.GetRequiredService<IEventBus>();
-    eventBus.Subscribe<MovieCreatedIntegrationEvent, MovieCreatedEventHandler>();
+    eventBus.Subscribe<MovieCreatedEvent, MovieCreatedEventHandler>();
     eventBus.Subscribe<MovieViewedIntegrationEvent, MovieViewedEventHandler>();
 });
 
