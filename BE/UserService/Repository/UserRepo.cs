@@ -35,5 +35,20 @@ namespace UserService.Repository
         {
             _context.Users.Update(user);
         }
+
+        public async Task<User> GetUserByUsernameAsync(string username)
+        {
+            return await _context.Users.FirstOrDefaultAsync(u => u.Username == username);
+        }
+
+        public async Task<bool> ValidatePasswordAsync(User user, string password)
+        {
+            if (user == null || string.IsNullOrEmpty(password))
+            {
+                return false;
+            }
+
+            return await Task.FromResult(BCrypt.Net.BCrypt.Verify(password, user.Password));
+        }
     }
 }

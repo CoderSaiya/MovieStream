@@ -9,5 +9,7 @@ namespace UserService.Repository
         Task AddUserAsync(User user);
         Task UpdateUserAsync(User user);
         Task<bool> SaveChangesAsync();
+        Task<User> GetUserByUsernameAsync(string username);
+        Task<bool> ValidatePasswordAsync(User user, string password);
     }
 }
