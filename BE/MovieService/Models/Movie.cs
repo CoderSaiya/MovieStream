@@ -12,6 +12,8 @@ namespace MovieService.Models
         public string Title { get; set; } = null!;
 
         public string Description { get; set; } = string.Empty;
+        public string? Director { get; }
+        public string? Genre { get; }
         public int Views { get; set; } = 0;
 
         [Required]
@@ -22,6 +24,6 @@ namespace MovieService.Models
         [Required]
         public string FileUrl { get; set; } = null!;
 
-        public DateTime ReleaseDate { get; set; }
+        public DateTime ReleaseDate { get; set; } = DateTime.Now;
     }
 }
