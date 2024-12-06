@@ -58,6 +58,10 @@
               "target": "Package",
               "version": "[3.7.408.1, )"
             },
+            "Elasticsearch.Net": {
+              "target": "Package",
+              "version": "[7.17.5, )"
+            },
             "Google.Protobuf": {
               "target": "Package",
               "version": "[3.29.0, )"
@@ -84,13 +88,17 @@
               "target": "Package",
               "version": "[1.21.0, )"
             },
+            "Nest": {
+              "target": "Package",
+              "version": "[7.17.5, )"
+            },
             "Newtonsoft.Json": {
               "target": "Package",
               "version": "[13.0.3, )"
             },
             "RabbitMQ.Client": {
               "target": "Package",
-              "version": "[6.2.2, )"
+              "version": "[7.0.0, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",

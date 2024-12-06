@@ -2,9 +2,9 @@
 
 namespace MovieService.Events
 {
-    public class MovieCreatedEventHandler : IIntegrationEventHandler<MovieCreatedIntegrationEvent>
+    public class MovieCreatedEventHandler : IIntegrationEventHandler<MovieCreatedEvent>
     {
-        public Task Handle(MovieCreatedIntegrationEvent @event)
+        public Task Handle(MovieCreatedEvent @event)
         {
             Console.WriteLine($"Movie Created: {@event.Title} with ID: {@event.MovieId}");
             return Task.CompletedTask;

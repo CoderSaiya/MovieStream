@@ -44,6 +44,17 @@ public class MovieController : ControllerBase
     public async Task<IActionResult> CreateMovie(Movie movie)
     {
         await _movieRepo.AddMovieAsync(movie);
+
+        var movieCreatedEvent = new MovieCreatedEvent(
+        movie.MovieId,
+        movie.Title,
+        movie.Description,
+        movie.Director,
+        movie.Genre,
+        movie.ReleaseDate
+        );
+
+        _eventBus.Publish(movieCreatedEvent);
         return CreatedAtAction(nameof(GetMovie), new { id = movie.MovieId }, movie);
     }
 

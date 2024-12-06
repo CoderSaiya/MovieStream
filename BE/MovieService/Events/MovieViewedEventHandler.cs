@@ -14,7 +14,7 @@ namespace MovieService.Events
 
         public Task Handle(MovieViewedIntegrationEvent @event)
         {
-            _logger.LogInformation($"Movie viewed event received: {JsonConvert.SerializeObject(@event)}"); // Handle the event (e.g., update statistics, notify other services)
+            _logger.LogInformation($"Movie viewed event received: {JsonConvert.SerializeObject(@event)}");
             return Task.CompletedTask;
         }
     }

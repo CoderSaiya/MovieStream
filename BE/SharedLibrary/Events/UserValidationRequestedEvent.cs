@@ -1,4 +1,6 @@
-﻿namespace SharedLibrary.Events
+﻿using SharedLibrary.Integration;
+
+namespace SharedLibrary.Events
 {
     public class UserValidationRequestedEvent : IntegrationEvent
     {
