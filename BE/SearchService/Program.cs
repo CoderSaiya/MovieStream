@@ -1,6 +1,9 @@
 using SearchService;
 using SearchService.Repositories;
 using Elastic.Clients.Elasticsearch;
+using SharedLibrary.EventBus;
+using SharedLibrary.Events;
+using SearchService.Handler;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,6 +26,14 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddSingleton<SearchService.ElasticsearchClient>();
 builder.Services.AddScoped<ISearch, SearchRepo>();
 
+// Add RabbitMQ Event Bus
+builder.Services.AddSingleton<IEventBus, EventBus>(sp =>
+{
+    var serviceProvider = sp.GetRequiredService<IServiceProvider>();
+    var hostName = builder.Configuration["RabbitMQ:HostName"] ?? "localhost";
+    return new EventBus(serviceProvider, hostName);
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -37,5 +48,11 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.Lifetime.ApplicationStarted.Register(() =>
+{
+    var eventBus = app.Services.GetRequiredService<IEventBus>();
+    eventBus.Subscribe<MovieCreatedEvent, MovieCreatedEventHandler>();
+});
 
 app.Run();
