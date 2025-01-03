@@ -12,24 +12,26 @@ MovieStream là nền tảng phát trực tuyến phim toàn diện dựa trên 
 - **Dịch vụ phát lại**: Phát trực tuyến video và kiểm soát chất lượng
 - **Dịch vụ đề xuất**: Đề xuất phim được cá nhân hóa
 - **Dịch vụ tìm kiếm**: Khả năng tìm kiếm phim nâng cao
-- **Cổng API**: Định tuyến yêu cầu và cân bằng tải
+- **API Gateway**: Định tuyến yêu cầu và cân bằng tải
 
 ## 🛠 Công nghệ
 
 ### Phần cuối
 - **.NET 8.0**
 - **Entity Framework Core**
-- **gRPC**
 - **RabbitMQ**
-- **Cổng API Ocelot**
+- **API Gateway Ocelot**
 
 ### Cơ sở dữ liệu & Bộ nhớ đệm
 - **SQL Server**
 - **Redis**
+- **Neo4j**
+- **Elasticsearch**
+- **MongoDB**
 
 ### Các mẫu kiến ​​trúc
-- Dịch vụ vi mô
-- Kiến trúc hướng sự kiện
+- Microservice
+- Event-driven architecture
 - CQRS
 
 ## 🔧 Điều kiện tiên quyết
@@ -45,15 +47,21 @@ MovieStream là nền tảng phát trực tuyến phim toàn diện dựa trên 
 ```
 MovieStream/
 │
+├── docker-compose.yml/
 ├── Services/
-│ ├── UserService/
 │ ├── MovieService/
+│ ├── PaymentService/
 │ ├── PlaybackService/
 │ ├── RecommendationService/
-│ └── SearchService/
+│ ├── SearchService/
+│ ├── TokenService/
+│ └── UserService/
 │
 ├── ApiGateway/
-├── EventBus/
+├── SharedLibrary/
+│ ├── EventBus/
+│ ├── Events/
+│ └── Integration/
 └── docker-compose.yml
 ```
 
