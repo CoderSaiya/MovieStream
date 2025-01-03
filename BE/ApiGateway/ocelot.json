@@ -1,0 +1,67 @@
+{
+  "Routes": [
+    {
+      "DownstreamPathTemplate": "/api/movies",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "movieservice",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/api/movies",
+      "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete", "Option" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/users",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "userservice",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/api/users",
+      "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete", "Option" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/recommendation",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "recommendationservice",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/api/recommendation",
+      "UpstreamHttpMethod": [ "Get" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/search",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "searchservice",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/api/search",
+      "UpstreamHttpMethod": [ "Get" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/playback",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "playbackservice",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/api/playback",
+      "UpstreamHttpMethod": [ "Get", "Post" ]
+    }
+  ],
+  "GlobalConfiguration": {
+    "BaseUrl": "http://localhost:5000"
+  }
+}
