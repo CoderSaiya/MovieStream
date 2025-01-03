@@ -3,7 +3,7 @@ services:
   apigateway:
     image: apigateway:latest
     build:
-      context: ./ApiGateway
+      context: ../ApiGateway
     ports:
       - "8000:80"
     depends_on:
@@ -12,6 +12,7 @@ services:
       - playbackservice
       - recommendationservice
       - searchservice
+      - elasticsearch
 
   userservice:
     image: userservice:latest
@@ -47,6 +48,14 @@ services:
       context: ./Services/SearchService
     ports:
       - "8005:80"
+    
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.9.0
+    container_name: elasticsearch
+    environment:
+      - discovery.type=single-node
+    ports:
+      - "9200:9200"
 
   rabbitmq:
     image: rabbitmq:management
