@@ -1,9 +1,13 @@
-import { NavBar } from "@/components/NavBar";
+'use client';
+
+import { Banner } from "@/components/Banner";
 
 export default function Home() {
   return (
     <div className="flex min-h-screen flex-col">
-      <NavBar />
+      <main>
+        <Banner />
+      </main>
     </div>
   );
 }
