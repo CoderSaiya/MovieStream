@@ -9,16 +9,16 @@ export const Banner = () => {
       <div className="max-w-7xl mx-auto p-8 md:p-16 flex flex-col md:flex-row items-center justify-between">
         {/* Text Content */}
         <div className="space-y-2 md:w-1/2">
-          <h1 className="text-3xl md:text-4xl font-semibold text-sky-900">
+          <h1 className="text-3xl md:text-4xl font-semibold text-sky-900" data-aos="fade-right">
             Web movie and TV shows
           </h1>
-          <p className="text-sky-700 text-lg">
+          <p className="text-sky-700 text-lg" data-aos="fade-left">
             Watch your favorite movies and TV shows online. Enjoy high-quality streaming with no ads
           </p>
         </div>
 
         {/* Image Section */}
-        <div className="relative mt-8 md:mt-0">
+        <div className="relative mt-8 md:mt-0" data-aos="fade-up">
           <div className="bg-white p-8 rounded-lg shadow-sm">
             {/* Placeholder drink image - replace src with your actual image */}
             <div className="relative w-24 h-24">
