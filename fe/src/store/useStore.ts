@@ -1,10 +1,10 @@
 import { create } from "zustand";
-import { AppState } from "../types";
+import { UserState } from "@/types/user";
 
-const useStore = create<AppState>((set) => ({
-    count: 0,
-    increase: () => set((state) => ({ count: state.count + 1 })),
-    decrease: () => set((state) => ({ count: state.count - 1 })),
-}));
+const useUserStore = create<UserState>((set) => ({
+    user: null,
+    setUser: (name) => set(() => ({ user: name })),
+    clearUser: () => set(() => ({ user: null })),
+  }));
 
-export default useStore;
+export default useUserStore;
