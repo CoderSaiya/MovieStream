@@ -19,7 +19,7 @@ export function CommentsSection() {
         ]
 
     return (
-        <div className="container py-6">
+        <div className="container py-6" data-aos="fade-left">
             <div className="space-y-6">
                 <div className="flex">
                     <div className="flex items-center gap-2">

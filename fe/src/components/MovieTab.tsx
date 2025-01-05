@@ -15,7 +15,7 @@ export function MovieTab() {
   const [activeTab, setActiveTab] = useState('info')
 
   return (
-    <div className="border-b border-gray-800">
+    <div className="border-b border-gray-800" data-aos="fade-down">
       <div className="container">
         <nav className="flex space-x-1">
           {tabs.map((tab) => {
