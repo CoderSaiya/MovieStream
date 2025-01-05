@@ -21,7 +21,7 @@ export default function DetailPage() {
   ]
 
   // update sau
-  const animeData = {
+  const movieData = {
     id: 1,
     title: "Doraemon: Nobita's New Dinosaur",
     alternateTitle: "Doraemon the Movie 2020: Nobita's New Dinosaur",
@@ -59,7 +59,7 @@ export default function DetailPage() {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
             <div className="lg:col-span-9">
-              <MovieDetails {...animeData} />
+              <MovieDetails {...movieData} />
               <MovieTab />
               <CommentsSection />
             </div>
