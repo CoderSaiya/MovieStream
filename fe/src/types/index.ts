@@ -28,3 +28,34 @@ export interface MovieTooltipProps {
     genres: string[]
     cast?: string | "Ongoing"
 }
+
+export interface MovieDetailsProps {
+    title: string
+    alternateTitle: string
+    synopsis: string
+    coverImage: string
+    rating: number
+    totalRatings: number
+    releaseDate: string
+    viewCount: string
+    episodes: {
+        current: number
+        total: number
+    }
+    schedule: string
+    status: string
+    quality: string
+    ageRating: string
+    language: string
+    studio: string[]
+    season: string
+    genres: string[]
+    director: string
+    country: string
+    followers: number
+}
+
+export interface BreadcrumbItem {
+    label: string
+    href: string
+  }
