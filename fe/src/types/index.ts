@@ -14,4 +14,5 @@ export interface FeatureItem {
 
 export interface FeatureCardProps extends FeatureItem {
     key?: React.Key;
+    delay?: number;
 }

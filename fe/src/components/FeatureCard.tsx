@@ -1,12 +1,20 @@
 import { FeatureCardProps } from "@/types";
 import React from "react";
 
+
+
+
 export const FeatureCard: React.FC<FeatureCardProps> = ({
   icon: Icon,
   title,
   description,
+  delay = 0
 }) => (
-  <div className="flex flex-col items-center justify-between h-full rounded-lg border bg-card p-6 text-card-foreground shadow-sm transition-shadow hover:shadow-md">
+  <div
+    data-aos="fade-up"
+    data-aos-delay={delay}
+    data-aos-duration="1000"
+    className="flex flex-col items-center justify-between h-full rounded-lg border bg-card p-6 text-card-foreground shadow-sm transition-shadow hover:shadow-md">
     <div className="flex flex-col items-center space-y-4">
       <div className="rounded-full bg-primary/10 p-3">
         <Icon className="h-6 w-6 text-primary" />

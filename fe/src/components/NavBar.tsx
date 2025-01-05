@@ -9,7 +9,7 @@ export function NavBar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50">
+    <nav className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50" data-aos="fade-down">
       <div className="container px-4 mx-auto">
         {/* Desktop Navigation */}
         <div className="flex h-14 items-center justify-between lg:justify-start">

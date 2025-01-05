@@ -32,6 +32,7 @@ export function Features(): JSX.Element {
               icon={feature.icon}
               title={feature.title}
               description={feature.description}
+              delay={index * 200}
             />
           ))}
         </div>
