@@ -2,8 +2,8 @@
 
 import { AOSInit } from "@/components/AOSInit";
 import { Banner } from "@/components/Banner";
-import { Features } from "@/components/Features";
 import { MovieGrid } from "@/components/MovieGrid";
+import { Sidebar } from "@/components/Sidebar";
 import { MovieType } from "@/types/movie";
 
 export default function Home() {
@@ -177,11 +177,20 @@ export default function Home() {
   return (
     <div className="flex min-h-screen flex-col">
       <AOSInit />
-      <main>
-        <Banner />
-        <Features />
-        <MovieGrid movies={newMovies} title="New Movies" />
-        <MovieGrid movies={hotMovies} title="Hot Movies" />
+      <Banner />
+      <main className="flex-1 py-6">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+            <div className="lg:col-span-9">
+              <MovieGrid movies={newMovies} title="NEW MOVIES" />
+              <MovieGrid movies={hotMovies} title="HOT MOVIES" />
+            </div>
+
+            <aside className="lg:col-span-3">
+              <Sidebar />
+            </aside>
+          </div>
+        </div>
       </main>
     </div>
   );
