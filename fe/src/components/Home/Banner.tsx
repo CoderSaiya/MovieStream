@@ -3,7 +3,7 @@
 import { MovieType } from "@/types/movie";
 import Image from "next/image";
 import { useState } from "react";
-import { Button } from "./ui/button";
+import { Button } from "../ui/button";
 import { Play } from "lucide-react";
 
 export const Banner = () => {

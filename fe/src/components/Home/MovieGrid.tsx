@@ -2,7 +2,7 @@ import { MovieType } from "@/types/movie"
 import Image from "next/image"
 import Link from "next/link"
 import { useEffect, useRef, useState } from "react";
-import { MovieTooltip } from "./MovieTooltip";
+import { MovieTooltip } from "../MovieTooltip";
 
 export function MovieGrid({ movies, title }: { movies: MovieType[]; title: string }) {
     const scrollRef = useRef<HTMLDivElement>(null)

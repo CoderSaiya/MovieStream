@@ -2,9 +2,9 @@
 
 import { AOSInit } from "@/components/AOSInit"
 import { Breadcrumb } from "@/components/Breadcumb"
-import { CommentsSection } from "@/components/CommentSection"
-import { MovieDetails } from "@/components/MovieDetails"
-import { MovieTab } from "@/components/MovieTab"
+import { CommentsSection } from "@/components/Detail/CommentSection"
+import { MovieDetails } from "@/components/Detail/MovieDetails"
+import { MovieTab } from "@/components/Detail/MovieTab"
 import { Sidebar } from "@/components/Sidebar"
 
 export default function AnimePage() {

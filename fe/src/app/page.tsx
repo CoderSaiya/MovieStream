@@ -1,8 +1,8 @@
 "use client";
 
 import { AOSInit } from "@/components/AOSInit";
-import { Banner } from "@/components/Banner";
-import { MovieGrid } from "@/components/MovieGrid";
+import { Banner } from "@/components/Home/Banner";
+import { MovieGrid } from "@/components/Home/MovieGrid";
 import { Sidebar } from "@/components/Sidebar";
 import { MovieType } from "@/types/movie";
 
