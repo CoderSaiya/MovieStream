@@ -4,7 +4,7 @@ import { BreadcrumbItem } from "@/types"
 
 export function Breadcrumb({ items }: { items: BreadcrumbItem[] }) {
     return (
-        <nav className="container py-4">
+        <nav className="container py-4" data-aos="fade-right">
             <ol className="flex flex-wrap items-center gap-2 text-sm text-gray-400">
                 {items.map((item, index) => (
                     <li key={item.href} className="flex items-center gap-2">
