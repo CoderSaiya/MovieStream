@@ -7,7 +7,7 @@ import { MovieDetails } from "@/components/Detail/MovieDetails"
 import { MovieTab } from "@/components/Detail/MovieTab"
 import { Sidebar } from "@/components/Sidebar"
 
-export default function AnimePage() {
+export default function DetailPage() {
   const breadcrumbItems = [
     { label: "Home", href: "/" },
     { label: "Oneshot", href: "/oneshot" },

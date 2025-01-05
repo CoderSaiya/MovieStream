@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const PlaybackPage = () => {
+export default function PlaybackPage() {
     return (
         <div>PlaybackPage</div>
     )
