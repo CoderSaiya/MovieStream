@@ -16,6 +16,11 @@ export default function Home() {
       views: "5,699",
       rating: 9.3,
       image: "https://upload.wikimedia.org/wikipedia/vi/9/97/Eiga_Doraemon_Nobita_no_Shin_Ky%C5%8Dry%C5%AB_poster.jpg",
+      quality: "FHD",
+      genres: ["Action", "Adventure", "Comedy", "Fantasy", "Kids", "Shounen"],
+      synopsis: "Nobita và Doraemon tìm thấy một quả trứng khủng long và quyết định chăm sóc nó. Khi nó nở ra, họ phát hiện ra rằng nó không phải là một loài khủng long thông thường...",
+      studio: "Shin-Ei Animation",
+      cast: "Ongoing"
     },
     {
       id: 2,
@@ -24,6 +29,11 @@ export default function Home() {
       views: "5,699",
       rating: 9.3,
       image: "https://upload.wikimedia.org/wikipedia/vi/9/97/Eiga_Doraemon_Nobita_no_Shin_Ky%C5%8Dry%C5%AB_poster.jpg",
+      quality: "FHD",
+      genres: ["Action", "Adventure", "Comedy", "Fantasy", "Kids", "Shounen"],
+      synopsis: "Nobita và Doraemon tìm thấy một quả trứng khủng long và quyết định chăm sóc nó. Khi nó nở ra, họ phát hiện ra rằng nó không phải là một loài khủng long thông thường...",
+      studio: "Shin-Ei Animation",
+      cast: "Ongoing"
     },
     {
       id: 3,
@@ -32,6 +42,11 @@ export default function Home() {
       views: "5,699",
       rating: 9.3,
       image: "https://upload.wikimedia.org/wikipedia/vi/9/97/Eiga_Doraemon_Nobita_no_Shin_Ky%C5%8Dry%C5%AB_poster.jpg",
+      quality: "FHD",
+      genres: ["Action", "Adventure", "Comedy", "Fantasy", "Kids", "Shounen"],
+      synopsis: "Nobita và Doraemon tìm thấy một quả trứng khủng long và quyết định chăm sóc nó. Khi nó nở ra, họ phát hiện ra rằng nó không phải là một loài khủng long thông thường...",
+      studio: "Shin-Ei Animation",
+      cast: "Ongoing"
     },
     {
       id: 4,
@@ -40,6 +55,11 @@ export default function Home() {
       views: "5,699",
       rating: 9.3,
       image: "https://upload.wikimedia.org/wikipedia/vi/9/97/Eiga_Doraemon_Nobita_no_Shin_Ky%C5%8Dry%C5%AB_poster.jpg",
+      quality: "FHD",
+      genres: ["Action", "Adventure", "Comedy", "Fantasy", "Kids", "Shounen"],
+      synopsis: "Nobita và Doraemon tìm thấy một quả trứng khủng long và quyết định chăm sóc nó. Khi nó nở ra, họ phát hiện ra rằng nó không phải là một loài khủng long thông thường...",
+      studio: "Shin-Ei Animation",
+      cast: "Ongoing"
     },
     {
       id: 5,
@@ -48,6 +68,11 @@ export default function Home() {
       views: "5,699",
       rating: 9.3,
       image: "https://upload.wikimedia.org/wikipedia/vi/9/97/Eiga_Doraemon_Nobita_no_Shin_Ky%C5%8Dry%C5%AB_poster.jpg",
+      quality: "FHD",
+      genres: ["Action", "Adventure", "Comedy", "Fantasy", "Kids", "Shounen"],
+      synopsis: "Nobita và Doraemon tìm thấy một quả trứng khủng long và quyết định chăm sóc nó. Khi nó nở ra, họ phát hiện ra rằng nó không phải là một loài khủng long thông thường...",
+      studio: "Shin-Ei Animation",
+      cast: "Ongoing"
     },
     {
       id: 6,
@@ -56,6 +81,11 @@ export default function Home() {
       views: "5,699",
       rating: 9.3,
       image: "https://upload.wikimedia.org/wikipedia/vi/9/97/Eiga_Doraemon_Nobita_no_Shin_Ky%C5%8Dry%C5%AB_poster.jpg",
+      quality: "FHD",
+      genres: ["Action", "Adventure", "Comedy", "Fantasy", "Kids", "Shounen"],
+      synopsis: "Nobita và Doraemon tìm thấy một quả trứng khủng long và quyết định chăm sóc nó. Khi nó nở ra, họ phát hiện ra rằng nó không phải là một loài khủng long thông thường...",
+      studio: "Shin-Ei Animation",
+      cast: "Ongoing"
     },
     {
       id: 7,
@@ -64,6 +94,11 @@ export default function Home() {
       views: "5,699",
       rating: 9.3,
       image: "https://upload.wikimedia.org/wikipedia/vi/9/97/Eiga_Doraemon_Nobita_no_Shin_Ky%C5%8Dry%C5%AB_poster.jpg",
+      quality: "FHD",
+      genres: ["Action", "Adventure", "Comedy", "Fantasy", "Kids", "Shounen"],
+      synopsis: "Nobita và Doraemon tìm thấy một quả trứng khủng long và quyết định chăm sóc nó. Khi nó nở ra, họ phát hiện ra rằng nó không phải là một loài khủng long thông thường...",
+      studio: "Shin-Ei Animation",
+      cast: "Ongoing"
     },
     {
       id: 8,
@@ -72,6 +107,11 @@ export default function Home() {
       views: "5,699",
       rating: 9.3,
       image: "https://upload.wikimedia.org/wikipedia/vi/9/97/Eiga_Doraemon_Nobita_no_Shin_Ky%C5%8Dry%C5%AB_poster.jpg",
+      quality: "FHD",
+      genres: ["Action", "Adventure", "Comedy", "Fantasy", "Kids", "Shounen"],
+      synopsis: "Nobita và Doraemon tìm thấy một quả trứng khủng long và quyết định chăm sóc nó. Khi nó nở ra, họ phát hiện ra rằng nó không phải là một loài khủng long thông thường...",
+      studio: "Shin-Ei Animation",
+      cast: "Ongoing"
     },
     {
       id: 9,
@@ -80,6 +120,11 @@ export default function Home() {
       views: "5,699",
       rating: 9.3,
       image: "https://upload.wikimedia.org/wikipedia/vi/9/97/Eiga_Doraemon_Nobita_no_Shin_Ky%C5%8Dry%C5%AB_poster.jpg",
+      quality: "FHD",
+      genres: ["Action", "Adventure", "Comedy", "Fantasy", "Kids", "Shounen"],
+      synopsis: "Nobita và Doraemon tìm thấy một quả trứng khủng long và quyết định chăm sóc nó. Khi nó nở ra, họ phát hiện ra rằng nó không phải là một loài khủng long thông thường...",
+      studio: "Shin-Ei Animation",
+      cast: "Ongoing"
     },
     {
       id: 10,
@@ -88,6 +133,11 @@ export default function Home() {
       views: "5,699",
       rating: 9.3,
       image: "https://upload.wikimedia.org/wikipedia/vi/9/97/Eiga_Doraemon_Nobita_no_Shin_Ky%C5%8Dry%C5%AB_poster.jpg",
+      quality: "FHD",
+      genres: ["Action", "Adventure", "Comedy", "Fantasy", "Kids", "Shounen"],
+      synopsis: "Nobita và Doraemon tìm thấy một quả trứng khủng long và quyết định chăm sóc nó. Khi nó nở ra, họ phát hiện ra rằng nó không phải là một loài khủng long thông thường...",
+      studio: "Shin-Ei Animation",
+      cast: "Ongoing"
     },
   ]
 
@@ -99,6 +149,11 @@ export default function Home() {
       views: "5,699",
       rating: 9.3,
       image: "https://upload.wikimedia.org/wikipedia/vi/9/97/Eiga_Doraemon_Nobita_no_Shin_Ky%C5%8Dry%C5%AB_poster.jpg",
+      quality: "FHD",
+      genres: ["Action", "Adventure", "Comedy", "Fantasy", "Kids", "Shounen"],
+      synopsis: "Nobita và Doraemon tìm thấy một quả trứng khủng long và quyết định chăm sóc nó. Khi nó nở ra, họ phát hiện ra rằng nó không phải là một loài khủng long thông thường...",
+      studio: "Shin-Ei Animation",
+      cast: "Ongoing"
     },
     {
       id: 2,
@@ -107,6 +162,11 @@ export default function Home() {
       views: "5,699",
       rating: 9.3,
       image: "https://upload.wikimedia.org/wikipedia/vi/9/97/Eiga_Doraemon_Nobita_no_Shin_Ky%C5%8Dry%C5%AB_poster.jpg",
+      quality: "FHD",
+      genres: ["Action", "Adventure", "Comedy", "Fantasy", "Kids", "Shounen"],
+      synopsis: "Nobita và Doraemon tìm thấy một quả trứng khủng long và quyết định chăm sóc nó. Khi nó nở ra, họ phát hiện ra rằng nó không phải là một loài khủng long thông thường...",
+      studio: "Shin-Ei Animation",
+      cast: "Ongoing"
     },
     {
       id: 3,
@@ -115,6 +175,11 @@ export default function Home() {
       views: "5,699",
       rating: 9.3,
       image: "https://upload.wikimedia.org/wikipedia/vi/9/97/Eiga_Doraemon_Nobita_no_Shin_Ky%C5%8Dry%C5%AB_poster.jpg",
+      quality: "FHD",
+      genres: ["Action", "Adventure", "Comedy", "Fantasy", "Kids", "Shounen"],
+      synopsis: "Nobita và Doraemon tìm thấy một quả trứng khủng long và quyết định chăm sóc nó. Khi nó nở ra, họ phát hiện ra rằng nó không phải là một loài khủng long thông thường...",
+      studio: "Shin-Ei Animation",
+      cast: "Ongoing"
     },
     {
       id: 4,
@@ -123,6 +188,11 @@ export default function Home() {
       views: "5,699",
       rating: 9.3,
       image: "https://upload.wikimedia.org/wikipedia/vi/9/97/Eiga_Doraemon_Nobita_no_Shin_Ky%C5%8Dry%C5%AB_poster.jpg",
+      quality: "FHD",
+      genres: ["Action", "Adventure", "Comedy", "Fantasy", "Kids", "Shounen"],
+      synopsis: "Nobita và Doraemon tìm thấy một quả trứng khủng long và quyết định chăm sóc nó. Khi nó nở ra, họ phát hiện ra rằng nó không phải là một loài khủng long thông thường...",
+      studio: "Shin-Ei Animation",
+      cast: "Ongoing"
     },
     {
       id: 5,
@@ -131,6 +201,11 @@ export default function Home() {
       views: "5,699",
       rating: 9.3,
       image: "https://upload.wikimedia.org/wikipedia/vi/9/97/Eiga_Doraemon_Nobita_no_Shin_Ky%C5%8Dry%C5%AB_poster.jpg",
+      quality: "FHD",
+      genres: ["Action", "Adventure", "Comedy", "Fantasy", "Kids", "Shounen"],
+      synopsis: "Nobita và Doraemon tìm thấy một quả trứng khủng long và quyết định chăm sóc nó. Khi nó nở ra, họ phát hiện ra rằng nó không phải là một loài khủng long thông thường...",
+      studio: "Shin-Ei Animation",
+      cast: "Ongoing"
     },
     {
       id: 6,
@@ -139,6 +214,11 @@ export default function Home() {
       views: "5,699",
       rating: 9.3,
       image: "https://upload.wikimedia.org/wikipedia/vi/9/97/Eiga_Doraemon_Nobita_no_Shin_Ky%C5%8Dry%C5%AB_poster.jpg",
+      quality: "FHD",
+      genres: ["Action", "Adventure", "Comedy", "Fantasy", "Kids", "Shounen"],
+      synopsis: "Nobita và Doraemon tìm thấy một quả trứng khủng long và quyết định chăm sóc nó. Khi nó nở ra, họ phát hiện ra rằng nó không phải là một loài khủng long thông thường...",
+      studio: "Shin-Ei Animation",
+      cast: "Ongoing"
     },
     {
       id: 7,
@@ -147,6 +227,11 @@ export default function Home() {
       views: "5,699",
       rating: 9.3,
       image: "https://upload.wikimedia.org/wikipedia/vi/9/97/Eiga_Doraemon_Nobita_no_Shin_Ky%C5%8Dry%C5%AB_poster.jpg",
+      quality: "FHD",
+      genres: ["Action", "Adventure", "Comedy", "Fantasy", "Kids", "Shounen"],
+      synopsis: "Nobita và Doraemon tìm thấy một quả trứng khủng long và quyết định chăm sóc nó. Khi nó nở ra, họ phát hiện ra rằng nó không phải là một loài khủng long thông thường...",
+      studio: "Shin-Ei Animation",
+      cast: "Ongoing"
     },
     {
       id: 8,
@@ -155,6 +240,11 @@ export default function Home() {
       views: "5,699",
       rating: 9.3,
       image: "https://upload.wikimedia.org/wikipedia/vi/9/97/Eiga_Doraemon_Nobita_no_Shin_Ky%C5%8Dry%C5%AB_poster.jpg",
+      quality: "FHD",
+      genres: ["Action", "Adventure", "Comedy", "Fantasy", "Kids", "Shounen"],
+      synopsis: "Nobita và Doraemon tìm thấy một quả trứng khủng long và quyết định chăm sóc nó. Khi nó nở ra, họ phát hiện ra rằng nó không phải là một loài khủng long thông thường...",
+      studio: "Shin-Ei Animation",
+      cast: "Ongoing"
     },
     {
       id: 9,
@@ -163,6 +253,11 @@ export default function Home() {
       views: "5,699",
       rating: 9.3,
       image: "https://upload.wikimedia.org/wikipedia/vi/9/97/Eiga_Doraemon_Nobita_no_Shin_Ky%C5%8Dry%C5%AB_poster.jpg",
+      quality: "FHD",
+      genres: ["Action", "Adventure", "Comedy", "Fantasy", "Kids", "Shounen"],
+      synopsis: "Nobita và Doraemon tìm thấy một quả trứng khủng long và quyết định chăm sóc nó. Khi nó nở ra, họ phát hiện ra rằng nó không phải là một loài khủng long thông thường...",
+      studio: "Shin-Ei Animation",
+      cast: "Ongoing"
     },
     {
       id: 10,
@@ -171,6 +266,11 @@ export default function Home() {
       views: "5,699",
       rating: 9.3,
       image: "https://upload.wikimedia.org/wikipedia/vi/9/97/Eiga_Doraemon_Nobita_no_Shin_Ky%C5%8Dry%C5%AB_poster.jpg",
+      quality: "FHD",
+      genres: ["Action", "Adventure", "Comedy", "Fantasy", "Kids", "Shounen"],
+      synopsis: "Nobita và Doraemon tìm thấy một quả trứng khủng long và quyết định chăm sóc nó. Khi nó nở ra, họ phát hiện ra rằng nó không phải là một loài khủng long thông thường...",
+      studio: "Shin-Ei Animation",
+      cast: "Ongoing"
     },
   ]
 
