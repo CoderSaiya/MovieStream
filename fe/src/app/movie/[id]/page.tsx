@@ -1,7 +1,7 @@
 'use client'
 
 import { AOSInit } from "@/components/AOSInit"
-import { Breadcrumb } from "@/components/Breadcumb"
+import { Breadcrumb } from "@/components/Breadcrumb"
 import { CommentsSection } from "@/components/Detail/CommentSection"
 import { MovieDetails } from "@/components/Detail/MovieDetails"
 import { MovieTab } from "@/components/Detail/MovieTab"
