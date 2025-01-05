@@ -1,21 +1,31 @@
-'use client'
-
-import { useState, useRef, useEffect } from 'react'
+import { useRef, useEffect } from 'react'
 import { Play, Pause, Volume2, VolumeX, Maximize, SkipForward, Settings } from 'lucide-react'
 import { Button } from "@/components/ui/button"
 import { Slider } from "@/components/ui/slider"
+import { useVideoPlayerStore } from '@/types/state'
 
 export function VideoPlayer() {
-    const [isPlaying, setIsPlaying] = useState(false)
-    const [isMuted, setIsMuted] = useState(false)
-    const [volume, setVolume] = useState(1)
-    const [currentTime, setCurrentTime] = useState(0)
-    const [duration, setDuration] = useState(0)
-    const [showOverlay, setShowOverlay] = useState(true)
-    const [error, setError] = useState<string | null>(null)
-    const [isLoading, setIsLoading] = useState(true)
     const videoRef = useRef<HTMLVideoElement>(null)
     const containerRef = useRef<HTMLDivElement>(null)
+
+    const {
+        isPlaying,
+        isMuted,
+        volume,
+        currentTime,
+        duration,
+        showOverlay,
+        error,
+        isLoading,
+        setIsPlaying,
+        setIsMuted,
+        setVolume,
+        setCurrentTime,
+        setDuration,
+        setShowOverlay,
+        setError,
+        setIsLoading
+      } = useVideoPlayerStore();
 
     useEffect(() => {
         const video = videoRef.current
@@ -37,7 +47,7 @@ export function VideoPlayer() {
                 video.removeEventListener('loadedmetadata', handleMetadata)
             }
         }
-    }, [])
+    }, [volume])
 
     const togglePlay = () => {
         const video = videoRef.current;

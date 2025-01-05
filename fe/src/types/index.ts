@@ -1,11 +1,5 @@
 import { LucideIcon } from "lucide-react";
 
-export interface AppState {
-    count: number;
-    increase: () => void;
-    decrease: () => void;
-}
-
 export interface FeatureItem {
     icon: LucideIcon;
     title: string;
