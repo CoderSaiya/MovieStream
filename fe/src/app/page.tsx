@@ -91,6 +91,89 @@ export default function Home() {
     },
   ]
 
+  const hotMovies: MovieType[] = [
+    {
+      id: 1,
+      title: "Doraemon: Nobita's New Dinosaur",
+      episode: 1,
+      views: "5,699",
+      rating: 9.3,
+      image: "https://upload.wikimedia.org/wikipedia/vi/9/97/Eiga_Doraemon_Nobita_no_Shin_Ky%C5%8Dry%C5%AB_poster.jpg",
+    },
+    {
+      id: 2,
+      title: "Doraemon: Nobita's New Dinosaur",
+      episode: 1,
+      views: "5,699",
+      rating: 9.3,
+      image: "https://upload.wikimedia.org/wikipedia/vi/9/97/Eiga_Doraemon_Nobita_no_Shin_Ky%C5%8Dry%C5%AB_poster.jpg",
+    },
+    {
+      id: 3,
+      title: "Doraemon: Nobita's New Dinosaur",
+      episode: 1,
+      views: "5,699",
+      rating: 9.3,
+      image: "https://upload.wikimedia.org/wikipedia/vi/9/97/Eiga_Doraemon_Nobita_no_Shin_Ky%C5%8Dry%C5%AB_poster.jpg",
+    },
+    {
+      id: 4,
+      title: "Doraemon: Nobita's New Dinosaur",
+      episode: 1,
+      views: "5,699",
+      rating: 9.3,
+      image: "https://upload.wikimedia.org/wikipedia/vi/9/97/Eiga_Doraemon_Nobita_no_Shin_Ky%C5%8Dry%C5%AB_poster.jpg",
+    },
+    {
+      id: 5,
+      title: "Doraemon: Nobita's New Dinosaur",
+      episode: 1,
+      views: "5,699",
+      rating: 9.3,
+      image: "https://upload.wikimedia.org/wikipedia/vi/9/97/Eiga_Doraemon_Nobita_no_Shin_Ky%C5%8Dry%C5%AB_poster.jpg",
+    },
+    {
+      id: 6,
+      title: "Doraemon: Nobita's New Dinosaur",
+      episode: 1,
+      views: "5,699",
+      rating: 9.3,
+      image: "https://upload.wikimedia.org/wikipedia/vi/9/97/Eiga_Doraemon_Nobita_no_Shin_Ky%C5%8Dry%C5%AB_poster.jpg",
+    },
+    {
+      id: 7,
+      title: "Doraemon: Nobita's New Dinosaur",
+      episode: 1,
+      views: "5,699",
+      rating: 9.3,
+      image: "https://upload.wikimedia.org/wikipedia/vi/9/97/Eiga_Doraemon_Nobita_no_Shin_Ky%C5%8Dry%C5%AB_poster.jpg",
+    },
+    {
+      id: 8,
+      title: "Doraemon: Nobita's New Dinosaur",
+      episode: 1,
+      views: "5,699",
+      rating: 9.3,
+      image: "https://upload.wikimedia.org/wikipedia/vi/9/97/Eiga_Doraemon_Nobita_no_Shin_Ky%C5%8Dry%C5%AB_poster.jpg",
+    },
+    {
+      id: 9,
+      title: "Doraemon: Nobita's New Dinosaur",
+      episode: 1,
+      views: "5,699",
+      rating: 9.3,
+      image: "https://upload.wikimedia.org/wikipedia/vi/9/97/Eiga_Doraemon_Nobita_no_Shin_Ky%C5%8Dry%C5%AB_poster.jpg",
+    },
+    {
+      id: 10,
+      title: "Doraemon: Nobita's New Dinosaur",
+      episode: 1,
+      views: "5,699",
+      rating: 9.3,
+      image: "https://upload.wikimedia.org/wikipedia/vi/9/97/Eiga_Doraemon_Nobita_no_Shin_Ky%C5%8Dry%C5%AB_poster.jpg",
+    },
+  ]
+
   return (
     <div className="flex min-h-screen flex-col">
       <AOSInit />
@@ -98,6 +181,7 @@ export default function Home() {
         <Banner />
         <Features />
         <MovieGrid movies={newMovies} title="New Movies" />
+        <MovieGrid movies={hotMovies} title="Hot Movies" />
       </main>
     </div>
   );
