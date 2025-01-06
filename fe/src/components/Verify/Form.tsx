@@ -38,7 +38,7 @@ export function Form() {
         }, 3000)
     }
     return (
-        <form onSubmit={onSubmit} className="space-y-6 text-white">
+        <form onSubmit={onSubmit} className="space-y-6 text-white" data-aos="fade-up" data-aos-delay="200">
             <div className="flex justify-center gap-2">
                 {otp.map((digit, index) => (
                     <Input

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "../globals.css";
 import { Geist, Geist_Mono } from "next/font/google";
+import { AOSInit } from "@/components/AOSInit";
 
 const geistSans = Geist({
     variable: "--font-geist-sans",
@@ -32,6 +33,7 @@ export default function AuthLayout({
             <body
                 className={`${geistSans.variable} ${geistMono.variable} antialiased`}
             >
+                <AOSInit />
                 <div className="min-h-screen bg-gradient-to-b from-gray-900 to-black">
                     <div className="container mx-auto flex min-h-screen items-center justify-center px-4">
                         <div className="w-full max-w-[400px] space-y-6 rounded-2xl bg-black/50 p-6 backdrop-blur-xl sm:p-8">

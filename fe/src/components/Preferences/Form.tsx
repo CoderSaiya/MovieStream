@@ -25,7 +25,7 @@ export function Form({ genres }: { genres: string[] }) {
     }
 
     return (
-        <form onSubmit={onSubmit} className="space-y-6">
+        <form onSubmit={onSubmit} className="space-y-6" data-aos="fade-up" data-aos-delay="200">
             <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
                 {genres.map((genre) => (
                     <button
