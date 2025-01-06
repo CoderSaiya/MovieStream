@@ -1,5 +1,3 @@
-"use client";
-
 import { AOSInit } from "@/components/AOSInit";
 export default function Home() {
 

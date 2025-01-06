@@ -52,4 +52,4 @@ export interface MovieDetailsProps {
 export interface BreadcrumbItem {
     label: string
     href: string
-  }
+}
