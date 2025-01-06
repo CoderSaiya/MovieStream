@@ -2,7 +2,7 @@ import { useRef, useEffect } from 'react'
 import { Play, Pause, Volume2, VolumeX, Maximize, SkipForward, Settings } from 'lucide-react'
 import { Button } from "@/components/ui/button"
 import { Slider } from "@/components/ui/slider"
-import { useVideoPlayerStore } from '@/types/state'
+import { useVideoPlayerStore } from '@/store/useStore'
 
 export function VideoPlayer() {
     const videoRef = useRef<HTMLVideoElement>(null)
