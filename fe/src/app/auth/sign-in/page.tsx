@@ -31,7 +31,7 @@ export default function SignInPage() {
                             autoComplete="email"
                             autoCorrect="off"
                             disabled={isLoading}
-                            className="bg-gray-800/50"
+                            className="bg-gray-800/50 text-white"
                         />
                         <Input
                             id="password"
@@ -39,13 +39,13 @@ export default function SignInPage() {
                             type="password"
                             autoComplete="current-password"
                             disabled={isLoading}
-                            className="bg-gray-800/50"
+                            className="bg-gray-800/50 text-white"
                         />
                         <Button className="w-full bg-red-600 hover:bg-red-700" disabled={isLoading}>
                             {isLoading && (
                                 <div className="mr-2 h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent" />
                             )}
-                            Đăng nhập
+                            Sign in
                         </Button>
                     </div>
                 </div>
@@ -56,29 +56,29 @@ export default function SignInPage() {
                 </div>
                 <div className="relative flex justify-center text-xs uppercase">
                     <span className="bg-black px-2 text-gray-400">
-                        Hoặc tiếp tục với
+                        Or continue with
                     </span>
                 </div>
             </div>
-            <div className="grid gap-4">
-                <Button variant="outline" className="bg-gray-800/50 hover:bg-gray-800">
+            <div className="grid gap-4 text-white">
+                <Button className="bg-gray-800/50 hover:bg-gray-800">
                     <Github className="mr-2 h-4 w-4" />
                     Github
                 </Button>
-                <Button variant="outline" className="bg-gray-800/50 hover:bg-gray-800">
+                <Button className="bg-gray-800/50 hover:bg-gray-800">
                     <Mail className="mr-2 h-4 w-4" />
                     Google
                 </Button>
             </div>
             <div className="mt-4 text-center text-sm">
                 <Link href="/auth/reset-password" className="text-gray-400 hover:text-white">
-                    Quên mật khẩu?
+                    Forgot password?
                 </Link>
             </div>
             <div className="text-center text-sm">
-                <span className="text-gray-400">Chưa có tài khoản? </span>
+                <span className="text-gray-400">Don&apos;t have an account? </span>
                 <Link href="/auth/sign-up" className="text-red-500 hover:text-red-400">
-                    Đăng ký ngay
+                    Sign up now
                 </Link>
             </div>
         </div>
