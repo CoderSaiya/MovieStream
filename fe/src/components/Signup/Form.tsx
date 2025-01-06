@@ -4,7 +4,6 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { Github, Mail } from 'lucide-react'
 
 export function Form() {
     const [isLoading, setIsLoading] = useState(false);
@@ -23,6 +22,20 @@ export function Form() {
             <form onSubmit={onSubmit}>
                 <div className="grid gap-4">
                     <div className="grid gap-2">
+                        <div className="grid grid-cols-2 gap-4">
+                            <Input
+                                id="firstName"
+                                placeholder="First Name"
+                                disabled={isLoading}
+                                className="bg-gray-800/50"
+                            />
+                            <Input
+                                id="lastName"
+                                placeholder="Last Name"
+                                disabled={isLoading}
+                                className="bg-gray-800/50"
+                            />
+                        </div>
                         <Input
                             id="email"
                             placeholder="name@example.com"
@@ -37,7 +50,15 @@ export function Form() {
                             id="password"
                             placeholder="Password"
                             type="password"
-                            autoComplete="current-password"
+                            autoComplete="new-password"
+                            disabled={isLoading}
+                            className="bg-gray-800/50"
+                        />
+                        <Input
+                            id="confirmPassword"
+                            placeholder="Confirm password"
+                            type="password"
+                            autoComplete="new-password"
                             disabled={isLoading}
                             className="bg-gray-800/50"
                         />
@@ -45,40 +66,15 @@ export function Form() {
                             {isLoading && (
                                 <div className="mr-2 h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent" />
                             )}
-                            Sign in
+                            Sign up
                         </Button>
                     </div>
                 </div>
             </form>
-            <div className="relative">
-                <div className="absolute inset-0 flex items-center">
-                    <span className="w-full border-t border-gray-700" />
-                </div>
-                <div className="relative flex justify-center text-xs uppercase">
-                    <span className="bg-black px-2 text-gray-400">
-                        Or continue with
-                    </span>
-                </div>
-            </div>
-            <div className="grid gap-4 text-white">
-                <Button className="bg-gray-800/50 hover:bg-gray-800">
-                    <Github className="mr-2 h-4 w-4" />
-                    Github
-                </Button>
-                <Button className="bg-gray-800/50 hover:bg-gray-800">
-                    <Mail className="mr-2 h-4 w-4" />
-                    Google
-                </Button>
-            </div>
-            <div className="mt-4 text-center text-sm">
-                <Link href="/auth/reset-password" className="text-gray-400 hover:text-white">
-                    Forgot password?
-                </Link>
-            </div>
             <div className="text-center text-sm">
-                <span className="text-gray-400">Don&apos;t have an account? </span>
-                <Link href="/auth/sign-up" className="text-red-500 hover:text-red-400">
-                    Sign up now
+                <span className="text-gray-400">Already have an account? </span>
+                <Link href="/auth/sign-in" className="text-red-500 hover:text-red-400">
+                    Sign in
                 </Link>
             </div>
         </div>
