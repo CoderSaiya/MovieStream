@@ -1,9 +1,6 @@
 import { FeatureCardProps } from "@/types";
 import React from "react";
 
-
-
-
 export const FeatureCard: React.FC<FeatureCardProps> = ({
   icon: Icon,
   title,

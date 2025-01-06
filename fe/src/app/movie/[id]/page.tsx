@@ -1,25 +1,10 @@
 'use client'
 
-import { AOSInit } from "@/components/AOSInit"
-import { Breadcrumb } from "@/components/Breadcrumb"
 import { CommentsSection } from "@/components/Detail/CommentSection"
 import { MovieDetails } from "@/components/Detail/MovieDetails"
 import { MovieTab } from "@/components/Detail/MovieTab"
-import { Sidebar } from "@/components/Sidebar"
 
 export default function DetailPage() {
-  const breadcrumbItems = [
-    { label: "Home", href: "/" },
-    { label: "Oneshot", href: "/oneshot" },
-    { label: "Shounen", href: "/gerne/shounen" },
-    { label: "Sci-Fi", href: "/gerne/sci-fi" },
-    { label: "Comedy", href: "/gerne/comedy" },
-    { label: "Adventure", href: "/gerne/adventure" },
-    { label: "Kids", href: "/gerne/kids" },
-    { label: "Doraemon: Nobita's New Dinosaur", href: "#" },
-    { label: "Thông tin", href: "" },
-  ]
-
   // update sau
   const movieData = {
     id: 1,
@@ -49,27 +34,12 @@ export default function DetailPage() {
   }
 
   return (
-    <div className="min-h-screen">
-      <AOSInit />
-      <div className="container mx-auto">
-        <Breadcrumb items={breadcrumbItems} />
-      </div>
+    <>
 
-      <main className="flex-1 py-6">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-            <div className="lg:col-span-9">
-              <MovieDetails {...movieData} />
-              <MovieTab />
-              <CommentsSection />
-            </div>
-            <aside className="lg:col-span-3">
-              <Sidebar />
-            </aside>
-          </div>
-        </div>
-      </main>
-    </div>
+      <MovieDetails {...movieData} />
+      <MovieTab />
+      <CommentsSection />
+    </>
   )
 }
 
