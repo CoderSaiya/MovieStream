@@ -1,0 +1,50 @@
+.vs/
+# Thư mục bin và obj
+**/bin/
+**/obj/
+
+# Tệp tạm thời và file log
+*.log
+*.user
+*.lock
+*.tmp
+*.temp
+*.pid
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Tệp build kết quả
+*.dll
+*.exe
+*.pdb
+*.mdb
+*.ilk
+*.idb
+*.lib
+*.ndb
+*.obj
+*.o
+*.cache
+*.manifest
+*.exp
+*.pubxml
+*.publish.xml
+
+# Tệp liên quan đến NuGet
+*.nupkg
+*.snupkg
+*.nuget.props
+*.nuget.targets
+project.lock.json
+project.fragment.lock.json
+
+# Thư mục và file ẩn của hệ thống
+.vs/
+.idea/
+*.swp
+*.DS_Store
+Thumbs.db
+
+# Tệp tạm thời khi merge
+*.orig
