@@ -17,13 +17,33 @@ namespace MovieService.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Movie>().HasKey(m => m.Id);
-            modelBuilder.Entity<Episode>().HasKey(m => m.Id);
-            modelBuilder.Entity<Genre>().HasKey(m => m.Id);
-            modelBuilder.Entity<Image>().HasKey(m => m.Id);
-            modelBuilder.Entity<Studio>().HasKey(m => m.Id);
-            modelBuilder.Entity<MovieGenre>().HasKey(m => m.Id);
-            modelBuilder.Entity<MovieStudio>().HasKey(m => m.Id);
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<MovieGenre>()
+             .HasKey(mg => new { mg.MovieId, mg.GenreId });
+
+            modelBuilder.Entity<MovieGenre>()
+                .HasOne(mg => mg.Movie)
+                .WithMany(m => m.MovieGenres)
+                .HasForeignKey(mg => mg.MovieId);
+
+            modelBuilder.Entity<MovieGenre>()
+                .HasOne(mg => mg.Genre)
+                .WithMany(g => g.MovieGenres)
+                .HasForeignKey(mg => mg.GenreId);
+
+            modelBuilder.Entity<MovieStudio>()
+            .HasKey(ms => new { ms.MovieId, ms.StudioId });
+
+            modelBuilder.Entity<MovieStudio>()
+                .HasOne(ms => ms.Movie)
+                .WithMany(m => m.MovieStudios)
+                .HasForeignKey(ms => ms.MovieId);
+
+            modelBuilder.Entity<MovieStudio>()
+                .HasOne(ms => ms.Studio)
+                .WithMany(s => s.MovieStudios)
+                .HasForeignKey(ms => ms.StudioId);
         }
     }
 }
