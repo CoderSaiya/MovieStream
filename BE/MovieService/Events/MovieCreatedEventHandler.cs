@@ -1,4 +1,5 @@
 ﻿using SharedLibrary.Integration;
+using SharedLibrary.Events;
 
 namespace MovieService.Events
 {

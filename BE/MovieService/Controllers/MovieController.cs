@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MovieService.Data;
-using MovieService.Events;
+using SharedLibrary.Events;
 using MovieService.Models;
 using MovieService.Repositories;
 using SharedLibrary.EventBus;
