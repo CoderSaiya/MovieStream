@@ -1,7 +1,7 @@
 {
   "Routes": [
     {
-      "DownstreamPathTemplate": "/api/movies",
+      "DownstreamPathTemplate": "/api/movies/{everything}",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
@@ -9,11 +9,11 @@
           "Port": 80
         }
       ],
-      "UpstreamPathTemplate": "/api/movies",
+      "UpstreamPathTemplate": "/api/movies/{everything}",
       "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete", "Option" ]
     },
     {
-      "DownstreamPathTemplate": "/api/users",
+      "DownstreamPathTemplate": "/api/users/{everything}",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
@@ -21,11 +21,11 @@
           "Port": 80
         }
       ],
-      "UpstreamPathTemplate": "/api/users",
+      "UpstreamPathTemplate": "/api/users/{everything}",
       "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete", "Option" ]
     },
     {
-      "DownstreamPathTemplate": "/api/recommendation",
+      "DownstreamPathTemplate": "/api/recommendation/{everything}",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
@@ -33,11 +33,11 @@
           "Port": 80
         }
       ],
-      "UpstreamPathTemplate": "/api/recommendation",
+      "UpstreamPathTemplate": "/api/recommendation/{everything}",
       "UpstreamHttpMethod": [ "Get" ]
     },
     {
-      "DownstreamPathTemplate": "/api/search",
+      "DownstreamPathTemplate": "/api/search/{everything}",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
@@ -45,11 +45,11 @@
           "Port": 80
         }
       ],
-      "UpstreamPathTemplate": "/api/search",
+      "UpstreamPathTemplate": "/api/search/{everything}",
       "UpstreamHttpMethod": [ "Get" ]
     },
     {
-      "DownstreamPathTemplate": "/api/playback",
+      "DownstreamPathTemplate": "/api/playback/{everything}",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
@@ -57,7 +57,7 @@
           "Port": 80
         }
       ],
-      "UpstreamPathTemplate": "/api/playback",
+      "UpstreamPathTemplate": "/api/playback/{everything}",
       "UpstreamHttpMethod": [ "Get", "Post" ]
     }
   ],
