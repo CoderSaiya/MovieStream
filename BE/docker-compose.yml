@@ -3,7 +3,7 @@ services:
   apigateway:
     image: apigateway:latest
     build:
-      context: ../ApiGateway
+      context: ./ApiGateway
     ports:
       - "8000:80"
     depends_on:
@@ -17,37 +17,47 @@ services:
   userservice:
     image: userservice:latest
     build:
-      context: ./Services/UserService
+      context: ./UserService
     ports:
       - "8001:80"
+    networks:
+      - my_network
 
   movieservice:
     image: movieservice:latest
     build:
-      context: ./Services/MovieService
+      context: ./MovieService
     ports:
       - "8002:80"
+    networks:
+      - my_network
 
   playbackservice:
     image: playbackservice:latest
     build:
-      context: ./Services/PlaybackService
+      context: ./PlaybackService
     ports:
       - "8003:80"
+    networks:
+      - my_network
 
   recommendationservice:
     image: recommendationservice:latest
     build:
-      context: ./Services/RecommendationService
+      context: ./RecommendationService
     ports:
       - "8004:80"
+    networks:
+      - my_network
 
   searchservice:
     image: searchservice:latest
     build:
-      context: ./Services/SearchService
+      context: ./SearchService
     ports:
       - "8005:80"
+    networks:
+      - my_network
     
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:8.9.0
@@ -56,9 +66,13 @@ services:
       - discovery.type=single-node
     ports:
       - "9200:9200"
+    networks:
+      - my_network
 
   rabbitmq:
-    image: rabbitmq:management
+    image: rabbitmq:4.0-management
     ports:
-      - "5173:5173"   # Management UI
-      - "5672:5672"   # Message Broker
+      - "5671:5672"   # Management UI
+      - "15672:15672"   # Message Broker
+    networks:
+      - my_network
