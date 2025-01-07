@@ -28,7 +28,7 @@ namespace MovieService.Repositories
         {
             await _context.Movies.AddAsync(movie);
             await _context.SaveChangesAsync();
-            var @event = new MovieCreatedEvent(movie.MovieId, movie.Title, movie.Description, movie.Director, movie.Genre, movie.ReleaseDate);
+            var @event = new MovieCreatedEvent(movie.Id, movie.Title, movie.Synopsis, movie.Director, movie.Genre, movie.ReleaseDate);
             _eventBus.Publish(@event);
         }
 
@@ -94,7 +94,7 @@ namespace MovieService.Repositories
 
         public async Task<List<Movie>> GetTrendingMoviesAsync()
         {
-            return await _context.Movies.OrderByDescending(m => m.Views).Take(10).ToListAsync();
+            return await _context.Movies.OrderByDescending(m => m.ViewCount).Take(10).ToListAsync();
         }
     }
 }

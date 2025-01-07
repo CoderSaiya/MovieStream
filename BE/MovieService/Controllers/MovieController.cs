@@ -46,22 +46,22 @@ public class MovieController : ControllerBase
         await _movieRepo.AddMovieAsync(movie);
 
         var movieCreatedEvent = new MovieCreatedEvent(
-        movie.MovieId,
+        movie.Id,
         movie.Title,
-        movie.Description,
+        movie.Synopsis,
         movie.Director,
         movie.Genre,
         movie.ReleaseDate
         );
 
         _eventBus.Publish(movieCreatedEvent);
-        return CreatedAtAction(nameof(GetMovie), new { id = movie.MovieId }, movie);
+        return CreatedAtAction(nameof(GetMovie), new { id = movie.Id }, movie);
     }
 
     [HttpPut("{id}")]
     public async Task<IActionResult> UpdateMovie(int id, Movie movie)
     {
-        if (id != movie.MovieId) return BadRequest();
+        if (id != movie.Id) return BadRequest();
         await _movieRepo.UpdateMovieAsync(movie);
         return NoContent();
     }
