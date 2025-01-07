@@ -3,6 +3,7 @@ using MovieService.Data;
 using MovieService.Events;
 using MovieService.Models;
 using SharedLibrary.EventBus;
+using SharedLibrary.Events;
 
 namespace MovieService.Repositories
 {
@@ -27,7 +28,7 @@ namespace MovieService.Repositories
         {
             await _context.Movies.AddAsync(movie);
             await _context.SaveChangesAsync();
-            var @event = new MovieCreatedIntegrationEvent(movie.MovieId, movie.Title);
+            var @event = new MovieCreatedEvent(movie.MovieId, movie.Title, movie.Description, movie.Director, movie.Genre, movie.ReleaseDate);
             _eventBus.Publish(@event);
         }
 

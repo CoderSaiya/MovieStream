@@ -3,6 +3,7 @@ using MovieService.Data;
 using MovieService.Events;
 using MovieService.Repositories;
 using SharedLibrary.EventBus;
+using SharedLibrary.Events;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +11,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddHttpClient();
 
 // Add DbContext for SQL Server
 builder.Services.AddDbContext<MovieDbContext>(options =>
