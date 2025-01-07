@@ -4,6 +4,7 @@ using MovieService.Events;
 using MovieService.Repositories;
 using SharedLibrary.EventBus;
 using SharedLibrary.Events;
+using System;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,9 +16,18 @@ builder.Services.AddHttpClient();
 
 // Add DbContext for SQL Server
 builder.Services.AddDbContext<MovieDbContext>(options =>
-{
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
-});
+    options.UseSqlServer(
+        connectionString: builder.Configuration["ConnectionStrings:DefaultConnection"],
+        sqlServerOptionsAction: sqlOptions =>
+        {
+            sqlOptions.EnableRetryOnFailure(
+                maxRetryCount: 5,
+                maxRetryDelay: TimeSpan.FromSeconds(30),
+                errorNumbersToAdd: null);
+        }),
+    contextLifetime: ServiceLifetime.Scoped,
+    optionsLifetime: ServiceLifetime.Singleton
+);
 
 builder.Services.AddScoped<IMovie, MovieRepo>();
 
