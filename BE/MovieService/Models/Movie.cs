@@ -36,5 +36,10 @@ namespace MovieService.Models
 
         public DateTime ReleaseDate { get; set; } = DateTime.Now;
         public string Status {  get; set; } = string.Empty;
+
+        public ICollection<Episode> Episodes { get; set; } = new List<Episode>();
+        public ICollection<Image> Images { get; set; } = new List<Image>();
+        public ICollection<MovieGenre> MovieGenres { get; set; } = new List<MovieGenre>();
+        public ICollection<MovieStudio> MovieStudios { get; set; } = new List<MovieStudio>();
     }
 }
