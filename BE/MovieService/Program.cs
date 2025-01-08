@@ -35,7 +35,8 @@ builder.Services.AddScoped<IMovie, MovieRepo>();
 builder.Services.AddSingleton<IEventBus, EventBus>(sp =>
 {
     var serviceProvider = sp.GetRequiredService<IServiceProvider>();
-    var hostName = builder.Configuration["RabbitMQ:HostName"] ?? "localhost";
+    var hostName = builder.Configuration["RabbitMQ:HostName"];
+    Console.Write(builder.Configuration["RabbitMQ:HostName"]);
     return new EventBus(serviceProvider, hostName);
 });
 

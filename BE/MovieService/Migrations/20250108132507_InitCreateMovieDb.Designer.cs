@@ -12,8 +12,8 @@ using MovieService.Data;
 namespace MovieService.Migrations
 {
     [DbContext(typeof(MovieDbContext))]
-    [Migration("20250107115859_InitMovieDb")]
-    partial class InitMovieDb
+    [Migration("20250108132507_InitCreateMovieDb")]
+    partial class InitCreateMovieDb
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -113,6 +113,10 @@ namespace MovieService.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("CoverImage")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Director")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

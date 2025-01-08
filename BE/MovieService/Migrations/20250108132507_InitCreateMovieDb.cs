@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace MovieService.Migrations
 {
     /// <inheritdoc />
-    public partial class InitMovieDb : Migration
+    public partial class InitCreateMovieDb : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -36,6 +36,7 @@ namespace MovieService.Migrations
                     Rating = table.Column<double>(type: "float", nullable: false),
                     TotalRatings = table.Column<int>(type: "int", nullable: false),
                     Synopsis = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Director = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ViewCount = table.Column<int>(type: "int", nullable: false),
                     Schedule = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     AgeRating = table.Column<string>(type: "nvarchar(max)", nullable: false),
