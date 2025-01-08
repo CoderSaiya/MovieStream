@@ -138,3 +138,11 @@ C:\Users\admin\Documents\WorkSpace\ProjectNET\git\BE_MovieStream\BE\UserService\
 C:\Users\admin\Documents\WorkSpace\ProjectNET\git\BE_MovieStream\BE\UserService\obj\Debug\net8.0\UserService.pdb
 C:\Users\admin\Documents\WorkSpace\ProjectNET\git\BE_MovieStream\BE\UserService\obj\Debug\net8.0\UserService.genruntimeconfig.cache
 C:\Users\admin\Documents\WorkSpace\ProjectNET\git\BE_MovieStream\BE\UserService\obj\Debug\net8.0\ref\UserService.dll
+C:\Users\admin\Documents\WorkSpace\ProjectNET\git\BE_MovieStream\BE\UserService\bin\Debug\net8.0\UserService.staticwebassets.endpoints.json
+C:\Users\admin\Documents\WorkSpace\ProjectNET\git\BE_MovieStream\BE\UserService\bin\Debug\net8.0\BCrypt.Net.dll
+C:\Users\admin\Documents\WorkSpace\ProjectNET\git\BE_MovieStream\BE\UserService\bin\Debug\net8.0\Newtonsoft.Json.dll
+C:\Users\admin\Documents\WorkSpace\ProjectNET\git\BE_MovieStream\BE\UserService\bin\Debug\net8.0\BouncyCastle.Crypto.dll
+C:\Users\admin\Documents\WorkSpace\ProjectNET\git\BE_MovieStream\BE\UserService\bin\Debug\net8.0\RabbitMQ.Client.dll
+C:\Users\admin\Documents\WorkSpace\ProjectNET\git\BE_MovieStream\BE\UserService\obj\Debug\net8.0\staticwebassets.build.endpoints.json
+C:\Users\admin\Documents\WorkSpace\ProjectNET\git\BE_MovieStream\BE\UserService\obj\Debug\net8.0\staticwebassets\msbuild.UserService.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
+C:\Users\admin\Documents\WorkSpace\ProjectNET\git\BE_MovieStream\BE\UserService\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt

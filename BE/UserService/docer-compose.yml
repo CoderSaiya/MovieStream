@@ -1,8 +1,0 @@
-﻿rabbitmq:
-  image: rabbitmq:3-management
-  ports:
-    - "5174:5174"
-    - "15672:15672"
-  environment:
-    RABBITMQ_DEFAULT_USER: guest
-    RABBITMQ_DEFAULT_PASS: guest

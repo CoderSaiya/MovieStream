@@ -24,13 +24,13 @@ namespace UserService.Handlers
             if (user == null)
                 return;
 
-            var validatedEvent = new UserValidatedEvent
-            {
-                UserId = user.Id,
-                Email = user.Email,
-                UserName = user.Username
-            };
-            _eventBus.Publish(validatedEvent);
+            //var validatedEvent = new UserValidatedEvent
+            //{
+            //    UserId = user.Id,
+            //    Email = user.Email,
+            //    UserName = user.Username
+            //};
+            //_eventBus.Publish(validatedEvent);
         }
     }
 
