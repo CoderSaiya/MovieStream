@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using MovieService.Data;
 using MovieService.DTOs;
 using MovieService.Events;
@@ -156,7 +157,7 @@ namespace MovieService.Repositories
             {
                 throw new KeyNotFoundException($"Movie with ID {movieId} not found.");
             }
-
+            
             var props = typeof(MovieDTO).GetProperties();
             foreach (var prop in props)
             {
