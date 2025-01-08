@@ -1,4 +1,5 @@
-﻿using MovieService.Models;
+﻿using MovieService.DTOs;
+using MovieService.Models;
 
 namespace MovieService.Repositories
 {
@@ -6,8 +7,8 @@ namespace MovieService.Repositories
     {
         Task<Movie?> GetMovieAsync(int id, string userId);
         Task<List<Movie>> GetAllMoviesAsync();
-        Task AddMovieAsync(Movie movie);
-        Task UpdateMovieAsync(Movie movie);
+        Task<int> AddMovieAsync(MovieDTO movieDTO, List<int> genreIds, List<string> imageUrls, List<int> studioIds);
+        Task UpdateMovieAsync(int movieId, MovieDTO movieDto);
         Task DeleteMovieAsync(int id);
         Task<List<Movie>> GetTrendingMoviesAsync();
         Task<bool> CheckVipStatusAsync(string userId);

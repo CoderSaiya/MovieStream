@@ -4,6 +4,7 @@ using SharedLibrary.Events;
 using MovieService.Models;
 using MovieService.Repositories;
 using SharedLibrary.EventBus;
+using MovieService.DTOs;
 
 [ApiController]
 [Route("api/[controller]")]
@@ -41,28 +42,16 @@ public class MovieController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IActionResult> CreateMovie(Movie movie)
+    public async Task<IActionResult> CreateMovie(MovieDTO movieDto, List<int> genreIds, List<string> imageUrls, List<int> studioIds)
     {
-        await _movieRepo.AddMovieAsync(movie);
-
-        var movieCreatedEvent = new MovieCreatedEvent(
-        movie.Id,
-        movie.Title,
-        movie.Synopsis,
-        movie.Director,
-        movie.Genre,
-        movie.ReleaseDate
-        );
-
-        _eventBus.Publish(movieCreatedEvent);
-        return CreatedAtAction(nameof(GetMovie), new { id = movie.Id }, movie);
+        int id = await _movieRepo.AddMovieAsync(movieDto, genreIds, imageUrls, studioIds);
+        return CreatedAtAction(nameof(GetMovie), new { id = id });
     }
 
     [HttpPut("{id}")]
-    public async Task<IActionResult> UpdateMovie(int id, Movie movie)
+    public async Task<IActionResult> UpdateMovie(int id, MovieDTO movie)
     {
-        if (id != movie.Id) return BadRequest();
-        await _movieRepo.UpdateMovieAsync(movie);
+        await _movieRepo.UpdateMovieAsync(id, movie);
         return NoContent();
     }
 
