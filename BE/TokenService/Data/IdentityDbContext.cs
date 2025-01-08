@@ -7,7 +7,7 @@ namespace AuthService.Data
     {
         public IdentityDbContext(DbContextOptions<IdentityDbContext> options) : base(options) { }
 
-        public DbSet<RefreshToken> Movies { get; set; }
+        public DbSet<RefreshToken> RefreshTokens { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

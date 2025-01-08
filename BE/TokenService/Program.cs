@@ -12,11 +12,22 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddHttpClient();
 
+// Add DbContext for SQL Server
 builder.Services.AddDbContext<IdentityDbContext>(options =>
-{
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
-});
+    options.UseSqlServer(
+        connectionString: builder.Configuration["ConnectionStrings:DefaultConnection"],
+        sqlServerOptionsAction: sqlOptions =>
+        {
+            sqlOptions.EnableRetryOnFailure(
+                maxRetryCount: 5,
+                maxRetryDelay: TimeSpan.FromSeconds(30),
+                errorNumbersToAdd: null);
+        }),
+    contextLifetime: ServiceLifetime.Scoped,
+    optionsLifetime: ServiceLifetime.Singleton
+);
 
 builder.Services.AddScoped<IToken, TokenRepo>();
 
@@ -29,7 +40,6 @@ builder.Services.AddSingleton<IEventBus, EventBus>(sp =>
 });
 
 builder.Services.AddTransient<UserValidatedEventHandler>();
-builder.Services.AddTransient<UserLoginRequestedEvent>();
 
 var app = builder.Build();
 
