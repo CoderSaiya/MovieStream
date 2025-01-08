@@ -15,7 +15,7 @@ namespace SearchService.Repositories
         {
             await _client.IndexAsync(movieDocument, idx => idx.Index("movies"));
         }
-        public async Task<IEnumerable<SearchMovieDocument>> SearchMoviesAsync(string query, string genre = null, int? year = null)
+        public async Task<ISearchResponse<SearchMovieDocument>> SearchMoviesAsync(string query, string genre = null, int? year = null)
         {
             var searchResponse = await _client.SearchAsync<SearchMovieDocument>(s => s
                 .Index("movies")
@@ -30,7 +30,7 @@ namespace SearchService.Repositories
                 )
             );
 
-            return searchResponse.Documents;
+            return searchResponse;
         }
         public async Task DeleteMovieAsync(string movieId)
         {
