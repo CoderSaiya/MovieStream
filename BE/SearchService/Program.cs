@@ -1,4 +1,3 @@
-using SearchService;
 using SearchService.Repositories;
 using Elastic.Clients.Elasticsearch;
 using SharedLibrary.EventBus;
@@ -10,7 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddSingleton(provider =>
 {
     var settings = new ElasticsearchClientSettings(new Uri("http://localhost:9200"))
-        .CertificateFingerprint("your-certificate-fingerprint")
+        .CertificateFingerprint("MovieFlix2025")
         .DefaultIndex("movies");
 
     return new Elastic.Clients.Elasticsearch.ElasticsearchClient(settings);
