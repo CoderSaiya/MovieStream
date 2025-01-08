@@ -1,7 +1,7 @@
 {
   "Routes": [
     {
-      "DownstreamPathTemplate": "/api/movies/{everything}",
+      "DownstreamPathTemplate": "/api/Movie/private/{everything}",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
@@ -9,11 +9,27 @@
           "Port": 80
         }
       ],
-      "UpstreamPathTemplate": "/api/movies/{everything}",
+      "UpstreamPathTemplate": "/api/Movie/private/{everything}",
+      "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "JwtBearer",
+        "AllowedScopes": []
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/api/Movie/public/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "movieservice",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/api/Movie/public/{everything}",
       "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete", "Option" ]
     },
     {
-      "DownstreamPathTemplate": "/api/users/{everything}",
+      "DownstreamPathTemplate": "/api/User/private/{everything}",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
@@ -21,11 +37,27 @@
           "Port": 80
         }
       ],
-      "UpstreamPathTemplate": "/api/users/{everything}",
+      "UpstreamPathTemplate": "/api/User/private/{everything}",
+      "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "JwtBearer",
+        "AllowedScopes": []
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/api/User/public/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "userservice",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/api/User/public/{everything}",
       "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete", "Option" ]
     },
     {
-      "DownstreamPathTemplate": "/api/recommendation/{everything}",
+      "DownstreamPathTemplate": "/api/Recommendation/private/{everything}",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
@@ -33,11 +65,27 @@
           "Port": 80
         }
       ],
-      "UpstreamPathTemplate": "/api/recommendation/{everything}",
+      "UpstreamPathTemplate": "/api/Recommendation/private/{everything}",
+      "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "JwtBearer",
+        "AllowedScopes": []
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/api/Recommendation/public/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "recommendationservice",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/api/Recommendation/public/{everything}",
       "UpstreamHttpMethod": [ "Get" ]
     },
     {
-      "DownstreamPathTemplate": "/api/search/{everything}",
+      "DownstreamPathTemplate": "/api/Search/private/{everything}",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
@@ -45,11 +93,27 @@
           "Port": 80
         }
       ],
-      "UpstreamPathTemplate": "/api/search/{everything}",
+      "UpstreamPathTemplate": "/api/Search/private/{everything}",
+      "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "JwtBearer",
+        "AllowedScopes": []
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/api/Search/public/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "searchservice",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/api/Search/public/{everything}",
       "UpstreamHttpMethod": [ "Get" ]
     },
     {
-      "DownstreamPathTemplate": "/api/playback/{everything}",
+      "DownstreamPathTemplate": "/api/Playback/private/{everything}",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
@@ -57,7 +121,23 @@
           "Port": 80
         }
       ],
-      "UpstreamPathTemplate": "/api/playback/{everything}",
+      "UpstreamPathTemplate": "/api/Playback/private/{everything}",
+      "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "JwtBearer",
+        "AllowedScopes": []
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/api/Playback/public/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "playbackservice",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/api/Playback/public/{everything}",
       "UpstreamHttpMethod": [ "Get", "Post" ]
     }
   ],
