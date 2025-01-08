@@ -60,7 +60,7 @@ public class MovieController : ControllerBase
         return NoContent();
     }
 
-    [HttpGet("trending")]
+    [HttpGet("public/trending")]
     public async Task<IActionResult> GetTrendingMovies()
     {
         var movies = await _movieRepo.GetTrendingMoviesAsync();
