@@ -72,7 +72,7 @@ services:
   rabbitmq:
     image: rabbitmq:4.0-management
     ports:
-      - "5671:5672"   # Management UI
+      - "5672:5672"   # Management UI
       - "15672:15672"   # Message Broker
     networks:
       - my_network
