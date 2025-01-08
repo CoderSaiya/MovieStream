@@ -42,9 +42,9 @@ public class MovieController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IActionResult> CreateMovie(MovieDTO movieDto, List<int> genreIds, List<string> imageUrls, List<int> studioIds)
+    public async Task<IActionResult> CreateMovie([FromBody] CreateMovieReq createMovieReq)
     {
-        int id = await _movieRepo.AddMovieAsync(movieDto, genreIds, imageUrls, studioIds);
+        int id = await _movieRepo.AddMovieAsync(createMovieReq.MovieDto, createMovieReq.GenreIds, createMovieReq.ImageUrls, createMovieReq.StudioIds);
         return CreatedAtAction(nameof(GetMovie), new { id = id });
     }
 

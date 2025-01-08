@@ -16,7 +16,7 @@ namespace MovieService.Models
         public int TotalRatings { get; set; } = 0;
 
         public string Synopsis { get; set; } = string.Empty;
-        public string? Director { get; set}
+        public string? Director { get; set; }
         public string? Genre { get; }
         public int ViewCount { get; set; } = 0;
         public string Schedule { get; set; } = string.Empty;

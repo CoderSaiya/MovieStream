@@ -88,13 +88,13 @@ namespace MovieService.Repositories
                 await _context.SaveChangesAsync();
 
                 var @event = new MovieCreatedEvent(
-                movie.Id,
-                movie.Title,
-                movie.Synopsis,
-                movie.Director,
-                string.Join(", ", genres.Select(g => g.Name)),
-                movie.ReleaseDate
-            );
+                    movie.Id,
+                    movie.Title,
+                    movie.Synopsis,
+                    movie.Director,
+                    string.Join(", ", genres.Select(g => g.Name)),
+                    movie.ReleaseDate
+                );
                 _eventBus.Publish(@event);
 
                 return movie.Id;
