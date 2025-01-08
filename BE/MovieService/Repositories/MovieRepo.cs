@@ -1,5 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using MovieService.Data;
+using MovieService.DTOs;
 using MovieService.Events;
 using MovieService.Models;
 using SharedLibrary.EventBus;
@@ -76,9 +78,25 @@ namespace MovieService.Repositories
             _eventBus.Publish(@event);
         }
 
-        public async Task UpdateMovieAsync(Movie movie)
+        public async Task UpdateMovieAsync(int movieId, MovieUpdateDTO movieUpdateDto)
         {
-            _context.Movies.Update(movie);
+            var movie = await _context.Movies.FindAsync(movieId);
+            if (movie == null)
+            {
+                throw new KeyNotFoundException($"Movie with ID {movieId} not found.");
+            }
+
+            var props = typeof(MovieUpdateDTO).GetProperties();
+            foreach (var prop in props)
+            {
+                var newValue = prop.GetValue(movieUpdateDto);
+                if (newValue != null && !string.IsNullOrEmpty(newValue?.ToString()))
+                {
+                    var movieProperty = typeof(Movie).GetProperty(prop.Name);
+                    movieProperty?.SetValue(movie, newValue);
+                }
+            }
+
             await _context.SaveChangesAsync();
         }
 

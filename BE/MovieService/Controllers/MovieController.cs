@@ -4,6 +4,7 @@ using SharedLibrary.Events;
 using MovieService.Models;
 using MovieService.Repositories;
 using SharedLibrary.EventBus;
+using MovieService.DTOs;
 
 [ApiController]
 [Route("api/[controller]")]
@@ -59,10 +60,9 @@ public class MovieController : ControllerBase
     }
 
     [HttpPut("{id}")]
-    public async Task<IActionResult> UpdateMovie(int id, Movie movie)
+    public async Task<IActionResult> UpdateMovie(int id, MovieUpdateDTO movie)
     {
-        if (id != movie.Id) return BadRequest();
-        await _movieRepo.UpdateMovieAsync(movie);
+        await _movieRepo.UpdateMovieAsync(id, movie);
         return NoContent();
     }
 
