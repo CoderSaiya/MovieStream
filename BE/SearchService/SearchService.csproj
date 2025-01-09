@@ -9,11 +9,10 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Elastic.Clients.Elasticsearch" Version="8.16.3" />
+		<PackageReference Include="Elastic.Clients.Elasticsearch" Version="8.16.2" />
 		<PackageReference Include="Elasticsearch.Net" Version="7.17.5" />
 		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
 		<PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.21.0" />
-		<PackageReference Include="NEST" Version="7.17.5" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
 		<PackageReference Include="RabbitMQ.Client" Version="6.2.3" />
 		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
@@ -22,11 +21,6 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\SharedLibrary\SharedLibrary.csproj" />
-	</ItemGroup>
-
-
-	<ItemGroup>
-	  <Folder Include="Controllers\" />
 	</ItemGroup>
 
 </Project>

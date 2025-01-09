@@ -16,7 +16,7 @@ namespace SearchService.Controllers
         public async Task<IActionResult> Search([FromQuery] string query)
         {
             var response = await _searchService.SearchMoviesAsync(query);
-            if (!response.IsValid)
+            if (!response.IsValidResponse)
             {
                 return StatusCode(500, response.DebugInformation);
             }
