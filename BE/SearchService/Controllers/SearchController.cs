@@ -16,12 +16,12 @@ namespace SearchService.Controllers
         public async Task<IActionResult> Search([FromQuery] string query)
         {
             var response = await _searchService.SearchMoviesAsync(query);
-            if (!response.IsValidResponse)
+            if (response == null)
             {
                 return StatusCode(500, response.DebugInformation);
             }
 
-            return Ok(response.Documents);
+            return Ok(response);
         }
     }
 }

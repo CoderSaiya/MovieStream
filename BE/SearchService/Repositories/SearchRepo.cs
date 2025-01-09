@@ -15,53 +15,40 @@ namespace SearchService.Repositories
         {
             await _client.IndexAsync(movieDocument, idx => idx.Index("movies"));
         }
-        public async Task<SearchResponse<SearchMovieDocument>> SearchMoviesAsync(string query, string genre = null, int? year = null)
+        public async Task<SearchResponse<SearchMovieDocument>> SearchMoviesAsync(string query, bool filterByGenre = false, string genre = null, int? year = null)
         {
             var boolQuery = new BoolQuery
             {
-                Must = new List<Query>()
+                Must = new List<Query>
+                {
+                    new MatchQuery("title") { Query = query }
+                }
             };
 
-            if (!string.IsNullOrEmpty(query))
-            {
-                boolQuery.Must.Add(new MatchQuery
-                {
-                    Field = Infer.Field<SearchMovieDocument>(f => f.Title),
-                    Query = query
-                });
-            }
-
-            if (!string.IsNullOrEmpty(genre))
-            {
-                boolQuery.Filter = boolQuery.Filter ?? new List<Query>();
-                boolQuery.Filter.Add(new TermQuery
-                {
-                    Field = Infer.Field<SearchMovieDocument>(f => f.Genre),
+            if (filterByGenre && !string.IsNullOrEmpty(genre)) {
+                boolQuery.Filter.Add(new TermQuery("genre")
+                { 
                     Value = genre
                 });
             }
 
             if (year.HasValue)
             {
-                boolQuery.Filter = boolQuery.Filter ?? new List<Query>();
-                boolQuery.Filter.Add(new TermQuery
+                boolQuery.Filter.Add(new TermQuery("year")
                 {
-                    Field = Infer.Field<SearchMovieDocument>(f => f.ReleaseDate),
                     Value = year.Value
                 });
             }
 
-            var searchResponse = await _client.SearchAsync<SearchMovieDocument>(s => s
-                                              .Index("movies")
-                                              .Query(q => q.Bool(boolQuery))
-            );
-
-            if (!searchResponse.IsValidResponse)
+            var searchRequest = new SearchRequest("movies")
             {
-                throw new Exception($"Failed to search movies: {searchResponse.DebugInformation}");
-            }
+                Query = boolQuery
+            };
+
+            var searchResponse = await _client.SearchAsync<SearchMovieDocument>(searchRequest);
 
             return searchResponse;
+
         }
         public async Task DeleteMovieAsync(string movieId)
         {
