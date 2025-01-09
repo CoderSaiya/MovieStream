@@ -58,16 +58,30 @@ services:
       - "8005:80"
     networks:
       - my_network
+      - es-net
     
   elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch:8.9.0
-    container_name: elasticsearch
+    container_name: es-container
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.11.0
     environment:
-      - discovery.type=single-node
-    ports:
-      - "9200:9200"
+      - xpack.security.enabled=false
+      - "discovery.type=single-node"
     networks:
-      - my_network
+      - es-net
+    ports:
+      - 9200:9200
+
+  kibana:
+    container_name: kb-container
+    image: docker.elastic.co/kibana/kibana:7.11.0
+    environment:
+      - ELASTICSEARCH_HOSTS=http://es-container:9200
+    networks:
+      - es-net
+    depends_on:
+      - elasticsearch
+    ports:
+      - 5601:5601
 
   rabbitmq:
     image: rabbitmq:4.0-management
@@ -76,3 +90,9 @@ services:
       - "15672:15672"   # Message Broker
     networks:
       - my_network
+
+networks:
+  my_network:
+    driver: bridge
+  es-net:
+    driver: bridge
