@@ -25,7 +25,7 @@ graph TD
     I --> F
 ```
 
-[!Microservice-Artchitecture](../images/movieflix.png)
+![Microservice-Artchitecture](../images/movieflix.png)
 
 ## 🔧 Prerequisites
 
