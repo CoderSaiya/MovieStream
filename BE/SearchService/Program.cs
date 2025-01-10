@@ -1,8 +1,8 @@
 using SearchService.Repositories;
-using Elastic.Clients.Elasticsearch;
 using SharedLibrary.EventBus;
 using SharedLibrary.Events;
 using SearchService.Handler;
+using SearchService.RabbitMQ;
 
 var handler = new HttpClientHandler
 {
@@ -59,6 +59,7 @@ app.Lifetime.ApplicationStarted.Register(() =>
 {
     var eventBus = app.Services.GetRequiredService<IEventBus>();
     eventBus.Subscribe<MovieCreatedEvent, MovieCreatedEventHandler>();
+    eventBus.Subscribe<SyncElasticEvent, SyncMovieHandler>();
 });
 
 app.Run();
