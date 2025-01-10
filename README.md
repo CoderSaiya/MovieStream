@@ -1,138 +1,103 @@
-# 🎬 MovieStream - Nền tảng phát trực tuyến phim vi dịch vụ
+# 🎬 MovieStream Platform
 
-## 📝 Tổng quan về dự án
+A modern movie streaming platform built with microservices architecture and cutting-edge technologies.
 
-MovieStream là nền tảng phát trực tuyến phim toàn diện dựa trên vi dịch vụ được xây dựng bằng .NET 8.0, được thiết kế để cung cấp trải nghiệm phát trực tuyến phim có khả năng mở rộng và hiệu suất cao.
+## 🌟 Features
 
-## 🚀 Kiến trúc
+- User authentication and profile management
+- Movie streaming with adaptive quality
+- Smart movie recommendations
+- Advanced search capabilities
+- VIP subscription management
+- Real-time updates
 
-### Dịch vụ vi mô
-- **Dịch vụ người dùng**: Quản lý và xác thực người dùng
-- **Dịch vụ phim**: Quản lý danh mục phim và siêu dữ liệu
-- **Dịch vụ phát lại**: Phát trực tuyến video và kiểm soát chất lượng
-- **Dịch vụ đề xuất**: Đề xuất phim được cá nhân hóa
-- **Dịch vụ tìm kiếm**: Khả năng tìm kiếm phim nâng cao
-- **API Gateway**: Định tuyến yêu cầu và cân bằng tải
+## 🛠 Tech Stack
 
-## 🛠 Công nghệ
+### Frontend
+- **Framework**: Next.js 14 (App Router)
+- **State Management**: 
+  - Zustand (Global State)
+  - RTK Query (API State)
+- **UI Components**: 
+  - shadcn/ui
+  - Tailwind CSS
+  - PostCSS
+  - AOS (Animate On Scroll)
+- **Icons**: Lucide React
+- **Utils**: Date-fns, Lodash
 
-### Phần cuối
-- **.NET 8.0**
-- **Entity Framework Core**
-- **RabbitMQ**
-- **API Gateway Ocelot**
+### Backend
+- **.NET 8.0 Microservices**
+- **Databases**: SQL Server, Redis
+- **Message Broker**: RabbitMQ
+- **API Gateway**: Ocelot
+- **Communication**: HTTP/1
 
-### Cơ sở dữ liệu & Bộ nhớ đệm
-- **SQL Server**
-- **Redis**
-- **Neo4j**
-- **Elasticsearch**
-- **MongoDB**
-
-### Các mẫu kiến ​​trúc
-- Microservice
-- Event-driven architecture
-- CQRS
-
-## 🔧 Điều kiện tiên quyết
-
-- .NET 8.0 SDK
-- Docker
-- SQL Server
-- RabbitMQ
-- Redis
-
-## 🏗 Dự án Cấu trúc
+## 📂 Project Structure
 
 ```
-MovieStream/
+moviestream/
+├── fe/                    # Next.js frontend application
+│   ├── public/            # Public files (images, video,...)
+│   ├── app/               # App router pages
+│       ├── app/           # App router pages
+│       ├── components/    # Reusable components
+│       ├── hooks/         # Custom hook
+│       ├── lib/           # Utils library
+│       ├── redux/         # RTK Query services
+│       ├── store/         # Zustand stores
+│       ├── services/      # Custom services
+│       ├── styles/        # Global styles
+│       └── type/          # Type management
+│   ├── .env/              # Main environment file
+│   └── ...
 │
-├── docker-compose.yml/
-├── Services/
-│ ├── MovieService/
-│ ├── PaymentService/
-│ ├── PlaybackService/
-│ ├── RecommendationService/
-│ ├── SearchService/
-│ ├── TokenService/
-│ └── UserService/
+├── BE/                    # .NET microservices
+│   ├── Services/          # Individual services
+│   ├── ApiGateway/        # Ocelot gateway
+│   ├── SharedLibrary/     # Shared libraries
+│   └── ...
 │
-├── ApiGateway/
-├── SharedLibrary/
-│ ├── EventBus/
-│ ├── Events/
-│ └── Integration/
-└── docker-compose.yml
+└── docs/                  # Documentation
 ```
 
-## 🚀 Bắt đầu
+## 🚀 Quick Start
 
-### Sao chép Kho lưu trữ
+1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/MovieStream.git
-cd MovieStream
+git clone https://github.com/codersaiya/moviestream.git
+cd moviestream
 ```
 
-### Cấu hình
-1. Sao chép `appsettings.example.json` vào `appsettings.json`
-2. Cập nhật chuỗi kết nối và cấu hình
+2. Start backend services (see backend/README.md)
 
-### Chạy với Docker
+3. Start frontend development server:
 ```bash
-docker-compose up --build
+cd frontend
+npm install
+npm run dev
 ```
 
-## 📦 Phân tích dịch vụ
+4. Open [http://localhost:5173](http://localhost:5173)
 
-### Dịch vụ người dùng
-- Đăng ký người dùng
-- Xác thực
-- Quản lý hồ sơ
-- Xử lý đăng ký VIP
+## 📱 Screenshots
 
-### Dịch vụ phim
-- Quản lý siêu dữ liệu phim
-- Phân loại thể loại
-- API thông tin phim
+![Main-Page](./images/main-page.png)
 
-### Dịch vụ phát lại
-- Truyền phát video
-- Điều chỉnh chất lượng
-- Quản lý tính năng VIP
+## 🤝 Contributing
 
-### Dịch vụ đề xuất
-- Đề xuất phim được cá nhân hóa
-- Phân tích lịch sử xem
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit changes (`git commit -m 'Add AmazingFeature'`)
+4. Push to branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-### Dịch vụ tìm kiếm
-- Khả năng tìm kiếm nâng cao
-- Đề xuất tìm kiếm thông minh
+## 📄 License
 
-## 🔐 Tính năng bảo mật
-- Xác thực JWT
-- Kiểm soát truy cập dựa trên vai trò
-- Mã hóa dữ liệu
-- Xác thực đa yếu tố
+Distributed under the MIT License. See `LICENSE` for more information.
 
-## 📊 Cân nhắc về hiệu suất
-- Bộ nhớ đệm phân tán
-- Xử lý không đồng bộ
-- Hỗ trợ mở rộng theo chiều ngang
+## 📞 Contact
 
-## 🤝 Đóng góp
+CoderSaiya (Ngô Nhật Cường) - sonysam.contacts@gmail.com
 
-1. Phân nhánh kho lưu trữ
-2. Tạo nhánh tính năng của bạn (`git checkout -b feature/Test`)
-3. Cam kết các thay đổi của bạn (`git commit -m 'Add some Test'`)
-4. Đẩy vào nhánh (`git push origin feature/Test`)
-5. Mở Yêu cầu kéo
-
-## 📄 Giấy phép
-
-Phân phối theo Giấy phép MIT. Xem `LICENSE` để biết thêm thông tin.
-
-## 📞 Liên hệ
-
-Tên của bạn - sonysam.contacts@gmail.com
-
-Liên kết dự án: [repo của dự án](https://github.com/CoderSaiya/BE_MovieStream)
+Project Link: [https://github.com/codersaiya/MovieStream](https://github.com/codersaiya/MovieStream)
