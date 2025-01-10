@@ -1,6 +1,7 @@
 ﻿using Elastic.Clients.Elasticsearch;
 using Elastic.Clients.Elasticsearch.QueryDsl;
 using SearchService.DTOs;
+using SharedLibrary.Events;
 
 namespace SearchService.Repositories
 {
@@ -14,6 +15,20 @@ namespace SearchService.Repositories
         public async Task IndexMovieAsync(object movieDocument)
         {
             await _client.IndexAsync(movieDocument, idx => idx.Index("movies"));
+        }
+        public async Task CreateIndex(string index)
+        {
+            if(!_client.Indices.Exists(index).Exists)
+            {
+                await _client.CreateAsync(index);
+            };
+        }
+        public async Task<bool> AddOrUpdateMovie(MovieDocument movie) 
+        {
+            var response = await _client.IndexAsync(movie, idx => 
+                idx.Index("movies")
+                   .OpType(OpType.Index));
+            return response.IsValidResponse;
         }
         public async Task<SearchResponse<SearchMovieDocument>> SearchMoviesAsync(string query, bool filterByGenre = false, string genre = null, int? year = null)
         {

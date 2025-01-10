@@ -3,6 +3,9 @@ using MovieService.Data;
 using MovieService.Repositories;
 using SharedLibrary.EventBus;
 using MovieService.DTOs;
+using Microsoft.EntityFrameworkCore;
+using SharedLibrary.Events;
+using MovieService.Models;
 
 [ApiController]
 [Route("api/[controller]")]
@@ -65,5 +68,28 @@ public class MovieController : ControllerBase
     {
         var movies = await _movieRepo.GetTrendingMoviesAsync();
         return Ok(movies);
+    }
+
+    [HttpPost("sync-elastic")]
+    public async Task<IActionResult> SyncElastic()
+    {
+        var latestMovies = await _movieRepo.GetAllMoviesAsync();
+
+        var eventMessage = new SyncElasticEvent
+        {
+            Movies = latestMovies.Select(m => new MovieDocument
+            {
+                Id = m.Id,
+                MainImage = m.Images.FirstOrDefault()?.Url ?? string.Empty,
+                Title = m.Title,
+                Genre = string.Join(", ", m.MovieGenres.Select(g => g.Genre.Name)),
+                ReleaseDate = m.ReleaseDate,
+                Description = m.Synopsis
+            }).ToList()
+        };
+
+        _eventBus.Publish(eventMessage);
+
+        return Ok("Movies sent to RabbitMQ for Elasticsearch sync.");
     }
 }
