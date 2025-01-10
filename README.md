@@ -28,7 +28,7 @@ A modern movie streaming platform built with microservices architecture and cutt
 
 ### Backend
 - **.NET 8.0 Microservices**
-- **Databases**: SQL Server, Redis
+- **Databases**: SQL Server, Redis, MongoDB, Neo4j Sandbox, ClickHouse
 - **Message Broker**: RabbitMQ
 - **API Gateway**: Ocelot
 - **Communication**: HTTP/1
