@@ -28,7 +28,7 @@ A modern movie streaming platform built with microservices architecture and cutt
 
 ### Backend
 - **.NET 8.0 Microservices**
-- **Databases**: SQL Server, Redis
+- **Databases**: SQL Server, Redis, MongoDB, Neo4j Sandbox, ClickHouse
 - **Message Broker**: RabbitMQ
 - **API Gateway**: Ocelot
 - **Communication**: HTTP/1
@@ -40,15 +40,15 @@ moviestream/
 ├── fe/                    # Next.js frontend application
 │   ├── public/            # Public files (images, video,...)
 │   ├── app/               # App router pages
-│       ├── app/           # App router pages
-│       ├── components/    # Reusable components
-│       ├── hooks/         # Custom hook
-│       ├── lib/           # Utils library
-│       ├── redux/         # RTK Query services
-│       ├── store/         # Zustand stores
-│       ├── services/      # Custom services
-│       ├── styles/        # Global styles
-│       └── type/          # Type management
+│   │   ├── app/           # App router pages
+│   │   ├── components/    # Reusable components
+│   │   ├── hooks/         # Custom hook
+│   │   ├── lib/           # Utils library
+│   │   ├── redux/         # RTK Query services
+│   │   ├── store/         # Zustand stores
+│   │   ├── services/      # Custom services
+│   │   ├── styles/        # Global styles
+│   │   └── type/          # Type management
 │   ├── .env/              # Main environment file
 │   └── ...
 │
