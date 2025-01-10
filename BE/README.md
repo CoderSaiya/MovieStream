@@ -25,6 +25,8 @@ graph TD
     I --> F
 ```
 
+[!Microservice-Artchitecture](../images/movieflix.png)
+
 ## 🔧 Prerequisites
 
 - .NET 8.0 SDK
