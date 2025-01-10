@@ -1,11 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MovieService.Data;
 using MovieService.Repositories;
-using SharedLibrary.EventBus;
 using MovieService.DTOs;
-using Microsoft.EntityFrameworkCore;
-using SharedLibrary.Events;
-using MovieService.Models;
 
 [ApiController]
 [Route("api/[controller]")]
@@ -13,14 +9,12 @@ public class MovieController : ControllerBase
 {
     private readonly MovieDbContext _context;
     private readonly IHttpClientFactory _httpClientFactory;
-    private readonly IEventBus _eventBus;
     private readonly IMovie _movieRepo;
 
-    public MovieController(MovieDbContext context, IHttpClientFactory httpClientFactory, IEventBus eventBus, IMovie movieRepo)
+    public MovieController(MovieDbContext context, IHttpClientFactory httpClientFactory, IMovie movieRepo)
     {
         _context = context;
         _httpClientFactory = httpClientFactory;
-        _eventBus = eventBus;
         _movieRepo = movieRepo;
     }
 
@@ -73,23 +67,8 @@ public class MovieController : ControllerBase
     [HttpPost("sync-elastic")]
     public async Task<IActionResult> SyncElastic()
     {
-        var latestMovies = await _movieRepo.GetAllMoviesAsync();
-
-        var eventMessage = new SyncElasticEvent
-        {
-            Movies = latestMovies.Select(m => new MovieDocument
-            {
-                Id = m.Id,
-                MainImage = m.Images.FirstOrDefault()?.Url ?? string.Empty,
-                Title = m.Title,
-                Genre = string.Join(", ", m.MovieGenres.Select(g => g.Genre.Name)),
-                ReleaseDate = m.ReleaseDate,
-                Description = m.Synopsis
-            }).ToList()
-        };
-
-        _eventBus.Publish(eventMessage);
-
+        var result = await _movieRepo.LoadListToElastic();
+        if(!result) return NoContent();
         return Ok("Movies sent to RabbitMQ for Elasticsearch sync.");
     }
 }

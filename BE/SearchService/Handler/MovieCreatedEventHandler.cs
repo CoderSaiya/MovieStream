@@ -1,5 +1,4 @@
-﻿using SearchService.DTOs;
-using SearchService.Repositories;
+﻿using SearchService.Repositories;
 using SharedLibrary.Events;
 using SharedLibrary.Integration;
 
@@ -14,17 +13,18 @@ namespace SearchService.Handler
         }
         public async Task Handle(MovieCreatedEvent @event)
         {
-            var movieDocument = new SearchMovieDocument
+            var movieDocument = new MovieDocument
             {
-                MovieId = @event.MovieId,
+                Id = @event.MovieId,
+                MainImage = @event.MainImage,
                 Title = @event.Title,
                 Description = @event.Description,
-                Director = @event.Director,
                 Genre = @event.Genre,
                 ReleaseDate = @event.ReleaseDate
             };
 
-            await _searchRepository.IndexMovieAsync(movieDocument);
+            await _searchRepository.CreateIndex("movies");
+            await _searchRepository.AddOrUpdateMovie(movieDocument);
         }
     }
 }

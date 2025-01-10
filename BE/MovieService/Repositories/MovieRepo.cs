@@ -89,9 +89,9 @@ namespace MovieService.Repositories
 
                 var @event = new MovieCreatedEvent(
                     movie.Id,
+                    movie.Images.FirstOrDefault()?.Url ?? string.Empty,
                     movie.Title,
                     movie.Synopsis,
-                    movie.Director,
                     string.Join(", ", genres.Select(g => g.Name)),
                     movie.ReleaseDate
                 );
@@ -185,6 +185,32 @@ namespace MovieService.Repositories
         public async Task<List<Movie>> GetTrendingMoviesAsync()
         {
             return await _context.Movies.OrderByDescending(m => m.ViewCount).Take(10).ToListAsync();
+        }
+
+        public async Task<bool> LoadListToElastic()
+        {
+            var latestMovies = await GetAllMoviesAsync();
+            if (latestMovies != null)
+            {
+                return false;
+            }
+
+            var eventMessage = new SyncElasticEvent
+            {
+                Movies = latestMovies.Select(m => new MovieDocument
+                {
+                    Id = m.Id,
+                    MainImage = m.Images.FirstOrDefault()?.Url ?? string.Empty,
+                    Title = m.Title,
+                    Genre = string.Join(", ", m.MovieGenres.Select(g => g.Genre.Name)),
+                    ReleaseDate = m.ReleaseDate,
+                    Description = m.Synopsis
+                }).ToList()
+            };
+
+            _eventBus.Publish(eventMessage);
+
+            return true;
         }
     }
 }
