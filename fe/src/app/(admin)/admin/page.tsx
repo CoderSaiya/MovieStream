@@ -1,5 +1,5 @@
 export default function AdminPage() {
     return (
-        <div>Admin Page</div>
+        <div>Admin Page Test</div>
     )
 }
