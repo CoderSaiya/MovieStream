@@ -1,4 +1,5 @@
 import { LucideIcon } from "lucide-react";
+import { User } from "./user";
 
 export interface FeatureItem {
     icon: LucideIcon;
@@ -52,4 +53,11 @@ export interface MovieDetailsProps {
 export interface BreadcrumbItem {
     label: string
     href: string
+}
+
+export interface AuthContextType {
+    user: User | null
+    isLoading: boolean
+    checkPermission: (action: string, subject: string) => boolean
+    isAuthenticated: boolean
 }
