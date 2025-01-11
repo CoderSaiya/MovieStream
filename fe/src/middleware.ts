@@ -2,21 +2,21 @@ import { NextRequest, NextResponse } from "next/server";
 import { jwtDecode } from 'jwt-decode'
 import { DecodeToken } from "@/types/auth";
 
-export function middleware(req: NextRequest) {
-    const token = req.cookies.get("token")?.value;
+export function middleware(request: NextRequest) {
+    const token = request.cookies.get("token")?.value;
     if (!token) {
-        return NextResponse.redirect(new URL("/auth/sign-in", req.url));
+        return NextResponse.redirect(new URL("/auth/sign-in", request.url));
     }
 
     const user = jwtDecode<DecodeToken>(token);
-    const pathname = req.nextUrl.pathname;
+    const pathname = request.nextUrl.pathname;
 
     if (pathname.startsWith('/admin') && user.role !== 'admin') {
-        return NextResponse.redirect(new URL('/unauthorized', req.url));
+        return NextResponse.redirect(new URL('/unauthorized', request.url));
     }
 
     if (pathname.startsWith('/moderator') && !['admin', 'moderator'].includes(user.role)) {
-        return NextResponse.redirect(new URL('/unauthorized', req.url));
+        return NextResponse.redirect(new URL('/unauthorized', request.url));
     }
 
     return NextResponse.next();
@@ -24,5 +24,5 @@ export function middleware(req: NextRequest) {
 
 // áp dụng cho các route cụ thể
 export const config = {
-    matcher: ['/admin/:path*', '/moderator/:path*'],
+    matcher: ['/admin','/admin/:path*', '/moderator/:path*'],
 }
