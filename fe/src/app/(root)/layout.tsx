@@ -1,19 +1,9 @@
 import type { Metadata } from 'next';
-import { Geist, Geist_Mono } from 'next/font/google';
 import '../globals.css';
 import { NavBar } from '@/components/NavBar';
 import { Footer } from '@/components/Footer';
 import { LoadingLayout } from '@/components/Loading/LoadingLayout';
 
-const geistSans = Geist({
-  variable: '--font-geist-sans',
-  subsets: ['latin'],
-});
-
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
-  subsets: ['latin'],
-});
 
 export const metadata: Metadata = {
   title: 'MovieFlix',
@@ -26,16 +16,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <LoadingLayout>
-          <NavBar />
-          {children}
-          <Footer />
-        </LoadingLayout>
-      </body>
-    </html>
+    <>
+      <LoadingLayout>
+        <NavBar />
+        {children}
+        <Footer />
+      </LoadingLayout>
+    </>
   );
 }

@@ -5,6 +5,7 @@ import { MovieDetails } from "@/components/Detail/MovieDetails"
 import { MovieTab } from "@/components/Detail/MovieTab"
 
 export default function DetailPage() {
+
   // update sau
   const movieData = {
     id: 1,

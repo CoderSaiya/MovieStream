@@ -1,17 +1,4 @@
 import type { Metadata } from "next";
-import "../globals.css";
-import { Geist, Geist_Mono } from "next/font/google";
-import { AOSInit } from "@/components/AOSInit";
-
-const geistSans = Geist({
-    variable: "--font-geist-sans",
-    subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-    variable: "--font-geist-mono",
-    subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
     title: "MovieFlix",
@@ -29,25 +16,18 @@ export default function AuthLayout({
 }>) {
 
     return (
-        <html lang="en">
-            <body
-                className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-            >
-                <AOSInit />
-                <div className="min-h-screen bg-gradient-to-b from-gray-900 to-black">
-                    <div className="container mx-auto flex min-h-screen items-center justify-center px-4">
-                        <div className="w-full max-w-[400px] space-y-6 rounded-2xl bg-black/50 p-6 backdrop-blur-xl sm:p-8">
-                            <div className="space-y-2 text-center">
-                                <h1 className="text-2xl font-bold tracking-tight text-white">{title}</h1>
-                                {subtitle && (
-                                    <p className="text-sm text-gray-400">{subtitle}</p>
-                                )}
-                            </div>
-                            {children}
-                        </div>
+        <div className="min-h-screen bg-gradient-to-b from-gray-900 to-black">
+            <div className="container mx-auto flex min-h-screen items-center justify-center px-4">
+                <div className="w-full max-w-[400px] space-y-6 rounded-2xl bg-black/50 p-6 backdrop-blur-xl sm:p-8">
+                    <div className="space-y-2 text-center">
+                        <h1 className="text-2xl font-bold tracking-tight text-white">{title}</h1>
+                        {subtitle && (
+                            <p className="text-sm text-gray-400">{subtitle}</p>
+                        )}
                     </div>
+                    {children}
                 </div>
-            </body>
-        </html>
+            </div>
+        </div>
     );
 }
