@@ -19,7 +19,7 @@ export function Form() {
     }
 
     return (
-        <div className="grid gap-6 text-white" data-aos="fade-up" data-aos-delay="200">
+        <div className="grid gap-6 text-white">
             <form onSubmit={onSubmit}>
                 <div className="grid gap-4">
                     <div className="grid gap-2">
