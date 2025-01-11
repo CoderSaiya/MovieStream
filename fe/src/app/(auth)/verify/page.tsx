@@ -1,3 +1,4 @@
+import AuthLayout from "@/components/AuthLayout";
 import { Form } from "@/components/Verify/Form";
 import { Metadata } from "next";
 
@@ -8,6 +9,9 @@ export const metadata: Metadata = {
 
 export default function VerifyPage() {
     return (
-        <Form />
+        <AuthLayout title="Email Authentication"
+            subtitle="Enter the OTP code sent to your email">
+            <Form />
+        </AuthLayout>
     )
 }

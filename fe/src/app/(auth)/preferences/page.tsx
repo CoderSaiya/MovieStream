@@ -1,3 +1,4 @@
+import AuthLayout from '@/components/AuthLayout';
 import { Form } from '@/components/Preferences/Form'
 import { Metadata } from 'next';
 
@@ -31,6 +32,9 @@ export const metadata: Metadata = {
 
 export default function PreferencesPage() {
     return (
-        <Form genres={genres} />
+        <AuthLayout title="Choose your preferences"
+            subtitle="Select at least 3 genres so we can suggest anime that are right for you">
+            <Form genres={genres} />
+        </AuthLayout>
     )
 }
