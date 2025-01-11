@@ -4,11 +4,11 @@ import { useEffect } from 'react'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
 
-export function AOSInit() {
+export function AOSInit({ isOnce = false }: { isOnce?: boolean }) {
   useEffect(() => {
     AOS.init({
       duration: 800,
-      once: false,
+      once: isOnce,
       easing: 'ease-out'
     })
   }, [])
