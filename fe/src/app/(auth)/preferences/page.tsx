@@ -34,7 +34,9 @@ export default function PreferencesPage() {
     return (
         <AuthLayout title="Choose your preferences"
             subtitle="Select at least 3 genres so we can suggest anime that are right for you">
-            <Form genres={genres} />
+            <div data-aos="fade-up">
+                <Form genres={genres} />
+            </div>
         </AuthLayout>
     )
 }

@@ -1,3 +1,4 @@
+import { AOSInit } from "@/components/AOSInit";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -13,6 +14,7 @@ export default function AuthLayout({
 
     return (
         <>
+            <AOSInit />
             {children}
         </>
     );

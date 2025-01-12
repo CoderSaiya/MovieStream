@@ -12,7 +12,7 @@ export default function SignUpPage() {
     return (
         <AuthLayout title="Create new account"
             subtitle="Enter your information to create an account">
-            <div className="grid gap-6 text-white">
+            <div className="grid gap-6 text-white" data-aos="fade-up">
                 <Form />
                 <Footer />
             </div>

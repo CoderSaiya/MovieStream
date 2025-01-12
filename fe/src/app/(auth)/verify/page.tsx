@@ -11,7 +11,9 @@ export default function VerifyPage() {
     return (
         <AuthLayout title="Email Authentication"
             subtitle="Enter the OTP code sent to your email">
-            <Form />
+            <div data-aos="fade-up">
+                <Form />
+            </div>
         </AuthLayout>
     )
 }
