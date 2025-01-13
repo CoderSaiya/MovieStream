@@ -15,4 +15,5 @@ public class User
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
     public DateTime? UpdatedAt { get; set; }
     public UserProfile UserProfile { get; set; } = null!;
+    public ICollection<UserLog> UserLogs { get; set; } = new List<UserLog>();
 }
