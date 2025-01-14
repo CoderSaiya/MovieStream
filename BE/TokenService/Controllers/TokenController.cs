@@ -25,7 +25,7 @@ namespace AuthService.Controllers
             _responseHandler = responseHandler;
         }
 
-        [HttpPost("validate-token")]
+        [HttpPost("public/validate-token")]
         public async Task<IActionResult> ValidateToken([FromBody] TokenValidationRequest request)
         {
             var token = await _authRepo.GetRefreshTokenByValueAsync(request.Token);
@@ -42,7 +42,7 @@ namespace AuthService.Controllers
             return Ok("User validation event sent.");
         }
 
-        [HttpPost("login")]
+        [HttpPost("public/login")]
         public async Task<IActionResult> Login(TokenService.DTOs.LoginRequest request)
         {
             var correctlationId = Guid.NewGuid().ToString();
