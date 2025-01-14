@@ -4,7 +4,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
+using System.Security.Cryptography;
 using System.Text;
+using TokenService.DTOs;
 
 namespace AuthService.Repositories
 {
@@ -29,7 +31,7 @@ namespace AuthService.Repositories
             return await _context.SaveChangesAsync() > 0;
         }
 
-        public string GenerateAccessToken(IEnumerable<Claim> claims)
+        private string GenerateAccessToken(IEnumerable<Claim> claims)
         {
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Jwt:Key"]));
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
@@ -42,6 +44,32 @@ namespace AuthService.Repositories
                 signingCredentials: creds);
 
             return new JwtSecurityTokenHandler().WriteToken(token);
+        }
+
+        private string GenerateRefreshToken()
+        {
+            var randomNumber = new Byte[32];
+            using (var rng = RandomNumberGenerator.Create())
+            {
+                rng.GetBytes(randomNumber);
+                return Convert.ToBase64String(randomNumber);
+            }
+        }
+
+        public async Task<TokenRes> GenerateTokenRes(string username,  int userId, string role)
+        {
+            var claims = new List<Claim>
+            {
+                new Claim(ClaimTypes.Name, username),
+                new Claim(ClaimTypes.NameIdentifier, userId.ToString()),
+                new Claim(ClaimTypes.Role, role)
+            };
+
+            var accessToken = GenerateAccessToken(claims);
+            var refreshToken = GenerateRefreshToken();
+            
+
+            return new TokenRes(accessToken, refreshToken);
         }
     }
 }

@@ -4,6 +4,7 @@ using AuthService.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using SharedLibrary.EventBus;
 using SharedLibrary.Events;
+using SharedLibrary.Handler;
 
 namespace AuthService.Controllers
 {
@@ -14,12 +15,14 @@ namespace AuthService.Controllers
         private readonly IdentityDbContext _context;
         private readonly IEventBus _eventBus;
         private readonly IToken _authRepo;
+        private readonly ResponseHandler _responseHandler;
 
-        public TokenController(IdentityDbContext context, IEventBus eventBus, IToken authRepo)
+        public TokenController(IdentityDbContext context, IEventBus eventBus, IToken authRepo, ResponseHandler responseHandler)
         {
             _context = context;
             _eventBus = eventBus;
             _authRepo = authRepo;
+            _responseHandler = responseHandler;
         }
 
         [HttpPost("validate-token")]
@@ -42,10 +45,19 @@ namespace AuthService.Controllers
         [HttpPost("login")]
         public async Task<IActionResult> Login(TokenService.DTOs.LoginRequest request)
         {
-            var loginEvent = new UserLoginRequestedEvent(request.Username, request.Password);
+            var correctlationId = Guid.NewGuid().ToString();
+            var loginEvent = new UserLoginRequestedEvent(request.Username, request.Password, correctlationId);
             _eventBus.Publish(loginEvent);
 
-            return Accepted("Login request sent. Waiting for processing...");
+            var response = await _responseHandler.WaitForResponseAsync(correctlationId, 5);
+            if (response == null)
+                return Unauthorized(new { Message = "Invalid username or password." });
+
+            var result = (dynamic)response;
+
+            var tokens = _authRepo.GenerateTokenRes(request.Username, result.UserId, result.Role);
+
+            return Ok(tokens);
         }
     }
 }

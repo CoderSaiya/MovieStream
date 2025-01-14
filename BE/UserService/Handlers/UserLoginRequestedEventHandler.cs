@@ -20,13 +20,9 @@ namespace UserService.Handlers
         {
             var user = await _userRepository.GetUserByUsernameAsync(@event.Username);
 
-            if (user == null || !await _userRepository.ValidatePasswordAsync(user, @event.Password))
-            {
-                // Login thất bại
-                return;
-            }
+            var isPasswordValid = await _userRepository.ValidatePasswordAsync(user, @event.Password);
 
-            var loginResultEvent = new UserValidatedEvent(user.Id, true, null);
+            var loginResultEvent = new PasswordCheckResponseEvent(@event.CorrectlationId, isPasswordValid, user.Id, user.Role.ToString());
             _eventBus.Publish(loginResultEvent);
         }
     }
