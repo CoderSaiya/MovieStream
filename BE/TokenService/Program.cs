@@ -4,6 +4,7 @@ using SharedLibrary.Events;
 using AuthService.Events;
 using AuthService.Repositories;
 using SharedLibrary.EventBus;
+using SharedLibrary.Handler;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -38,6 +39,8 @@ builder.Services.AddSingleton<IEventBus, EventBus>(sp =>
     var hostName = builder.Configuration["RabbitMQ:HostName"] ?? "localhost";
     return new EventBus(serviceProvider, hostName);
 });
+
+builder.Services.AddSingleton<ResponseHandler>();
 
 builder.Services.AddTransient<UserValidatedEventHandler>();
 
