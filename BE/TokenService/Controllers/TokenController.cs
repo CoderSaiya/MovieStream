@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using SharedLibrary.EventBus;
 using SharedLibrary.Events;
 using SharedLibrary.Handler;
+using TokenService.DTOs;
 
 namespace AuthService.Controllers
 {
@@ -25,7 +26,7 @@ namespace AuthService.Controllers
             _responseHandler = responseHandler;
         }
 
-        [HttpPost("public/validate-token")]
+        [HttpPost("private/validate-token")]
         public async Task<IActionResult> ValidateToken([FromBody] TokenValidationRequest request)
         {
             var token = await _authRepo.GetRefreshTokenByValueAsync(request.Token);

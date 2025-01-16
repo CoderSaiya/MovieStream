@@ -1,9 +1,9 @@
 ﻿using UserService.Models;
 using UserService.DTOs;
 using Microsoft.AspNetCore.Mvc;
-using UserService.Events;
 using SharedLibrary.EventBus;
 using UserService.Repository;
+using SharedLibrary.Events;
 
 namespace UserService.Controllers
 {
@@ -20,7 +20,7 @@ namespace UserService.Controllers
             _eventBus = eventBus;
         }
 
-        [HttpPost]
+        [HttpPost("public/sign-up")]
         public async Task<IActionResult> CreateUser([FromBody] CreateUserRequest userRequest)
         {
             if (!ModelState.IsValid) return BadRequest();
@@ -38,13 +38,10 @@ namespace UserService.Controllers
 
             if (!success) return StatusCode(500, "Error saving user");
 
-            var userCreatedEvent = new UserCreatedIntegrationEvent(user.Id, user.Email, user.IsVip);
-            _eventBus.Publish(userCreatedEvent);
-
             return CreatedAtAction(nameof(GetUserById), new { id = user.Id }, user);
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("private/{id}")]
         public async Task<IActionResult> GetUserById(Guid id)
         {
             var user = await _userRepository.GetUserByIdAsync(id);
@@ -53,7 +50,7 @@ namespace UserService.Controllers
             return Ok(user);
         }
 
-        [HttpPut("{id}")]
+        [HttpPut("private/{id}")]
         public async Task<IActionResult> UpdateUser(Guid id, [FromBody] User user)
         {
             if (id != user.Id) return BadRequest();
@@ -69,7 +66,7 @@ namespace UserService.Controllers
 
             if (!success) return StatusCode(500, "Error updating user");
 
-            var userUpdatedEvent = new UserUpdatedIntegrationEvent(user.Id, user.IsVip);
+            var userUpdatedEvent = new UserUpdatedEvent(user.Id, user.IsVip);
             _eventBus.Publish(userUpdatedEvent);
 
             return NoContent();

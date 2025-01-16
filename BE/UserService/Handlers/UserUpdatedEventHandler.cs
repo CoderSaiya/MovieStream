@@ -1,11 +1,11 @@
 ﻿using SharedLibrary.Integration;
-using UserService.Events;
+using SharedLibrary.Events;
 
 namespace UserService.Handlers
 {
-    public class UserUpdatedEventHandler : IIntegrationEventHandler<UserUpdatedIntegrationEvent>
+    public class UserUpdatedEventHandler : IIntegrationEventHandler<UserUpdatedEvent>
     {
-        public Task Handle(UserUpdatedIntegrationEvent @event)
+        public Task Handle(UserUpdatedEvent @event)
         {
             Console.WriteLine($"User Updated: {@event.UserId}, IsVip: {@event.IsVip}");
             return Task.CompletedTask;

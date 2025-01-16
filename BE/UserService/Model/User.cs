@@ -10,7 +10,7 @@ public class User
     public required string Username { get; set; }
     public required string Password { get; set; }
     public required string Email { get; set; }
-    public RoleType Role { get; set; }
+    public RoleType Role { get; set; } = RoleType.User;
     public bool IsVip { get; set; } = false;
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
     public DateTime? UpdatedAt { get; set; }

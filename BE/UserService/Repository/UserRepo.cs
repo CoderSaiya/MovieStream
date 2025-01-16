@@ -1,5 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using UserService.Data;
+using UserService.Model;
 using UserService.Models;
 
 namespace UserService.Repository
@@ -7,13 +9,28 @@ namespace UserService.Repository
     public class UserRepo : IUser
     {
         private readonly UserDbContext _context;
-        public UserRepo(UserDbContext context)
+        private readonly PasswordHasher<User> _passwordHasher;
+        public UserRepo(UserDbContext context, PasswordHasher<User> passwordHasher)
         {
             _context = context;
+            _passwordHasher = passwordHasher;
         }
         public async Task AddUserAsync(User user)
         {
+            var existingUser = await _context.Users.SingleOrDefaultAsync(u => u.Username == user.Username);
+            if (existingUser != null)
+            {
+                throw new Exception("User is already!");
+            }
+
+            user.Password = _passwordHasher.HashPassword(user, user.Password);
             await _context.Users.AddAsync(user);
+
+            var userProfile = new UserProfile
+            {
+                UserId = user.Id,
+            };
+            await _context.UserProfile.AddAsync(userProfile);
         }
 
         public async Task<IEnumerable<User>> GetAllUsersAsync()

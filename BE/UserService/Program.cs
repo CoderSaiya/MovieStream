@@ -1,9 +1,9 @@
 using UserService.Data;
 using Microsoft.EntityFrameworkCore;
-using UserService.Events;
 using SharedLibrary.EventBus;
 using UserService.Handlers;
 using UserService.Repository;
+using SharedLibrary.Events;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -29,7 +29,7 @@ builder.Services.AddSingleton<IEventBus, EventBus>(sp =>
 });
 
 builder.Services.AddTransient<UserCreatedEventHandler>();
-builder.Services.AddTransient<UserUpdatedEventHandler>();
+//builder.Services.AddTransient<UserUpdatedEventHandler>();
 
 var app = builder.Build();
 
@@ -48,8 +48,8 @@ app.MapControllers();
 app.Lifetime.ApplicationStarted.Register(() =>
 {
     var eventBus = app.Services.GetRequiredService<IEventBus>();
-    eventBus.Subscribe<UserCreatedIntegrationEvent, UserCreatedEventHandler>();
-    eventBus.Subscribe<UserUpdatedIntegrationEvent, UserUpdatedEventHandler>();
+    eventBus.Subscribe<UserCreatedEvent, UserCreatedEventHandler>();
+    //eventBus.Subscribe<UserUpdatedEvent, UserUpdatedEventHandler>();
 });
 
 app.Run();

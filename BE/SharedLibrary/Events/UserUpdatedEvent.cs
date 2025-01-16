@@ -1,11 +1,11 @@
 ﻿using SharedLibrary.Integration;
-namespace UserService.Events
+namespace SharedLibrary.Events
 {
-    public class UserUpdatedIntegrationEvent : IntegrationEvent
+    public class UserUpdatedEvent : IntegrationEvent
     {
         public Guid UserId { get; set; }
         public bool IsVip { get; set; }
-        public UserUpdatedIntegrationEvent(Guid userId, bool isVip)
+        public UserUpdatedEvent(Guid userId, bool isVip)
         {
             UserId = userId;
             IsVip = isVip;
