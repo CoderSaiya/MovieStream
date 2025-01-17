@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using PaymentService.Data;
+using PaymentService.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +15,8 @@ builder.Services.AddDbContext<PaymentDbContext>(option =>
 {
     option.UseSqlServer(builder.Configuration["ConnectionStrings:DefaultConnection"]);
 });
+
+builder.Services.AddScoped<IPayment, PaymentRepo>();
 
 var app = builder.Build();
 
