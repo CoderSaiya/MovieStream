@@ -30,6 +30,7 @@ builder.Services.AddDbContext<MovieDbContext>(options =>
 );
 
 builder.Services.AddScoped<IMovie, MovieRepo>();
+builder.Services.AddSingleton<CloudStorageService>();
 
 // Add RabbitMQ Event Bus
 builder.Services.AddSingleton<IEventBus, EventBus>(sp =>

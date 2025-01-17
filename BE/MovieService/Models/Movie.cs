@@ -23,7 +23,7 @@ namespace MovieService.Models
         public string Language { get; set; } = string.Empty;
         public string Season { get; set; } = string.Empty;
         public string Country { get; set; } = string.Empty;
-        public int followers { get; set; } = 0;
+        public int Followers { get; set; } = 0;
 
         [Required]
         public QualityLevel Quality { get; set; } = QualityLevel.Low;

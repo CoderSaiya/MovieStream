@@ -7,7 +7,7 @@ namespace MovieService.Repositories
     {
         Task<Movie?> GetMovieAsync(int id, string userId);
         Task<List<Movie>> GetAllMoviesAsync();
-        Task<int> AddMovieAsync(MovieDTO movieDTO, List<int> genreIds, List<string> imageUrls, List<int> studioIds);
+        Task<int> AddMovieAsync(MovieDTO movieDto, List<int> genreIds, List<string> imageUrls, List<int> studioIds, Stream videoStream);
         Task<bool> LoadListToElastic();
         Task UpdateMovieAsync(int movieId, MovieDTO movieDto);
         Task DeleteMovieAsync(int id);

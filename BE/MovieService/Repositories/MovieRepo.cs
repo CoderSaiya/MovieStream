@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.IdentityModel.Tokens;
 using MovieService.Data;
 using MovieService.DTOs;
 using MovieService.Events;
@@ -14,19 +13,21 @@ namespace MovieService.Repositories
         private readonly MovieDbContext _context;
         private readonly IHttpClientFactory _httpClientFactory;
         private readonly IEventBus _eventBus;
+        private readonly CloudStorageService _storageService;
 
-        public MovieRepo(MovieDbContext context, IHttpClientFactory httpClientFactory, IEventBus eventBus)
+        public MovieRepo(MovieDbContext context, IHttpClientFactory httpClientFactory, IEventBus eventBus, CloudStorageService storageService)
         {
             _context = context;
             _httpClientFactory = httpClientFactory;
             _eventBus = eventBus;
+            _storageService = storageService;
         }
 
         private async Task<Movie?> GetMovieByIdAsync(int id)
         {
             return await _context.Movies.FindAsync(id);
         }
-        public async Task<int> AddMovieAsync(MovieDTO movieDto, List<int> genreIds, List<string> imageUrls, List<int> studioIds)
+        public async Task<int> AddMovieAsync(MovieDTO movieDto, List<int> genreIds, List<string> imageUrls, List<int> studioIds, Stream videoStream)
         {
             var genres = await _context.Genres
                 .Where(g => genreIds.Contains(g.Id))
@@ -61,7 +62,7 @@ namespace MovieService.Repositories
                     AgeRating = movieDto.AgeRating,
                     Season = movieDto.Season,
                     Country = movieDto.Country,
-                    followers = movieDto.followers,
+                    Followers = movieDto.Followers,
                     Quality = movieDto.Quality,
                     IsVipOnly = movieDto.IsVipOnly,
                     FileUrl = movieDto.FileUrl,
@@ -84,6 +85,8 @@ namespace MovieService.Repositories
                     movie.Images.Add(new Image { Url = imageUrl });
                 }
 
+                var fileUrl = await _storageService.UploadVideoAsync(videoStream, movie.Title);
+                movie.FileUrl = fileUrl;
                 await _context.Movies.AddAsync(movie);
                 await _context.SaveChangesAsync();
 
@@ -102,7 +105,7 @@ namespace MovieService.Repositories
             catch
             {
                 await transaction.RollbackAsync();
-                throw;
+                throw new Exception("An error occurred during processing.");
             }
         }
 

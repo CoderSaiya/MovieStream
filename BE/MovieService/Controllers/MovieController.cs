@@ -7,14 +7,10 @@ using MovieService.DTOs;
 [Route("api/[controller]")]
 public class MovieController : ControllerBase
 {
-    private readonly MovieDbContext _context;
-    private readonly IHttpClientFactory _httpClientFactory;
     private readonly IMovie _movieRepo;
 
-    public MovieController(MovieDbContext context, IHttpClientFactory httpClientFactory, IMovie movieRepo)
+    public MovieController(IMovie movieRepo)
     {
-        _context = context;
-        _httpClientFactory = httpClientFactory;
         _movieRepo = movieRepo;
     }
 
@@ -37,10 +33,20 @@ public class MovieController : ControllerBase
     }
 
     [HttpPost("private")]
-    public async Task<IActionResult> CreateMovie([FromBody] CreateMovieReq createMovieReq)
+    public async Task<IActionResult> CreateMovie([FromBody] CreateMovieReq createMovieReq, [FromForm] IFormFile file)
     {
-        int id = await _movieRepo.AddMovieAsync(createMovieReq.MovieDto, createMovieReq.GenreIds, createMovieReq.ImageUrls, createMovieReq.StudioIds);
-        return CreatedAtAction(nameof(GetMovie), new { id = id });
+        if (file == null || file.Length == 0)
+            return BadRequest("Invalid video file.");
+        try
+        {
+            using var stream = file.OpenReadStream();
+            int id = await _movieRepo.AddMovieAsync(createMovieReq.MovieDto, createMovieReq.GenreIds, createMovieReq.ImageUrls, createMovieReq.StudioIds, stream);
+            return CreatedAtAction(nameof(GetMovie), new { id = id });
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, $"Error uploading video: {ex.Message}");
+        }
     }
 
     [HttpPut("private/{id}")]
