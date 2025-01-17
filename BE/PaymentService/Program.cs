@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using PaymentService.Data;
 using PaymentService.Repository;
+using SharedLibrary.EventBus;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,6 +18,14 @@ builder.Services.AddDbContext<PaymentDbContext>(option =>
 });
 
 builder.Services.AddScoped<IPayment, PaymentRepo>();
+
+// Add RabbitMQ Event Bus
+builder.Services.AddSingleton<IEventBus, EventBus>(sp =>
+{
+    var serviceProvider = sp.GetRequiredService<IServiceProvider>();
+    var hostName = builder.Configuration["RabbitMQ:HostName"] ?? "localhost";
+    return new EventBus(serviceProvider, hostName);
+});
 
 var app = builder.Build();
 
