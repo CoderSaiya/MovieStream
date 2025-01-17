@@ -3,12 +3,15 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Notification } from './schemas/notification.schemas';
 import { Model } from 'mongoose';
 import { EventPattern } from '@nestjs/microservices';
+import { NotificationGateway } from './notification.gateway';
+import { CreateNotificationDto } from './dto/create-notification';
 
 @Injectable()
 export class NotificationService {
   constructor(
     @InjectModel(Notification.name)
     private notificationModel: Model<Notification>,
+    private notificationGateway: NotificationGateway,
   ) {}
 
   async onModuleInit() {
@@ -16,7 +19,7 @@ export class NotificationService {
   }
 
   @EventPattern('notification_event')
-  async handleNotificationEvent(payload: { userId: string; message: string }) {
+  async handleNotificationEvent(payload: CreateNotificationDto) {
     console.log(`Received notification from RabbitMQ:`, payload);
 
     // Lưu thông báo vào MongoDB
@@ -24,5 +27,6 @@ export class NotificationService {
     await notification.save();
 
     // Gửi thông báo real-time qua WebSocket (update sau)
+    this.notificationGateway.sendNotificationMessage(notification);
   }
 }
