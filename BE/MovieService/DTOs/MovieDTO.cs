@@ -13,7 +13,7 @@
         public string AgeRating { get; set; } = string.Empty;
         public string Season { get; set; } = string.Empty;
         public string Country { get; set; } = string.Empty;
-        public int followers { get; set; } = 0;
+        public int Followers { get; set; } = 0;
         public QualityLevel Quality { get; set; } = QualityLevel.Low;
         public bool IsVipOnly { get; set; } = false;
         public string FileUrl { get; set; } = null!;
