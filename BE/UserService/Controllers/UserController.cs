@@ -71,5 +71,13 @@ namespace UserService.Controllers
 
             return NoContent();
         }
+
+        [HttpPost("public/log")]
+        public async Task<IActionResult> UserBehaviorLog(Guid userId, string action, string? ip = null, string? agent = null)
+        {
+            var result = await _userRepository.AddLogAsync(userId, action, ip, agent);
+            if(!result) return BadRequest("Failed to log!");
+            return Ok();
+        }
     }
 }
