@@ -23,7 +23,7 @@ namespace MovieService.Repositories
             _storageService = storageService;
         }
 
-        private async Task<Movie?> GetMovieByIdAsync(int id)
+        public async Task<Movie?> GetMovieByIdAsync(int id)
         {
             return await _context.Movies.FindAsync(id);
         }

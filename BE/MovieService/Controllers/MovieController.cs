@@ -8,10 +8,12 @@ using MovieService.DTOs;
 public class MovieController : ControllerBase
 {
     private readonly IMovie _movieRepo;
+    private readonly CloudStorageService _cloudStorageService;
 
-    public MovieController(IMovie movieRepo)
+    public MovieController(IMovie movieRepo, CloudStorageService cloudStorageService)
     {
         _movieRepo = movieRepo;
+        _cloudStorageService = cloudStorageService;
     }
 
     [HttpGet("public")]
@@ -76,5 +78,18 @@ public class MovieController : ControllerBase
         var result = await _movieRepo.LoadListToElastic();
         if(!result) return NoContent();
         return Ok("Movies sent to RabbitMQ for Elasticsearch sync.");
+    }
+
+    [HttpGet("public/stream/{id}")]
+    public async Task<IActionResult> GetStreamMovie([FromForm] int movieId)
+    {
+        var existingMovie = await _movieRepo.GetMovieByIdAsync(movieId);
+        if(existingMovie == null)
+        {
+            return NoContent();
+        }
+
+        var streamURL = _cloudStorageService.GeneratePreSignedUrl(existingMovie.Title);
+        return Ok(streamURL);
     }
 }

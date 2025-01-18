@@ -1,4 +1,5 @@
 ﻿using Amazon.S3;
+using Amazon.S3.Model;
 using Amazon.S3.Transfer;
 
 namespace MovieService.Repositories
@@ -23,6 +24,19 @@ namespace MovieService.Repositories
             var transferUtility = new TransferUtility(_client);
             await transferUtility.UploadAsync(videoStream, _bucketName, fileName);
             return $"https://{_bucketName}.s3.amazonaws.com/{fileName}";
+        }
+
+        public string GeneratePreSignedUrl(string fileName)
+        {
+            var request = new GetPreSignedUrlRequest
+            {
+                BucketName = _bucketName,
+                Key = fileName,
+                Expires = DateTime.UtcNow.AddHours(1),
+                Verb = HttpVerb.GET,
+            };
+
+            return _client.GetPreSignedURL(request);
         }
     }
 }
