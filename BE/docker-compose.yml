@@ -5,7 +5,7 @@ services:
     build:
       context: ./ApiGateway
     ports:
-      - "8000:80"
+      - "5000:80"
     depends_on:
       - userservice
       - movieservice
@@ -18,7 +18,7 @@ services:
     build:
       context: ./UserService
     ports:
-      - "8001:80"
+      - "7228:80"
     networks:
       - my_network
 
@@ -27,7 +27,7 @@ services:
     build:
       context: ./MovieService
     ports:
-      - "8002:80"
+      - "7225:80"
     networks:
       - my_network
 
@@ -36,7 +36,7 @@ services:
     build:
       context: ./RecommendationService
     ports:
-      - "8004:80"
+      - "7234:80"
     networks:
       - my_network
 
@@ -45,7 +45,7 @@ services:
     build:
       context: ./SearchService
     ports:
-      - "8005:80"
+      - "7227:80"
     networks:
       - my_network
       - es-net
