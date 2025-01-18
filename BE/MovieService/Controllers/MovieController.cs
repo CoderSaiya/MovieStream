@@ -90,6 +90,6 @@ public class MovieController : ControllerBase
         }
 
         var streamURL = _cloudStorageService.GeneratePreSignedUrl(existingMovie.Title);
-        return Ok(streamURL);
+        return Ok(new { URL = streamURL });
     }
 }
