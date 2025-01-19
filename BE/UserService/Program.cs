@@ -24,11 +24,9 @@ builder.Services.AddScoped<IUser, UserRepo>();
 builder.Services.AddSingleton<IEventBus, EventBus>(sp =>
 {
     var serviceProvider = sp.GetRequiredService<IServiceProvider>();
-    var hostName = builder.Configuration["RabbitMQ:HostName"] ?? "localhost";
-    return new EventBus(serviceProvider, hostName);
+    return new EventBus(serviceProvider);
 });
 
-builder.Services.AddTransient<UserCreatedEventHandler>();
 //builder.Services.AddTransient<UserUpdatedEventHandler>();
 
 var app = builder.Build();
@@ -48,7 +46,6 @@ app.MapControllers();
 app.Lifetime.ApplicationStarted.Register(() =>
 {
     var eventBus = app.Services.GetRequiredService<IEventBus>();
-    eventBus.Subscribe<UserCreatedEvent, UserCreatedEventHandler>();
     //eventBus.Subscribe<UserUpdatedEvent, UserUpdatedEventHandler>();
 });
 

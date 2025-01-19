@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using SharedLibrary.EventBus;
 using UserService.Repository;
 using SharedLibrary.Events;
+using Microsoft.Extensions.Logging;
 
 namespace UserService.Controllers
 {
@@ -25,18 +26,23 @@ namespace UserService.Controllers
         {
             if (!ModelState.IsValid) return BadRequest();
 
+            var tokenGmail = Guid.NewGuid().ToString();
             var user = new User
             {
                 Id = Guid.NewGuid(),
                 Username = userRequest.Username,
                 Password = userRequest.Password,
                 Email = userRequest.Email,
+                EmailVerificationToken = tokenGmail,
+                EmailVerificationTokenExpiry = DateTime.UtcNow.AddHours(24),
             };
 
             await _userRepository.AddUserAsync(user);
             var success = await _userRepository.SaveChangesAsync();
-
             if (!success) return StatusCode(500, "Error saving user");
+
+            var createdEvent = new UserCreatedEvent(user.Username, user.Password, user.Email, tokenGmail);
+            _eventBus.Publish(createdEvent);
 
             return CreatedAtAction(nameof(GetUserById), new { id = user.Id }, user);
         }
@@ -58,6 +64,7 @@ namespace UserService.Controllers
             var existingUser = await _userRepository.GetUserByIdAsync(id);
             if (existingUser == null) return NotFound();
 
+            existingUser.UpdatedAt = DateTime.UtcNow;
             existingUser.Email = user.Email;
             existingUser.IsVip = user.IsVip;
 

@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using SharedLibrary.Integration;
 
-namespace MovieService.Events
+namespace MovieService.Handlers
 {
     public class MovieViewedEventHandler : IIntegrationEventHandler<MovieViewedIntegrationEvent>
     {

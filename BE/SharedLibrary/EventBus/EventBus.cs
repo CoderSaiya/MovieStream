@@ -13,7 +13,7 @@ namespace SharedLibrary.EventBus
         private readonly IModel _channel;
         private readonly IConnection _connection;
 
-        public EventBus(IServiceProvider serviceProvider, string hostName)
+        public EventBus(IServiceProvider serviceProvider)
         {
             _serviceProvider = serviceProvider;
             var factory = new ConnectionFactory { HostName = "host.docker.internal", Port = AmqpTcpEndpoint.UseDefaultPort };

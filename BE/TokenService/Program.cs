@@ -36,8 +36,7 @@ builder.Services.AddScoped<IToken, TokenRepo>();
 builder.Services.AddSingleton<IEventBus, EventBus>(sp =>
 {
     var serviceProvider = sp.GetRequiredService<IServiceProvider>();
-    var hostName = builder.Configuration["RabbitMQ:HostName"] ?? "localhost";
-    return new EventBus(serviceProvider, hostName);
+    return new EventBus(serviceProvider);
 });
 
 builder.Services.AddSingleton<ResponseHandler>();

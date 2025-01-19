@@ -1,10 +1,9 @@
 using Microsoft.EntityFrameworkCore;
 using MovieService.Data;
-using MovieService.Events;
+using MovieService.Handlers;
 using MovieService.Repositories;
 using SharedLibrary.EventBus;
 using SharedLibrary.Events;
-using System;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -36,9 +35,7 @@ builder.Services.AddSingleton<CloudStorageService>();
 builder.Services.AddSingleton<IEventBus, EventBus>(sp =>
 {
     var serviceProvider = sp.GetRequiredService<IServiceProvider>();
-    var hostName = builder.Configuration["RabbitMQ:HostName"];
-    Console.Write(builder.Configuration["RabbitMQ:HostName"]);
-    return new EventBus(serviceProvider, hostName);
+    return new EventBus(serviceProvider);
 });
 
 // Register Event Handlers

@@ -1,6 +1,6 @@
 ﻿using SharedLibrary.Integration;
 
-namespace MovieService.Events
+namespace MovieService.Handlers
 {
     public class MovieViewedIntegrationEvent : IntegrationEvent {
         public int MovieId { get; } 

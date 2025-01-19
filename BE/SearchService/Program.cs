@@ -36,8 +36,7 @@ builder.Services.AddScoped<ISearch, SearchRepo>();
 builder.Services.AddSingleton<IEventBus, EventBus>(sp =>
 {
     var serviceProvider = sp.GetRequiredService<IServiceProvider>();
-    var hostName = builder.Configuration["RabbitMQ:HostName"] ?? "localhost";
-    return new EventBus(serviceProvider, hostName);
+    return new EventBus(serviceProvider);
 });
 
 var app = builder.Build();

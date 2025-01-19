@@ -1,7 +1,7 @@
 ﻿using SharedLibrary.Integration;
 using SharedLibrary.Events;
 
-namespace MovieService.Events
+namespace MovieService.Handlers
 {
     public class MovieCreatedEventHandler : IIntegrationEventHandler<MovieCreatedEvent>
     {
