@@ -4,27 +4,6 @@ Backend microservices implementation for the MovieStream platform.
 
 ## 🏗 Architecture Overview
 
-```mermaid
-graph TD
-    A[API Gateway] --> B[User Service]
-    A --> C[Movie Service]
-    A --> D[Playback Service]
-    A --> E[Recommendation Service]
-    A --> F[Search Service]
-    
-    B --> G[(SQL Server)]
-    C --> G
-    D --> H[(Redis)]
-    E --> H
-    F --> H
-    
-    I[RabbitMQ] --> B
-    I --> C
-    I --> D
-    I --> E
-    I --> F
-```
-
 ![Microservice-Artchitecture](../images/movieflix.png)
 
 ## 🔧 Prerequisites
@@ -100,7 +79,7 @@ Services will be available at:
 - User Service: `http://localhost:7228`
 - Playback Service: `http://localhost:7229`
 - Payment Service: `http://localhost:7230`
-- Playback Service: `http://localhost:7231`
+- Gmail Service: `http://localhost:7231`
 - Analytics Service: `http://localhost:7232`
 - Notification Service: `http://localhost:7233`
 - Recommendation Service: `http://localhost:7234`
