@@ -77,7 +77,6 @@ Services will be available at:
 - Auth (Token) Service: `http://localhost:7226`
 - Search Service: `http://localhost:7227`
 - User Service: `http://localhost:7228`
-- Playback Service: `http://localhost:7229`
 - Payment Service: `http://localhost:7230`
 - Gmail Service: `http://localhost:7231`
 - Analytics Service: `http://localhost:7232`
