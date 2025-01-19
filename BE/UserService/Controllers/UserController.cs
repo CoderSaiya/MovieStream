@@ -76,7 +76,10 @@ namespace UserService.Controllers
         public async Task<IActionResult> UserBehaviorLog(Guid userId, string action, string? ip = null, string? agent = null)
         {
             var result = await _userRepository.AddLogAsync(userId, action, ip, agent);
-            if(!result) return BadRequest("Failed to log!");
+            if (!result) return BadRequest("Failed to log!");
+
+            var success = await _userRepository.SaveChangesAsync();
+            if (!success) return StatusCode(500, "Error updating user");
             return Ok();
         }
     }

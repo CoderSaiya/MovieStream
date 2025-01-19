@@ -22,6 +22,12 @@ namespace UserService.Handlers
 
             var isPasswordValid = await _userRepository.ValidatePasswordAsync(user, @event.Password);
 
+            if (isPasswordValid)
+            {
+                await _userRepository.AddLogAsync(userId: user.Id, action: "User login");
+                await _userRepository.SaveChangesAsync();
+            }
+
             var loginResultEvent = new PasswordCheckResponseEvent(@event.CorrectlationId, isPasswordValid, user.Id, user.Role.ToString());
             _eventBus.Publish(loginResultEvent);
         }

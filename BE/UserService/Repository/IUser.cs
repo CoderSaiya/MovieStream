@@ -11,6 +11,6 @@ namespace UserService.Repository
         Task<bool> SaveChangesAsync();
         Task<User> GetUserByUsernameAsync(string username);
         Task<bool> ValidatePasswordAsync(User user, string password);
-        Task<bool> AddLogAsync(Guid userId, string action, string? ip, string? userAgent);
+        Task<bool> AddLogAsync(Guid userId, string action, string? ip = null, string? userAgent = null);
     }
 }

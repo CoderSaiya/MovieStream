@@ -68,7 +68,7 @@ namespace UserService.Repository
             return await Task.FromResult(BCrypt.Net.BCrypt.Verify(password, user.Password));
         }
 
-        public async Task<bool> AddLogAsync(Guid userId, string action, string? ip, string? userAgent)
+        public async Task<bool> AddLogAsync(Guid userId, string action, string? ip = null, string? userAgent = null)
         {
             var existingUser = await _context.Users.FindAsync(userId);
             if (existingUser == null)
@@ -80,8 +80,8 @@ namespace UserService.Repository
             {
                 UserId = userId,
                 Action = action,
-                IpAddress = ip ?? null,
-                UserAgent = userAgent ?? null,
+                IpAddress = ip,
+                UserAgent = userAgent,
             };
 
             await _context.UserLog.AddAsync(log);
