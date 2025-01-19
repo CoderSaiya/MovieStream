@@ -175,27 +175,27 @@
       "Config": {
         "Url": "http://localhost:7225/swagger/v1/swagger.json",
         "Name": "Movie Service"
-      },
-      {
-        "Key": "auth",
-        "Config": {
-          "Url": "http://localhost:7226/swagger/v1/swagger.json",
-          "Name": "Auth Service"
-        }
-      },
-      {
-        "Key": "search",
-        "Config": {
-          "Url": "http://localhost:7227/swagger/v1/swagger.json",
-          "Name": "Search Service"
-        }
-      },
-      {
-        "Key": "email",
-        "Config": {
-          "Url": "http://localhost:7229/swagger/v1/swagger.json",
-          "Name": "Email Service"
-        }
+      }
+    },
+    {
+      "Key": "auth",
+      "Config": {
+        "Url": "http://localhost:7226/swagger/v1/swagger.json",
+        "Name": "Auth Service"
+      }
+    },
+    {
+      "Key": "search",
+      "Config": {
+        "Url": "http://localhost:7227/swagger/v1/swagger.json",
+        "Name": "Search Service"
+      }
+    },
+    {
+      "Key": "email",
+      "Config": {
+        "Url": "http://localhost:7229/swagger/v1/swagger.json",
+        "Name": "Email Service"
       }
     }
   ],
