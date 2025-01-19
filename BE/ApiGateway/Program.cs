@@ -8,6 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Load Ocelot configuration
 builder.Configuration.AddJsonFile("ocelot.json", optional: false, reloadOnChange: true);
 
+// Add JWT Authentication
 builder.Services.AddAuthentication("JwtBearer")
     .AddJwtBearer("JwtBearer", options =>
     {
@@ -22,19 +23,27 @@ builder.Services.AddAuthentication("JwtBearer")
         };
     });
 
+// Add Ocelot and Swagger for Ocelot
 builder.Services.AddOcelot();
+builder.Services.AddSwaggerForOcelot(builder.Configuration);
+builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
+// Configure Swagger UI for Ocelot
 if (app.Environment.IsDevelopment())
 {
-    app.UseDeveloperExceptionPage();
+    app.UseSwaggerForOcelotUI(opt =>
+    {
+        opt.PathToSwaggerGenerator = "/swagger/docs";
+    });
 }
 
 app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
 
-app.UseOcelot().Wait();
+// Use Ocelot middleware
+await app.UseOcelot();
 
 app.Run();

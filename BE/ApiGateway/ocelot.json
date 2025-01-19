@@ -11,6 +11,7 @@
       ],
       "UpstreamPathTemplate": "/api/Movie/private/{everything}",
       "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
+      "SwaggerKey": "movie",
       "AuthenticationOptions": {
         "AuthenticationProviderKey": "JwtBearer",
         "AllowedScopes": []
@@ -26,7 +27,8 @@
         }
       ],
       "UpstreamPathTemplate": "/api/Movie/public/{everything}",
-      "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete", "Option" ]
+      "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete", "Option" ],
+      "SwaggerKey": "movie"
     },
     {
       "DownstreamPathTemplate": "/api/User/private/{everything}",
@@ -39,6 +41,7 @@
       ],
       "UpstreamPathTemplate": "/api/User/private/{everything}",
       "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
+      "SwaggerKey": "user",
       "AuthenticationOptions": {
         "AuthenticationProviderKey": "JwtBearer",
         "AllowedScopes": []
@@ -54,7 +57,8 @@
         }
       ],
       "UpstreamPathTemplate": "/api/User/public/{everything}",
-      "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete", "Option" ]
+      "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete", "Option" ],
+      "SwaggerKey": "user"
     },
     {
       "DownstreamPathTemplate": "/api/Recommendation/private/{everything}",
@@ -95,6 +99,7 @@
       ],
       "UpstreamPathTemplate": "/api/Search/private/{everything}",
       "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
+      "SwaggerKey": "search",
       "AuthenticationOptions": {
         "AuthenticationProviderKey": "JwtBearer",
         "AllowedScopes": []
@@ -110,35 +115,88 @@
         }
       ],
       "UpstreamPathTemplate": "/api/Search/public/{everything}",
-      "UpstreamHttpMethod": [ "Get" ]
+      "UpstreamHttpMethod": [ "Get" ],
+      "SwaggerKey": "search"
     },
     {
-      "DownstreamPathTemplate": "/api/Playback/private/{everything}",
+      "DownstreamPathTemplate": "/api/Gmail/{everything}",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "playbackservice",
+          "Host": "emailservice",
           "Port": 80
         }
       ],
-      "UpstreamPathTemplate": "/api/Playback/private/{everything}",
+      "UpstreamPathTemplate": "/api/Gmail/{everything}",
+      "UpstreamHttpMethod": [ "Get", "Post" ],
+      "SwaggerKey": "email"
+    },
+    {
+      "DownstreamPathTemplate": "/api/Token/private/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "authservice",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/api/Token/private/{everything}",
       "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
+      "SwaggerKey": "auth",
       "AuthenticationOptions": {
         "AuthenticationProviderKey": "JwtBearer",
         "AllowedScopes": []
       }
     },
     {
-      "DownstreamPathTemplate": "/api/Playback/public/{everything}",
+      "DownstreamPathTemplate": "/api/Token/public/{everything}",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "playbackservice",
+          "Host": "authservice",
           "Port": 80
         }
       ],
-      "UpstreamPathTemplate": "/api/Playback/public/{everything}",
-      "UpstreamHttpMethod": [ "Get", "Post" ]
+      "UpstreamPathTemplate": "/api/Token/public/{everything}",
+      "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
+      "SwaggerKey": "auth"
+    }
+  ],
+  "SwaggerEndPoints": [
+    {
+      "Key": "user",
+      "Config": {
+        "Url": "http://localhost:7228/swagger/v1/swagger.json",
+        "Name": "User Service"
+      }
+    },
+    {
+      "Key": "movie",
+      "Config": {
+        "Url": "http://localhost:7225/swagger/v1/swagger.json",
+        "Name": "Movie Service"
+      },
+      {
+        "Key": "auth",
+        "Config": {
+          "Url": "http://localhost:7226/swagger/v1/swagger.json",
+          "Name": "Auth Service"
+        }
+      },
+      {
+        "Key": "search",
+        "Config": {
+          "Url": "http://localhost:7227/swagger/v1/swagger.json",
+          "Name": "Search Service"
+        }
+      },
+      {
+        "Key": "email",
+        "Config": {
+          "Url": "http://localhost:7229/swagger/v1/swagger.json",
+          "Name": "Email Service"
+        }
+      }
     }
   ],
   "GlobalConfiguration": {
