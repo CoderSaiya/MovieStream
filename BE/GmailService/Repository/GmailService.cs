@@ -20,7 +20,7 @@ namespace GmailService.Repository
 
             var smtp = new SmtpClient();
             await smtp.ConnectAsync(_configuration["EmailSettings:Host"], int.Parse(_configuration["EmailSettings:Port"]), MailKit.Security.SecureSocketOptions.StartTls);
-            await smtp.AuthenticateAsync(_configuration["EmailSettings:SenderEmail"], _configuration["EmailSettings:Password"]);
+            await smtp.AuthenticateAsync(_configuration["EmailSettings:SenderEmail"], _configuration["EmailSettings:SenderPassword"]);
             await smtp.SendAsync(email);
             await smtp.DisconnectAsync(true);
         }
