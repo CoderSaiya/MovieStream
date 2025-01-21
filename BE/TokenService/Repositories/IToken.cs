@@ -7,6 +7,6 @@ namespace AuthService.Repositories
     {
         Task<RefreshToken> GetRefreshTokenByValueAsync(string token);
         Task<bool> UpdateRefreshTokenAsync(RefreshToken refreshToken);
-        Task<TokenRes> GenerateTokenRes(string username, int userId, string role);
+        Task<TokenRes> GenerateTokenRes(string username, Guid userId, string role);
     }
 }

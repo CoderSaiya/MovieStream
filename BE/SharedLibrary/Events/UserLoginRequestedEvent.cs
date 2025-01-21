@@ -9,14 +9,11 @@ namespace SharedLibrary.Events
         public string Username { get; }
         [Required]
         public string Password { get; }
-        [Required]
-        public string CorrectlationId { get; }
 
-        public UserLoginRequestedEvent(string username, string password, string correctlationId)
+        public UserLoginRequestedEvent(string username, string password)
         {
             Username = username;
             Password = password;
-            CorrectlationId = correctlationId;
         }
     }
 }

@@ -5,6 +5,7 @@ using AuthService.Events;
 using AuthService.Repositories;
 using SharedLibrary.EventBus;
 using SharedLibrary.Handler;
+using Microsoft.AspNetCore.Authentication.Google;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -30,6 +31,14 @@ builder.Services.AddDbContext<IdentityDbContext>(options =>
     optionsLifetime: ServiceLifetime.Singleton
 );
 
+builder.Services.AddAuthentication().AddGoogle(GoogleDefaults.AuthenticationScheme, option =>
+{
+    option.ClientId = builder.Configuration["Authentication:Google:ClientId"];
+    option.ClientSecret = builder.Configuration["Authentication:Google:ClientSecret"];
+    option.CallbackPath = "/signin-google";
+});
+builder.Services.AddAuthorization();
+
 builder.Services.AddScoped<IToken, TokenRepo>();
 
 // Add RabbitMQ Event Bus
@@ -53,6 +62,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
 

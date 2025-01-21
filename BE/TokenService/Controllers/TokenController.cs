@@ -1,6 +1,7 @@
 ﻿using AuthService.Data;
 using AuthService.DTOs;
 using AuthService.Repositories;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using SharedLibrary.EventBus;
 using SharedLibrary.Events;
@@ -43,14 +44,14 @@ namespace AuthService.Controllers
             return Ok("User validation event sent.");
         }
 
-        [HttpPost("public/login")]
-        public async Task<IActionResult> Login(TokenService.DTOs.LoginRequest request)
+        [HttpPost("public/sign-in")]
+        public async Task<IActionResult> Login(LoginReq request)
         {
             var correctlationId = Guid.NewGuid().ToString();
-            var loginEvent = new UserLoginRequestedEvent(request.Username, request.Password, correctlationId);
+            var loginEvent = new UserLoginRequestedEvent(request.Username, request.Password);
             _eventBus.Publish(loginEvent);
 
-            var response = await _responseHandler.WaitForResponseAsync(correctlationId, 5);
+            var response = await _responseHandler.WaitForResponseAsync(loginEvent.Id.ToString(), 5);
             if (response == null)
                 return Unauthorized(new { Message = "Invalid username or password." });
 
@@ -59,6 +60,47 @@ namespace AuthService.Controllers
             var tokens = _authRepo.GenerateTokenRes(request.Username, result.UserId, result.Role);
 
             return Ok(tokens);
+        }
+
+        [HttpGet("public/login")]
+        public IActionResult LoginWithGoogle()
+        {
+            var properties = new AuthenticationProperties
+            {
+                RedirectUri = Url.Action("GoogleCallback")
+            };
+
+            return Challenge(properties);
+        }
+
+        [HttpGet("private/google-callback")]
+        public async Task<IActionResult> GoogleCallback()
+        {
+            var autheticateResult = await HttpContext.AuthenticateAsync();
+            if(!autheticateResult.Succeeded)
+            {
+                return Unauthorized(new { Message = "Google login failed" });
+            }
+
+            var claims = autheticateResult.Principal?.Identities.FirstOrDefault()?.Claims;
+            var email = claims?.FirstOrDefault(c => c.Type == System.Security.Claims.ClaimTypes.Email)?.ToString();
+
+            if(email == null)
+            {
+                return BadRequest($"Unable to retrieve user email {email} from Google");
+            }
+
+            var googleLoginEvent = new GoogleLoginEvent(email);
+            _eventBus.Publish(googleLoginEvent);
+
+            var response = await _responseHandler.WaitForResponseAsync(googleLoginEvent.Id.ToString(), 5);
+            if (response == null)
+                return Unauthorized(new { Message = "Failed to login by this account google" });
+
+            var result = (dynamic) response;
+
+            var tokenResult = _authRepo.GenerateTokenRes(email, result.UserId, result.Role);
+            return Ok(tokenResult);
         }
     }
 }

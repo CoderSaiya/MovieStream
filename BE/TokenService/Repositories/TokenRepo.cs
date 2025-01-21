@@ -56,7 +56,7 @@ namespace AuthService.Repositories
             }
         }
 
-        public async Task<TokenRes> GenerateTokenRes(string username,  int userId, string role)
+        public async Task<TokenRes> GenerateTokenRes(string username, Guid userId, string role)
         {
             var claims = new List<Claim>
             {

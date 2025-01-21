@@ -8,7 +8,7 @@ public class User
     [Key]
     public Guid Id { get; set; }
     public required string Username { get; set; }
-    public required string Password { get; set; }
+    public string Password { get; set; } = null!;
     public required string Email { get; set; }
     public RoleType Role { get; set; } = RoleType.User;
     public bool IsVip { get; set; } = false;

@@ -1,11 +1,13 @@
 ﻿using SharedLibrary.EventBus;
 using SharedLibrary.Events;
 using SharedLibrary.Integration;
+using UserService.Model;
+using UserService.Models;
 using UserService.Repository;
 
 namespace UserService.Handlers
 {
-    public class UserLoginRequestedEventHandler : IIntegrationEventHandler<UserLoginRequestedEvent>
+    public class UserLoginRequestedEventHandler : IIntegrationEventHandler<IntegrationEvent>
     {
         private readonly IUser _userRepository;
         private readonly IEventBus _eventBus;
@@ -16,19 +18,61 @@ namespace UserService.Handlers
             _eventBus = eventBus;
         }
 
-        public async Task Handle(UserLoginRequestedEvent @event)
+        public async Task Handle(IntegrationEvent @event)
         {
-            var user = await _userRepository.GetUserByUsernameAsync(@event.Username);
+            switch (@event)
+            {
+                case UserLoginRequestedEvent userLoginEvent:
+                    await HandleUserLoginAsync(userLoginEvent);
+                    break;
 
-            var isPasswordValid = await _userRepository.ValidatePasswordAsync(user, @event.Password);
+                case GoogleLoginEvent googleLoginEvent:
+                    await HandleGoogleLoginAsync(googleLoginEvent);
+                    break;
+
+                default:
+                    throw new ArgumentException($"Unsupported event type: {@event.GetType().Name}");
+            }
+        }
+
+        private async Task HandleUserLoginAsync(UserLoginRequestedEvent userLoginEvent)
+        {
+            var user = await _userRepository.GetUserByUsernameAsync(userLoginEvent.Username);
+
+            var isPasswordValid = await _userRepository.ValidatePasswordAsync(user, userLoginEvent.Password);
 
             if (isPasswordValid)
             {
-                await _userRepository.AddLogAsync(userId: user.Id, action: "User login");
+                await _userRepository.AddLogAsync(user.Id, "User login");
                 await _userRepository.SaveChangesAsync();
             }
 
-            var loginResultEvent = new PasswordCheckResponseEvent(@event.CorrectlationId, isPasswordValid, user.Id, user.Role.ToString());
+            PublishLoginResult(userLoginEvent.Id.ToString(), isPasswordValid, user.Id, user.Role.ToString());
+        }
+
+        private async Task HandleGoogleLoginAsync(GoogleLoginEvent googleLoginEvent)
+        {
+            var user = await _userRepository.GetUserByEmailAsync(googleLoginEvent.Email);
+            if (user == null)
+            {
+                user = new User
+                {
+                    Id = Guid.NewGuid(),
+                    Username = googleLoginEvent.Email,
+                    Email = googleLoginEvent.Email,
+                    Role = RoleType.User
+                };
+
+                await _userRepository.AddUserAsync(user);
+                await _userRepository.SaveChangesAsync();
+            }
+
+            PublishLoginResult(googleLoginEvent.Id.ToString(), true, user.Id, user.Role.ToString());
+        }
+
+        private void PublishLoginResult(string requestId, bool isSuccess, Guid userId, string role)
+        {
+            var loginResultEvent = new PasswordCheckResponseEvent(requestId, isSuccess, userId, role);
             _eventBus.Publish(loginResultEvent);
         }
     }

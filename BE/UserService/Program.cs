@@ -4,6 +4,8 @@ using SharedLibrary.EventBus;
 using UserService.Handlers;
 using UserService.Repository;
 using SharedLibrary.Events;
+using Microsoft.AspNetCore.Identity;
+using UserService.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,6 +20,7 @@ builder.Services.AddDbContext<UserDbContext>(options =>
     options.UseNpgsql(builder.Configuration["ConnectionStrings:DefaultConnection"]);
 });
 
+builder.Services.AddScoped<PasswordHasher<User>>();
 builder.Services.AddScoped<IUser, UserRepo>();
 
 // Add RabbitMQ Event Bus
@@ -47,6 +50,8 @@ app.Lifetime.ApplicationStarted.Register(() =>
 {
     var eventBus = app.Services.GetRequiredService<IEventBus>();
     //eventBus.Subscribe<UserUpdatedEvent, UserUpdatedEventHandler>();
+    eventBus.Subscribe<UserLoginRequestedEvent, UserLoginRequestedEventHandler>();
+    eventBus.Subscribe<GoogleLoginEvent, UserLoginRequestedEventHandler>();
 });
 
 app.Run();
