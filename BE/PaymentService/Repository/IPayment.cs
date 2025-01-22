@@ -4,7 +4,7 @@ namespace PaymentService.Repository
 {
     public interface IPayment
     {
-        Task CreateTractionAsync(Guid userId, double? amount);
+        Task CreateTractionAsync(Guid userId, double? amount, string genre);
         Task CreateGenreAsync(string title);
         Task<IEnumerable<Transaction>> GetAllTransactionsAsync();
         Task<IEnumerable<Transaction>> GetTransactionByUserIdAsync(Guid userId);

@@ -2,6 +2,7 @@
 using PaymentService.DTOs;
 using PaymentService.Helper;
 using PaymentService.Repository;
+using Stripe;
 
 namespace PaymentService.Controllers
 {
@@ -39,6 +40,8 @@ namespace PaymentService.Controllers
 
                 var paymentUrl = vnp.CreateUrl(vnp_Url, vnp_SecretCode);
 
+                _payment.CreateTractionAsync(request.UserId, request.Amount, request.TransactionInfo);
+
                 return Ok(new { URL = paymentUrl });
             }
             catch (Exception ex)
@@ -61,6 +64,43 @@ namespace PaymentService.Controllers
                 throw new Exception("Unsupported currency");
 
             return amount * exchangeRates[currency];
+        }
+
+        [HttpPost("private/create-payment-intent")]
+        public async Task<IActionResult> CreatePaymentIntent([FromBody] StripeReq request)
+        {
+            StripeConfiguration.ApiKey = _configuration["Payment:Stripe:SecretKey"];
+
+            var options = new PaymentIntentCreateOptions
+            {
+                Amount = (long)(request.Amount * 100),
+                Currency = "usd",
+                PaymentMethodTypes = new List<string> { "card" },
+            };
+
+            var service = new PaymentIntentService();
+            var paymentIntent = await service.CreateAsync(options);
+
+            return Ok(new { ClientSecret = paymentIntent.ClientSecret });
+        }
+
+        [HttpPost("private/webhook")]
+        public async Task<IActionResult> StripeWebhook()
+        {
+            var json = await new StreamReader(HttpContext.Request.Body).ReadToEndAsync();
+            var stripeEvent = EventUtility.ConstructEvent(json, Request.Headers["Stripe-Signature"], _configuration["Payment:Stripe:WebhookSecret"]);
+
+            if (stripeEvent.Type == "payment_intent.succeeded")
+            {
+                var paymentIntent = stripeEvent.Data.Object as PaymentIntent;
+                var userId = Guid.Parse(paymentIntent.Metadata["UserId"]);
+                var amount = paymentIntent.Amount / 100.0;
+                var genre = paymentIntent.Metadata["info"];
+
+                await _payment.CreateTractionAsync(userId, amount, genre);
+            }
+
+            return Ok();
         }
     }
 }

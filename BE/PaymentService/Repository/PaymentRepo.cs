@@ -23,12 +23,17 @@ namespace PaymentService.Repository
             await _context.Genre.AddAsync(genre);
         }
 
-        public async Task CreateTractionAsync(Guid userId, double? amount)
+        public async Task CreateTractionAsync(Guid userId, double? amount, string genre)
         {
+            var genreExisting = _context.Genre.Where(g => g.Name == genre).FirstOrDefault();
+            if (genreExisting == null)
+                throw new Exception("Genre is not valid");
+
             var transaction = new Transaction
             {
                 UserId = userId,
-                Amount = amount ?? 0.0
+                Amount = amount ?? 0.0,
+                GenreId = genreExisting.Id
             };
 
             await _context.Transactions.AddAsync(transaction);
