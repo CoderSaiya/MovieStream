@@ -12,6 +12,7 @@ namespace PaymentService.Models
         [ForeignKey("GenreId")]
         public Genre Genre { get; set; } = null!;
         public double Amount { get; set; } = 0.0;
+        public string Currency { get; set; } = string.Empty;
         public string Description { get; set; } = null!;
         public DateTime CreateAt { get; set; } = DateTime.Now;
     }
