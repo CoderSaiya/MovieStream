@@ -34,19 +34,23 @@ public class MovieController : ControllerBase
     }
 
     [HttpPost("private")]
-    public async Task<IActionResult> CreateMovie([FromBody] CreateMovieReq createMovieReq, [FromForm] IFormFile file)
+    public async Task<IActionResult> CreateMovie([FromBody] CreateMovieReq createMovieReq, [FromForm] IFormFile video, [FromForm] List<IFormFile> images)
     {
-        if (file == null || file.Length == 0)
+        if (video == null || video.Length == 0)
             return BadRequest("Invalid video file.");
+        if (images == null || !images.Any())
+            return BadRequest("At least one image is required.");
         try
         {
-            using var stream = file.OpenReadStream();
-            int id = await _movieRepo.AddMovieAsync(createMovieReq.MovieDto, createMovieReq.GenreIds, createMovieReq.ImageUrls, createMovieReq.StudioIds, stream);
+            using var videoStream = video.OpenReadStream();
+            var imageStreams = images.Select(img => new ImageFileData(img, img.OpenReadStream())).ToList();
+
+            int id = await _movieRepo.AddMovieAsync(createMovieReq.MovieDto, createMovieReq.GenreIds, createMovieReq.StudioIds, videoStream, imageStreams);
             return CreatedAtAction(nameof(GetMovie), new { id = id });
         }
         catch (Exception ex)
         {
-            return StatusCode(500, $"Error uploading video: {ex.Message}");
+            return StatusCode(500, $"Error uploading video or images: {ex.Message}");
         }
     }
 

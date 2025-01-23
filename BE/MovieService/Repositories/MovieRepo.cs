@@ -27,7 +27,7 @@ namespace MovieService.Repositories
         {
             return await _context.Movies.FindAsync(id);
         }
-        public async Task<int> AddMovieAsync(MovieDTO movieDto, List<int> genreIds, List<string> imageUrls, List<int> studioIds, Stream videoStream)
+        public async Task<int> AddMovieAsync(MovieDTO movieDto, List<int> genreIds, List<int> studioIds, Stream videoStream, List<ImageFileData> imageFiles)
         {
             var genres = await _context.Genres
                 .Where(g => genreIds.Contains(g.Id))
@@ -53,7 +53,6 @@ namespace MovieService.Repositories
                 {
                     Title = movieDto.Title,
                     AlternateTitle = movieDto.AlternateTitle,
-                    CoverImage = movieDto.CoverImage,
                     Rating = movieDto.Rating,
                     Synopsis = movieDto.Synopsis,
                     Director = movieDto.Director,
@@ -65,9 +64,8 @@ namespace MovieService.Repositories
                     Followers = movieDto.Followers,
                     Quality = movieDto.Quality,
                     IsVipOnly = movieDto.IsVipOnly,
-                    FileUrl = movieDto.FileUrl,
                     ReleaseDate = movieDto.ReleaseDate,
-                    Status = movieDto.Status
+                    Status = movieDto.Status,
                 };
 
                 foreach (var genre in genres)
@@ -80,19 +78,28 @@ namespace MovieService.Repositories
                     movie.MovieStudios.Add(new MovieStudio { StudioId = studio.Id });
                 }
 
-                foreach (var imageUrl in imageUrls)
+                var uploadedImages = new List<string>();
+                foreach (var imageFile in imageFiles)
                 {
+                    var imageUrl = await _storageService.UploadImageAsync(imageFile.Stream, $"{Guid.NewGuid()}_{imageFile.File.FileName}");
+                    uploadedImages.Add(imageUrl);
                     movie.Images.Add(new Image { Url = imageUrl });
                 }
 
-                var fileUrl = await _storageService.UploadVideoAsync(videoStream, movie.Title);
-                movie.FileUrl = fileUrl;
+                if (uploadedImages.Any())
+                {
+                    movie.CoverImage = uploadedImages.First();
+                }
+
+                var videoUrl = await _storageService.UploadVideoAsync(videoStream, $"{Guid.NewGuid()}_{movie.Title.Replace(" ", "_")}.mp4");
+                movie.FileUrl = videoUrl;
+
                 await _context.Movies.AddAsync(movie);
                 await _context.SaveChangesAsync();
 
                 var @event = new MovieCreatedEvent(
                     movie.Id,
-                    movie.Images.FirstOrDefault()?.Url ?? string.Empty,
+                    movie.CoverImage,
                     movie.Title,
                     movie.Synopsis,
                     string.Join(", ", genres.Select(g => g.Name)),
@@ -100,6 +107,7 @@ namespace MovieService.Repositories
                 );
                 _eventBus.Publish(@event);
 
+                await transaction.CommitAsync();
                 return movie.Id;
             }
             catch

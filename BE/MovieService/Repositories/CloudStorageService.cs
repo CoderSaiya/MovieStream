@@ -21,9 +21,18 @@ namespace MovieService.Repositories
 
         public async Task<string> UploadVideoAsync(Stream videoStream, string fileName)
         {
+            string key = $"movieflix/video/{fileName}";
             var transferUtility = new TransferUtility(_client);
-            await transferUtility.UploadAsync(videoStream, _bucketName, fileName);
-            return $"https://{_bucketName}.s3.amazonaws.com/{fileName}";
+            await transferUtility.UploadAsync(videoStream, _bucketName, key);
+            return $"https://{_bucketName}.s3.amazonaws.com/{key}";
+        }
+
+        public async Task<string> UploadImageAsync(Stream imageStream, string fileName)
+        {
+            string key = $"movieflix/image/{fileName}";
+            var transferUtility = new TransferUtility(_client);
+            await transferUtility.UploadAsync(imageStream, _bucketName, key);
+            return $"https://{_bucketName}.s3.amazonaws.com/{key}";
         }
 
         public string GeneratePreSignedUrl(string fileName)
