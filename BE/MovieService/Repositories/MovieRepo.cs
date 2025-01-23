@@ -25,7 +25,12 @@ namespace MovieService.Repositories
 
         public async Task<Movie?> GetMovieByIdAsync(int id)
         {
-            return await _context.Movies.FindAsync(id);
+            return await _context.Movies
+                .Include(m => m.MovieGenres)
+                .Include(m => m.MovieStudios)
+                .Include(m => m.Episodes)
+                .Include(m => m.Images)
+                .FirstOrDefaultAsync(m => m.Id == id);
         }
         public async Task<int> AddMovieAsync(MovieDTO movieDto, List<int> genreIds, List<int> studioIds, Stream videoStream, List<ImageFileData> imageFiles)
         {
