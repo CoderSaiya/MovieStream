@@ -31,6 +31,7 @@
     "zustand": "^5.0.2"
   },
   "devDependencies": {
+    "@ant-design/v5-patch-for-react-19": "^1.0.3",
     "@eslint/eslintrc": "^3",
     "@types/aos": "^3.0.7",
     "@types/node": "^20",
