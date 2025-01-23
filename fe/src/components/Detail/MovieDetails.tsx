@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button"
 import { StarRating } from "@/components/StarRating"
 import { Clock, Eye } from 'lucide-react'
 import { MovieDetailsProps } from "@/types"
+import { useParams, useRouter } from "next/navigation"
 
 export function MovieDetails({
     title,
@@ -26,6 +27,12 @@ export function MovieDetails({
     country,
     followers
 }: MovieDetailsProps) {
+    const router = useRouter();
+    const param = useParams();
+    const id = param.id as string;
+
+    console.log(router);
+
     return (
         <div className="container py-6">
             <div className="relative mb-6">
@@ -41,7 +48,12 @@ export function MovieDetails({
                                 priority
                             />
                         </div>
-                        <Button className="flex px-20 py-2 my-2 w-full bg-red-600 hover:bg-red-700" data-aos="fade-up">
+                        <Button className="flex px-20 py-2 my-2 w-full bg-red-600 hover:bg-red-700"
+                            data-aos="fade-up"
+                            onClick={() => {
+                                router.push(`${id}/watch`);
+                            }}
+                        >
                             WATCH NOW
                         </Button>
                     </div>
