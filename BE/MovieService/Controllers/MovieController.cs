@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using MovieService.Data;
 using MovieService.Repositories;
 using MovieService.DTOs;
 
@@ -48,6 +47,22 @@ public class MovieController : ControllerBase
         catch (Exception ex)
         {
             return StatusCode(500, $"Error uploading video: {ex.Message}");
+        }
+    }
+
+    [HttpPost("private/genre")]
+    public async Task<IActionResult> CreateGenre(string nameGenre)
+    {
+        if (nameGenre.Length == 0)
+            return BadRequest("Invalid genre.");
+        try
+        {
+            int id = await _movieRepo.AddGenreAsync(nameGenre);
+            return Ok(new { id = id });
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, $"Error: {ex.Message}");
         }
     }
 

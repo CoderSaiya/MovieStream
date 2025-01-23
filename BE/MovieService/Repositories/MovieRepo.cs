@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using MovieService.Data;
 using MovieService.DTOs;
-using MovieService.Events;
+using MovieService.Handlers;
 using MovieService.Models;
 using SharedLibrary.EventBus;
 using SharedLibrary.Events;
@@ -106,6 +106,22 @@ namespace MovieService.Repositories
             {
                 await transaction.RollbackAsync();
                 throw new Exception("An error occurred during processing.");
+            }
+        }
+
+        public async Task<int> AddGenreAsync(string name)
+        {
+            try
+            {
+                var genre = new Genre { Name = name };
+                await _context.Genres.AddAsync(genre);
+                await _context.SaveChangesAsync();
+
+                return genre.Id;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
             }
         }
 
