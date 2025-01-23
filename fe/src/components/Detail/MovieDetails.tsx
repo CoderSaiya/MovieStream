@@ -40,13 +40,19 @@ export function MovieDetails({
                     {/* Cover Image */}
                     <div className="relative mb-4 flex-shrink-0 md:mb-0">
                         <div className="relative h-[400px] w-[300px] overflow-hidden rounded-lg" data-aos="fade-right">
-                            <Image
-                                src={coverImage}
-                                alt={title}
-                                fill
-                                className="object-cover"
-                                priority
-                            />
+                            {coverImage ? (
+                                <Image
+                                    src={coverImage}
+                                    alt={title || "No title"}
+                                    fill
+                                    className="object-cover"
+                                    priority
+                                />
+                            ) : (
+                                <div className="h-[400px] w-[300px] bg-gray-800 flex items-center justify-center text-white">
+                                    No Image Available
+                                </div>
+                            )}
                         </div>
                         <Button className="flex px-20 py-2 my-2 w-full bg-red-600 hover:bg-red-700"
                             data-aos="fade-up"
@@ -74,7 +80,7 @@ export function MovieDetails({
                             </div>
                             <div className="flex items-center gap-1">
                                 <Eye className="h-4 w-4" />
-                                {viewCount.toLocaleString()} Views
+                                {(viewCount ?? 0).toLocaleString()} Views
                             </div>
                         </div>
 
@@ -84,7 +90,7 @@ export function MovieDetails({
                             <div className="space-y-2">
                                 <div className="flex items-start gap-2">
                                     <span className="font-medium text-gray-400">New episode:</span>
-                                    <span>{episodes.current}_END</span>
+                                    <span>{episodes?.current}_END</span>
                                 </div>
                                 <div className="flex items-start gap-2">
                                     <span className="font-medium text-gray-400">Schedule:</span>
@@ -97,7 +103,7 @@ export function MovieDetails({
                                 <div className="flex items-start gap-2">
                                     <span className="font-medium text-gray-400">Gerne:</span>
                                     <div className="flex flex-wrap gap-1">
-                                        {genres.map((genre) => (
+                                        {genres?.map((genre) => (
                                             <span
                                                 key={genre}
                                                 className="rounded bg-gray-800 px-2 py-0.5 text-xs text-gray-300"
@@ -129,7 +135,7 @@ export function MovieDetails({
                                 </div>
                                 <div className="flex items-start gap-2">
                                     <span className="font-medium text-gray-400">Studio:</span>
-                                    <span>{studio.join(", ")}</span>
+                                    <span>{Array.isArray(studio) ? studio.join(", ") : "No studio information available"}</span>
                                 </div>
                                 <div className="flex items-start gap-2">
                                     <span className="font-medium text-gray-400">Season:</span>

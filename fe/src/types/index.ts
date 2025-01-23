@@ -61,3 +61,20 @@ export interface AuthContextType {
     checkPermission: (action: string, subject: string) => boolean
     isAuthenticated: boolean
 }
+
+interface OkResponse<T> {
+    status: "OK";
+    data: T;
+}
+
+interface NotFoundResponse {
+    status: "NotFound";
+    message: string;
+}
+
+interface BadRequestResponse {
+    status: "BadRequest";
+    message: string;
+}
+
+export type ApiResponse<T> = OkResponse<T> | NotFoundResponse | BadRequestResponse;

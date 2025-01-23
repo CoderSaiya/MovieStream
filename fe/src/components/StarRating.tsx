@@ -35,7 +35,7 @@ export function StarRating({ rating, totalRatings, showCount = true }: StarRatin
             </div>
             {showCount && (
                 <span className="text-sm text-gray-400">
-                    (Review {rating.toFixed(1)}/10 from {totalRatings} member(s))
+                    (Review {(rating ?? 0.0).toFixed(1)}/10 from {totalRatings} member(s))
                 </span>
             )}
         </div>

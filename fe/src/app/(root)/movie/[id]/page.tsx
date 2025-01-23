@@ -1,12 +1,7 @@
-'use client'
+import { Metadata } from "next";
+import DetailClient from "./client";
 
-import { CommentsSection } from "@/components/Detail/CommentSection"
-import { MovieDetails } from "@/components/Detail/MovieDetails"
-import { MovieTab } from "@/components/Detail/MovieTab"
-
-export default function DetailPage() {
-
-  // update sau
+// update sau
   const movieData = {
     id: 1,
     title: "Doraemon: Nobita's New Dinosaur",
@@ -34,13 +29,15 @@ export default function DetailPage() {
     followers: 55
   }
 
-  return (
-    <>
 
-      <MovieDetails {...movieData} />
-      <MovieTab />
-      <CommentsSection />
-    </>
+export const metadata: Metadata = {
+  title: movieData.title,
+  description: movieData.synopsis,
+};
+
+export default function DetailPage() {
+  return (
+    <DetailClient/>
   )
 }
 
