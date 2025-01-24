@@ -111,4 +111,12 @@ public class MovieController : ControllerBase
         var streamURL = _cloudStorageService.GeneratePreSignedUrl(existingMovie.Title);
         return Ok(new { URL = streamURL });
     }
+
+    [HttpGet("public/filter")]
+    public async Task<IActionResult> PagingMovie([FromQuery] PagingReq request)
+    {
+        var result = await _movieRepo.GetPagedMovieAsync(request);
+        if(result == null) return NoContent();
+        return Ok(result);
+    }
 }

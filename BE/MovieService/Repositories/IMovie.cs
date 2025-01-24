@@ -1,5 +1,6 @@
 ﻿using MovieService.DTOs;
 using MovieService.Models;
+using SharedLibrary.Classes;
 
 namespace MovieService.Repositories
 {
@@ -15,5 +16,6 @@ namespace MovieService.Repositories
         Task DeleteMovieAsync(int id);
         Task<List<Movie>> GetTrendingMoviesAsync();
         Task<bool> CheckVipStatusAsync(string userId);
+        Task<PageResult<Movie>> GetPagedMovieAsync(PagingReq request);
     }
 }

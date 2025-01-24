@@ -3,8 +3,10 @@ using MovieService.Data;
 using MovieService.DTOs;
 using MovieService.Handlers;
 using MovieService.Models;
+using SharedLibrary.Classes;
 using SharedLibrary.EventBus;
 using SharedLibrary.Events;
+using System.Linq.Dynamic.Core;
 
 namespace MovieService.Repositories
 {
@@ -243,6 +245,36 @@ namespace MovieService.Repositories
             _eventBus.Publish(eventMessage);
 
             return true;
+        }
+
+        public async Task<PageResult<Movie>> GetPagedMovieAsync(PagingReq request)
+        {
+            var query = _context.Movies
+                .Include(m => m.MovieGenres)
+                .Include(m => m.MovieStudios)
+                .Include(m => m.Episodes)
+                .Include(m => m.Images)
+                .AsQueryable();
+
+            if (!string.IsNullOrWhiteSpace(request.SortBy))
+            {
+                var isDescending = request.SortOrder.Equals("desc", StringComparison.OrdinalIgnoreCase);
+                query = query.OrderBy($"{request.SortBy} {(isDescending ? "descending" : "ascending")}");
+            }
+
+            var totalItems = await query.CountAsync();
+            var items = await query
+                .Skip((request.PageNumber - 1) * request.PageSize)
+                .Take(request.PageSize)
+                .ToListAsync();
+
+            return new PageResult<Movie>
+            {
+                Items = items,
+                TotalCount = totalItems,
+                PageNumber = request.PageNumber,
+                PageSize = request.PageSize
+            };
         }
     }
 }
