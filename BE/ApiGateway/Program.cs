@@ -21,6 +21,19 @@ builder.Services.AddAuthentication("JwtBearer")
             ValidAudience = builder.Configuration["Jwt:Audience"],
             IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("MovieFlix2025"))
         };
+        options.Events = new Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerEvents
+        {
+            OnAuthenticationFailed = context =>
+            {
+                if(context.Exception is SecurityTokenExpiredException)
+                {
+                    context.Response.StatusCode = 401;
+                    context.Response.ContentType = "application/json";
+                    return context.Response.WriteAsync("{\"error\": \"Token has expired\"}");
+                }
+                return Task.CompletedTask;
+            }
+        };
     });
 
 // Add Ocelot and Swagger for Ocelot
