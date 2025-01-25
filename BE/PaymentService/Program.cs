@@ -17,7 +17,7 @@ builder.Services.AddDbContext<PaymentDbContext>(option =>
     option.UseSqlServer(builder.Configuration["ConnectionStrings:DefaultConnection"]);
 });
 
-builder.Services.AddScoped<IPayment, PaymentRepo>();
+builder.Services.AddScoped<IPayment, PaymentService.Services.PaymentService>();
 
 // Add RabbitMQ Event Bus
 builder.Services.AddSingleton<IEventBus, EventBus>(sp =>

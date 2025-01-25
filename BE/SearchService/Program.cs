@@ -30,7 +30,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddSingleton<SearchService.ElasticsearchClient>();
-builder.Services.AddScoped<ISearch, SearchRepo>();
+builder.Services.AddScoped<ISearch, SearchService.Services.SearchService>();
 
 // Add RabbitMQ Event Bus
 builder.Services.AddSingleton<IEventBus, EventBus>(sp =>

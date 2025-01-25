@@ -6,11 +6,11 @@ using UserService.Models;
 
 namespace UserService.Services
 {
-    public class UserRepo : IUser
+    public class UserService : IUser
     {
         private readonly UserDbContext _context;
         private readonly PasswordHasher<User> _passwordHasher;
-        public UserRepo(UserDbContext context, PasswordHasher<User> passwordHasher)
+        public UserService(UserDbContext context, PasswordHasher<User> passwordHasher)
         {
             _context = context;
             _passwordHasher = passwordHasher;

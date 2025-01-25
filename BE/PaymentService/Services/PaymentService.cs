@@ -4,11 +4,11 @@ using PaymentService.Models;
 
 namespace PaymentService.Services
 {
-    public class PaymentRepo : IPayment
+    public class PaymentService : IPayment
     {
         private readonly PaymentDbContext _context;
 
-        public PaymentRepo(PaymentDbContext context)
+        public PaymentService(PaymentDbContext context)
         {
             _context = context;
         }

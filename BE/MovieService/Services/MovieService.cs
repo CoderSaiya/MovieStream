@@ -10,14 +10,14 @@ using System.Linq.Dynamic.Core;
 
 namespace MovieService.Repositories
 {
-    public class MovieRepo : IMovie
+    public class MovieService : IMovie
     {
         private readonly MovieDbContext _context;
         private readonly IHttpClientFactory _httpClientFactory;
         private readonly IEventBus _eventBus;
         private readonly CloudStorageService _storageService;
 
-        public MovieRepo(MovieDbContext context, IHttpClientFactory httpClientFactory, IEventBus eventBus, CloudStorageService storageService)
+        public MovieService(MovieDbContext context, IHttpClientFactory httpClientFactory, IEventBus eventBus, CloudStorageService storageService)
         {
             _context = context;
             _httpClientFactory = httpClientFactory;

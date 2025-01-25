@@ -21,7 +21,7 @@ builder.Services.AddDbContext<UserDbContext>(options =>
 });
 
 builder.Services.AddScoped<PasswordHasher<User>>();
-builder.Services.AddScoped<IUser, UserRepo>();
+builder.Services.AddScoped<IUser, UserService.Services.UserService>();
 
 // Add RabbitMQ Event Bus
 builder.Services.AddSingleton<IEventBus, EventBus>(sp =>

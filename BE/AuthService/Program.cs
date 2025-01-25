@@ -39,7 +39,7 @@ builder.Services.AddAuthentication().AddGoogle(GoogleDefaults.AuthenticationSche
 });
 builder.Services.AddAuthorization();
 
-builder.Services.AddScoped<IAuth, AuthRepo>();
+builder.Services.AddScoped<IAuth, AuthService.Services.AuthService>();
 
 // Add RabbitMQ Event Bus
 builder.Services.AddSingleton<IEventBus, EventBus>(sp =>

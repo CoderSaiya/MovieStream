@@ -10,11 +10,11 @@ using AuthService.DTOs;
 
 namespace AuthService.Services
 {
-    public class AuthRepo : IAuth
+    public class AuthService : IAuth
     {
         private readonly IdentityDbContext _context;
         private readonly IConfiguration _config;
-        public AuthRepo(IConfiguration config, IdentityDbContext context)
+        public AuthService(IConfiguration config, IdentityDbContext context)
         {
             _config = config;
             _context = context;

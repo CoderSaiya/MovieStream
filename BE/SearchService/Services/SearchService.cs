@@ -5,10 +5,10 @@ using SharedLibrary.Events;
 
 namespace SearchService.Services
 {
-    public class SearchRepo : ISearch
+    public class SearchService : ISearch
     {
         private readonly Elastic.Clients.Elasticsearch.ElasticsearchClient _client;
-        public SearchRepo(ElasticsearchClient client)
+        public SearchService(ElasticsearchClient client)
         {
             _client = client.Client;
         }
