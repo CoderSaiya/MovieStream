@@ -1,0 +1,10 @@
+﻿UserId,MovieId,Genre,Rating
+1,101,Action,4.5
+1,102,Comedy,3.0
+1,103,Drama,4.8
+2,101,Action,5.0
+2,104,Horror,3.5
+3,105,Romance,4.0
+3,103,Drama,4.2
+4,101,Action,4.0
+4,106,Thriller,4.7

@@ -1,7 +1,6 @@
 ﻿namespace RecommendationService.Models;
 
-public class PredictionResult
+public class MovieRatingPrediction
 {
-    public string MovieId { get; set; }
     public float Score { get; set; }
 }
