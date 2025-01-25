@@ -1,7 +1,7 @@
 ﻿using AuthService.DTOs;
 using AuthService.Models;
 
-namespace AuthService.Repositories
+namespace AuthService.Services
 {
     public interface IAuth
     {

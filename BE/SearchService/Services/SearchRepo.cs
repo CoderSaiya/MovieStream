@@ -3,7 +3,7 @@ using Elastic.Clients.Elasticsearch.QueryDsl;
 using SearchService.DTOs;
 using SharedLibrary.Events;
 
-namespace SearchService.Repositories
+namespace SearchService.Services
 {
     public class SearchRepo : ISearch
     {

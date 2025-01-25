@@ -1,7 +1,7 @@
 ﻿using MailKit.Net.Smtp;
 using MimeKit;
 
-namespace GmailService.Repository
+namespace GmailService.Services
 {
     public class GmailService : IGmail
     {

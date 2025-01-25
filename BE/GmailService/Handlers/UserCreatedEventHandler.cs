@@ -1,4 +1,4 @@
-﻿using GmailService.Repository;
+﻿using GmailService.Services;
 using SharedLibrary.Events;
 using SharedLibrary.Integration;
 

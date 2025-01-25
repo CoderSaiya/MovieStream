@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PaymentService.DTOs;
 using PaymentService.Helper;
-using PaymentService.Repository;
+using PaymentService.Services;
 using Stripe;
 
 namespace PaymentService.Controllers

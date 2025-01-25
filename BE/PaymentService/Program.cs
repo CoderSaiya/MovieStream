@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using PaymentService.Data;
-using PaymentService.Repository;
+using PaymentService.Services;
 using SharedLibrary.EventBus;
 
 var builder = WebApplication.CreateBuilder(args);

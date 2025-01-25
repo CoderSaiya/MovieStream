@@ -1,4 +1,4 @@
-﻿namespace GmailService.Repository
+﻿namespace GmailService.Services
 {
     public interface IGmail
     {

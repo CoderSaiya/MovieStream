@@ -2,7 +2,7 @@
 using PaymentService.Data;
 using PaymentService.Models;
 
-namespace PaymentService.Repository
+namespace PaymentService.Services
 {
     public class PaymentRepo : IPayment
     {

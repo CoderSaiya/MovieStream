@@ -1,6 +1,6 @@
 ﻿using PaymentService.Models;
 
-namespace PaymentService.Repository
+namespace PaymentService.Services
 {
     public interface IPayment
     {

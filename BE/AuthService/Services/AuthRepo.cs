@@ -8,7 +8,7 @@ using System.Security.Cryptography;
 using System.Text;
 using AuthService.DTOs;
 
-namespace AuthService.Repositories
+namespace AuthService.Services
 {
     public class AuthRepo : IAuth
     {

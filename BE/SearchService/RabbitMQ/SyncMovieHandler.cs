@@ -1,4 +1,4 @@
-﻿using SearchService.Repositories;
+﻿using SearchService.Services;
 using SharedLibrary.Events;
 using SharedLibrary.Integration;
 

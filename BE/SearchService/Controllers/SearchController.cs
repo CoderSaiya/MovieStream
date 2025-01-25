@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using SearchService.Repositories;
+using SearchService.Services;
 
 namespace SearchService.Controllers
 {

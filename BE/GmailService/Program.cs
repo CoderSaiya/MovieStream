@@ -1,5 +1,5 @@
 using GmailService.Handler;
-using GmailService.Repository;
+using GmailService.Services;
 using SharedLibrary.EventBus;
 using SharedLibrary.Events;
 
@@ -14,7 +14,7 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-builder.Services.AddScoped<IGmail, GmailService.Repository.GmailService>();
+builder.Services.AddScoped<IGmail, GmailService.Services.GmailService>();
 
 // Add RabbitMQ Event Bus
 builder.Services.AddSingleton<IEventBus, EventBus>(sp =>

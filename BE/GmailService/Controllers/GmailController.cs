@@ -1,4 +1,4 @@
-﻿using GmailService.Repository;
+﻿using GmailService.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GmailService.Controllers

@@ -4,7 +4,7 @@ using UserService.Data;
 using UserService.Model;
 using UserService.Models;
 
-namespace UserService.Repository
+namespace UserService.Services
 {
     public class UserRepo : IUser
     {

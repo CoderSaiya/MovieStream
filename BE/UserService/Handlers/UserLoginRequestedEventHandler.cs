@@ -3,7 +3,7 @@ using SharedLibrary.Events;
 using SharedLibrary.Integration;
 using UserService.Model;
 using UserService.Models;
-using UserService.Repository;
+using UserService.Services;
 
 namespace UserService.Handlers
 {

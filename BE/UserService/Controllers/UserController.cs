@@ -2,7 +2,7 @@
 using UserService.DTOs;
 using Microsoft.AspNetCore.Mvc;
 using SharedLibrary.EventBus;
-using UserService.Repository;
+using UserService.Services;
 using SharedLibrary.Events;
 using Microsoft.Extensions.Logging;
 

@@ -2,7 +2,7 @@ using AuthService.Data;
 using Microsoft.EntityFrameworkCore;
 using SharedLibrary.Events;
 using AuthService.Events;
-using AuthService.Repositories;
+using AuthService.Services;
 using SharedLibrary.EventBus;
 using SharedLibrary.Handler;
 using Microsoft.AspNetCore.Authentication.Google;

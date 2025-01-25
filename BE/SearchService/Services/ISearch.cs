@@ -2,7 +2,7 @@
 using Elastic.Clients.Elasticsearch;
 using SharedLibrary.Events;
 
-namespace SearchService.Repositories
+namespace SearchService.Services
 {
     public interface ISearch
     {

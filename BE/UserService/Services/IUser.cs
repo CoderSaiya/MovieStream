@@ -1,6 +1,6 @@
 ﻿using UserService.Models;
 
-namespace UserService.Repository
+namespace UserService.Services
 {
     public interface IUser
     {

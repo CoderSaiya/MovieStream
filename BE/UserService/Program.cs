@@ -2,7 +2,7 @@ using UserService.Data;
 using Microsoft.EntityFrameworkCore;
 using SharedLibrary.EventBus;
 using UserService.Handlers;
-using UserService.Repository;
+using UserService.Services;
 using SharedLibrary.Events;
 using Microsoft.AspNetCore.Identity;
 using UserService.Models;

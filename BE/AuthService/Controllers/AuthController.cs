@@ -1,6 +1,6 @@
 ﻿using AuthService.Data;
 using AuthService.DTOs;
-using AuthService.Repositories;
+using AuthService.Services;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using SharedLibrary.EventBus;
