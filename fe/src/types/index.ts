@@ -71,11 +71,13 @@ interface OkResponse<T> {
 interface NotFoundResponse {
     status: "NotFound";
     message: string;
+    data: undefined;
 }
 
 interface BadRequestResponse {
     status: "BadRequest";
     message: string;
+    data: undefined;
 }
 
 export type ApiResponse<T> = OkResponse<T> | NotFoundResponse | BadRequestResponse;

@@ -53,7 +53,7 @@ export default function DetailClient() {
             rating: movie?.rating || 0,
             totalRatings: 0,
             releaseDate: movie?.date || "Unknown Date",
-            viewCount: movie?.views || "0",
+            viewCount: movie?.views || 0,
             episodes: {
                 current: movie?.episode || 0,
                 total: 0,
