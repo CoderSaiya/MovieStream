@@ -20,7 +20,7 @@ export function MovieCard({movie, isHovered, isScrolling, onMouseEnter, onMouseL
                 </div>
                 <div className="mt-2 space-y-1">
                     <h3 className="line-clamp-2 text-sm font-semibold">{movie.title}</h3>
-                    <p className="views-count text-xs sm:text-sm">Lượt xem: {movie.views}</p>
+                    <p className="views-count text-xs sm:text-sm">Views: {movie.views?.toLocaleString()}</p>
                 </div>
             </Link>
             {isHovered && !isScrolling && <MovieTooltip {...movie} />}

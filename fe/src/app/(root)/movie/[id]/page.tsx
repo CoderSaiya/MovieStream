@@ -11,7 +11,7 @@ import DetailClient from "./client";
     rating: 9.3,
     totalRatings: 27,
     releaseDate: "12/12",
-    viewCount: '5,699',
+    viewCount: 5699,
     episodes: {
       current: 1,
       total: 1

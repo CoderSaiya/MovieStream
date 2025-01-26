@@ -15,7 +15,7 @@ export interface FeatureCardProps extends FeatureItem {
 
 export interface MovieTooltipProps {
     title: string
-    episode: number
+    episode?: number
     date?: string | "Ongoing"
     year?: number | "Ongoing"
     quality?: string | "Ongoing"
@@ -33,7 +33,7 @@ export interface MovieDetailsProps {
     rating: number
     totalRatings: number
     releaseDate: string
-    viewCount: string
+    viewCount: number
     episodes: {
         current: number
         total: number

@@ -41,7 +41,7 @@ export function MovieTooltip({
                             <span className="text-gray-600">{studio}</span>
                         </div>
                         <div className="flex items-start gap-2 text-sm">
-                            <span className="font-medium text-gray-900">Thể loại:</span>
+                            <span className="font-medium text-gray-900">Genre:</span>
                             <div className="flex flex-wrap gap-1">
                                 {genres.map((genre) => (
                                     <Badge key={genre} variant="outline" className="text-xs">
@@ -51,7 +51,7 @@ export function MovieTooltip({
                             </div>
                         </div>
                         <div className="flex items-start gap-2 text-sm">
-                            <span className="font-medium text-gray-900">Diễn viên:</span>
+                            <span className="font-medium text-gray-900">Performer:</span>
                             <span className="text-gray-600">{cast}</span>
                         </div>
                     </div>

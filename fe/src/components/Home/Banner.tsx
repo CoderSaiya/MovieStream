@@ -91,7 +91,7 @@ export const Banner = () => {
                   <span className="text-white">{slide.studio}</span>
                 </div>
                 <div className="flex items-center space-x-2 text-sm text-white">
-                  <span className="font-semibold">Thể Loại:</span>
+                  <span className="font-semibold">Genre:</span>
                   <div className="flex flex-wrap gap-2">
                     {slide.genres?.map((genre) => (
                       <span

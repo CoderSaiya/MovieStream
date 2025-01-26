@@ -2,8 +2,8 @@ export interface MovieType {
     id: number;
     title: string;
     description?: string;
-    episode: number;
-    views?: string;
+    episode?: number;
+    views?: number;
     rating?: number;
     image: string;
     genres: string[];

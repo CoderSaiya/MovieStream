@@ -42,7 +42,7 @@ export function NavBar() {
                     <div className="hidden lg:flex flex-1 items-center">
                         <div className="flex items-center space-x-6 text-sm font-medium ml-8">
                             <Link
-                                href="/movies"
+                                href="/movie"
                                 className="transition hover:text-foreground/80"
                             >
                                 Movies

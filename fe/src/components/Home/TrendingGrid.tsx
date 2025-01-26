@@ -38,7 +38,7 @@ export function TrendingGrid({
                 </div>
                 <div className="mt-2 space-y-1">
                     <h3 className="line-clamp-2 text-sm font-semibold text-gray-900">{movie.title}</h3>
-                    <p className="text-xs sm:text-sm text-gray-600">Lượt xem: {movie.views}</p>
+                    <p className="text-xs sm:text-sm text-gray-600">Views: {movie.views?.toLocaleString()}</p>
                 </div>
             </Link>
             {isHovered && !isScrolling && (
