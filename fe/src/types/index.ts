@@ -1,5 +1,6 @@
 import { LucideIcon } from "lucide-react";
 import { User } from "./user";
+import type {MovieType} from "@/types/movie";
 
 export interface FeatureItem {
     icon: LucideIcon;
@@ -78,3 +79,12 @@ interface BadRequestResponse {
 }
 
 export type ApiResponse<T> = OkResponse<T> | NotFoundResponse | BadRequestResponse;
+
+export interface MovieCardProps {
+    movie: MovieType
+    index: number
+    isHovered: boolean
+    isScrolling: boolean
+    onMouseEnter: () => void
+    onMouseLeave: () => void
+}

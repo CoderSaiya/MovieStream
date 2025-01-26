@@ -1,10 +1,10 @@
-import { MovieType } from "@/types/movie"
-import Image from "next/image"
+import {MovieType} from "@/types/movie"
 import Link from "next/link"
-import { useEffect, useRef, useState } from "react";
-import { MovieTooltip } from "../MovieTooltip";
+import {useEffect, useMemo, useRef, useState} from "react";
+import {TrendingGrid} from "@/components/Home/TrendingGrid";
+import {MovieCard} from "@/components/Home/MovieCard";
 
-export function MovieGrid({ movies, title }: { movies: MovieType[]; title: string }) {
+export function MovieGrid({movies, title}: { movies: MovieType[]; title: string }) {
     const scrollRef = useRef<HTMLDivElement>(null)
     const [hoveredAnime, setHoveredAnime] = useState<number | null>(null)
     const [isScrolling, setIsScrolling] = useState(false)
@@ -57,6 +57,32 @@ export function MovieGrid({ movies, title }: { movies: MovieType[]; title: strin
             }
         }
     }, []);
+
+    const renderMovieItem = useMemo(() => {
+        return movies.map((movie, index) =>
+            title.toUpperCase() === "TRENDING MOVIES" ? (
+                <TrendingGrid
+                    key={movie.id}
+                    movie={movie}
+                    index={index}
+                    isHovered={hoveredAnime === movie.id}
+                    isScrolling={isScrolling}
+                    onMouseEnter={() => !isScrolling && setHoveredAnime(movie.id)}
+                    onMouseLeave={() => setHoveredAnime(null)}
+                />
+            ) : (
+                <MovieCard
+                    key={movie.id}
+                    movie={movie}
+                    index={index}
+                    isHovered={hoveredAnime === movie.id}
+                    isScrolling={isScrolling}
+                    onMouseEnter={() => !isScrolling && setHoveredAnime(movie.id)}
+                    onMouseLeave={() => setHoveredAnime(null)}
+                />
+            )
+        )
+    }, [movies, title, hoveredAnime, isScrolling])
     return (
         <section className="w-full py-12 md:py-16" data-aos="fade-down">
             <div className="container mx-auto px-4 -mt-16 md:-mt-20 relative z-10 mb-12">
@@ -69,47 +95,9 @@ export function MovieGrid({ movies, title }: { movies: MovieType[]; title: strin
                 <div
                     ref={scrollRef}
                     className="flex space-x-4 overflow-x-auto pb-4 cursor-grab active:cursor-grabbing scrollbar-hide"
-                    data-aos="fade-up">
-                    {movies.map((movie) => (
-                        <div
-                            key={movie.id}
-                            className="relative"
-                            onMouseEnter={() => !isScrolling && setHoveredAnime(movie.id)}
-                            onMouseLeave={() => setHoveredAnime(null)}
-                        >
-                            <Link href={`/movie/${movie.id}`} key={movie.id} className="movie-card">
-                                <div className="relative h-[180px] w-[120px] sm:h-[240px] sm:w-[160px] md:h-[280px] md:w-[200px]">
-                                    <Image
-                                        src={movie.image}
-                                        alt={movie.title}
-                                        fill
-                                        className="object-cover"
-                                    />
-                                    <div className="episode-badge">Tập {movie.episode}</div>
-                                    <div className="absolute left-2 top-2 rounded-lg bg-yellow-500 px-2 py-1 text-xs font-bold">
-                                        ⭐ {movie.rating}
-                                    </div>
-                                </div>
-                                <div className="mt-2 space-y-1">
-                                    <h3 className="line-clamp-2 text-sm font-semibold">{movie.title}</h3>
-                                    <p className="views-count text-xs sm:text-sm">Lượt xem: {movie.views}</p>
-                                </div>
-                            </Link>
-                            {hoveredAnime === movie.id && !isScrolling && (
-                                <MovieTooltip
-                                    title={movie.title}
-                                    episode={movie.episode}
-                                    date={movie.date}
-                                    year={movie.year}
-                                    quality={movie.quality}
-                                    synopsis={movie.synopsis}
-                                    studio={movie.studio}
-                                    genres={movie.genres}
-                                    cast={movie.cast}
-                                />
-                            )}
-                        </div>
-                    ))}
+                    data-aos="fade-up"
+                >
+                    {renderMovieItem}
                 </div>
             </div>
         </section>
