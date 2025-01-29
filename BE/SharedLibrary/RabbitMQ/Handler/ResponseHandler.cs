@@ -1,6 +1,6 @@
 ﻿using System.Collections.Concurrent;
 
-namespace SharedLibrary.Handler
+namespace SharedLibrary.RabbitMQ.Handler
 {
     public class ResponseHandler
     {

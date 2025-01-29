@@ -1,4 +1,4 @@
-﻿using SharedLibrary.Integration;
+﻿using SharedLibrary.RabbitMQ.Integration;
 
 namespace MovieService.Handlers
 {

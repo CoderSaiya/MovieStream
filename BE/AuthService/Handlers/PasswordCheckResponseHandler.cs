@@ -1,6 +1,6 @@
-﻿using SharedLibrary.Events;
-using SharedLibrary.Handler;
-using SharedLibrary.Integration;
+﻿using SharedLibrary.RabbitMQ.Events;
+using SharedLibrary.RabbitMQ.Handler;
+using SharedLibrary.RabbitMQ.Integration;
 
 namespace AuthService.Events
 {

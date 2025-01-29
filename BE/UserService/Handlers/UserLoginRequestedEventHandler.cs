@@ -1,6 +1,6 @@
-﻿using SharedLibrary.EventBus;
-using SharedLibrary.Events;
-using SharedLibrary.Integration;
+﻿using SharedLibrary.RabbitMQ.EventBus;
+using SharedLibrary.RabbitMQ.Events;
+using SharedLibrary.RabbitMQ.Integration;
 using UserService.Model;
 using UserService.Models;
 using UserService.Services;

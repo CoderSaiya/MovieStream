@@ -1,8 +1,8 @@
 ﻿using MovieService.DTOs;
 using MovieService.Models;
-using SharedLibrary.Classes;
+using SharedLibrary.DTOs;
 
-namespace MovieService.Repositories
+namespace MovieService.Services
 {
     public interface IMovie
     {

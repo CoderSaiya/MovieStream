@@ -1,9 +1,9 @@
 using UserService.Data;
 using Microsoft.EntityFrameworkCore;
-using SharedLibrary.EventBus;
+using SharedLibrary.RabbitMQ.EventBus;
 using UserService.Handlers;
 using UserService.Services;
-using SharedLibrary.Events;
+using SharedLibrary.RabbitMQ.Events;
 using Microsoft.AspNetCore.Identity;
 using UserService.Models;
 

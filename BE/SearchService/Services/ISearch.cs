@@ -1,6 +1,6 @@
 ﻿using SearchService.DTOs;
 using Elastic.Clients.Elasticsearch;
-using SharedLibrary.Events;
+using SharedLibrary.RabbitMQ.Events;
 
 namespace SearchService.Services
 {

@@ -1,4 +1,4 @@
-﻿namespace SharedLibrary.Integration
+﻿namespace SharedLibrary.RabbitMQ.Integration
 {
     public class IntegrationEvent
     {

@@ -2,7 +2,7 @@
 using Amazon.S3.Model;
 using Amazon.S3.Transfer;
 
-namespace MovieService.Repositories
+namespace MovieService.Services
 {
     public class CloudStorageService
     {

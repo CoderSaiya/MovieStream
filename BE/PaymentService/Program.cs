@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using PaymentService.Data;
 using PaymentService.Services;
-using SharedLibrary.EventBus;
+using SharedLibrary.RabbitMQ.EventBus;
 
 var builder = WebApplication.CreateBuilder(args);
 

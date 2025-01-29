@@ -1,9 +1,9 @@
 using Microsoft.EntityFrameworkCore;
 using MovieService.Data;
 using MovieService.Handlers;
-using MovieService.Repositories;
-using SharedLibrary.EventBus;
-using SharedLibrary.Events;
+using MovieService.Services;
+using SharedLibrary.RabbitMQ.EventBus;
+using SharedLibrary.RabbitMQ.Events;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -28,7 +28,7 @@ builder.Services.AddDbContext<MovieDbContext>(options =>
     optionsLifetime: ServiceLifetime.Singleton
 );
 
-builder.Services.AddScoped<IMovie, MovieRepo>();
+builder.Services.AddScoped<IMovie, MovieService.Services.MovieService>();
 builder.Services.AddSingleton<CloudStorageService>();
 
 // Add RabbitMQ Event Bus

@@ -1,4 +1,4 @@
-﻿namespace SharedLibrary.Classes
+﻿namespace SharedLibrary.DTOs
 {
     public class PageResult<T>
     {

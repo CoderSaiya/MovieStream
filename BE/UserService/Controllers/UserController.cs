@@ -1,9 +1,9 @@
 ﻿using UserService.Models;
 using UserService.DTOs;
 using Microsoft.AspNetCore.Mvc;
-using SharedLibrary.EventBus;
+using SharedLibrary.RabbitMQ.EventBus;
 using UserService.Services;
-using SharedLibrary.Events;
+using SharedLibrary.RabbitMQ.Events;
 using Microsoft.Extensions.Logging;
 
 namespace UserService.Controllers

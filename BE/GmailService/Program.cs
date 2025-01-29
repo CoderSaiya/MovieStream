@@ -1,7 +1,7 @@
 using GmailService.Handler;
 using GmailService.Services;
-using SharedLibrary.EventBus;
-using SharedLibrary.Events;
+using SharedLibrary.RabbitMQ.EventBus;
+using SharedLibrary.RabbitMQ.Events;
 
 var builder = WebApplication.CreateBuilder(args);
 

@@ -1,6 +1,6 @@
 ﻿using SearchService.Services;
-using SharedLibrary.Events;
-using SharedLibrary.Integration;
+using SharedLibrary.RabbitMQ.Events;
+using SharedLibrary.RabbitMQ.Integration;
 
 namespace SearchService.Handler
 {

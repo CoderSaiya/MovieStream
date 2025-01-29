@@ -1,8 +1,7 @@
 using SearchService.Services;
-using SharedLibrary.EventBus;
-using SharedLibrary.Events;
+using SharedLibrary.RabbitMQ.EventBus;
+using SharedLibrary.RabbitMQ.Events;
 using SearchService.Handler;
-using SearchService.RabbitMQ;
 
 var handler = new HttpClientHandler
 {

@@ -3,9 +3,9 @@ using AuthService.DTOs;
 using AuthService.Services;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
-using SharedLibrary.EventBus;
-using SharedLibrary.Events;
-using SharedLibrary.Handler;
+using SharedLibrary.RabbitMQ.EventBus;
+using SharedLibrary.RabbitMQ.Events;
+using SharedLibrary.RabbitMQ.Handler;
 
 namespace AuthService.Controllers
 {

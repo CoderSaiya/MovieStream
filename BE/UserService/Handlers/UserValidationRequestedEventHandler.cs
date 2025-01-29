@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using SharedLibrary.EventBus;
-using SharedLibrary.Events;
-using SharedLibrary.Integration;
+using SharedLibrary.RabbitMQ.EventBus;
+using SharedLibrary.RabbitMQ.Events;
+using SharedLibrary.RabbitMQ.Integration;
 using UserService.Data;
 
 namespace UserService.Handlers

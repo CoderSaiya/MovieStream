@@ -1,10 +1,10 @@
 using AuthService.Data;
 using Microsoft.EntityFrameworkCore;
-using SharedLibrary.Events;
+using SharedLibrary.RabbitMQ.Events;
 using AuthService.Events;
 using AuthService.Services;
-using SharedLibrary.EventBus;
-using SharedLibrary.Handler;
+using SharedLibrary.RabbitMQ.EventBus;
+using SharedLibrary.RabbitMQ.Handler;
 using Microsoft.AspNetCore.Authentication.Google;
 
 var builder = WebApplication.CreateBuilder(args);

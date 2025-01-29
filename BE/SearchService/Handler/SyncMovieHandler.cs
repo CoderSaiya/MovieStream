@@ -1,8 +1,8 @@
 ﻿using SearchService.Services;
-using SharedLibrary.Events;
-using SharedLibrary.Integration;
+using SharedLibrary.RabbitMQ.Events;
+using SharedLibrary.RabbitMQ.Integration;
 
-namespace SearchService.RabbitMQ
+namespace SearchService.Handler
 {
     public class SyncMovieHandler : IIntegrationEventHandler<SyncElasticEvent>
     {

@@ -1,7 +1,7 @@
-﻿using SharedLibrary.Integration;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
+using SharedLibrary.RabbitMQ.Integration;
 
-namespace SharedLibrary.Events
+namespace SharedLibrary.RabbitMQ.Events
 {
     public class UserLoginRequestedEvent : IntegrationEvent
     {

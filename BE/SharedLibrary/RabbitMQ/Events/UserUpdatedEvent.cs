@@ -1,5 +1,6 @@
-﻿using SharedLibrary.Integration;
-namespace SharedLibrary.Events
+﻿using SharedLibrary.RabbitMQ.Integration;
+
+namespace SharedLibrary.RabbitMQ.Events
 {
     public class UserUpdatedEvent : IntegrationEvent
     {

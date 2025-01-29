@@ -3,12 +3,12 @@ using MovieService.Data;
 using MovieService.DTOs;
 using MovieService.Handlers;
 using MovieService.Models;
-using SharedLibrary.Classes;
-using SharedLibrary.EventBus;
-using SharedLibrary.Events;
+using SharedLibrary.DTOs;
+using SharedLibrary.RabbitMQ.EventBus;
+using SharedLibrary.RabbitMQ.Events;
 using System.Linq.Dynamic.Core;
 
-namespace MovieService.Repositories
+namespace MovieService.Services
 {
     public class MovieService : IMovie
     {

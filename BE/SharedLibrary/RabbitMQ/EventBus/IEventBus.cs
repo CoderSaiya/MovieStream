@@ -1,6 +1,6 @@
-﻿using SharedLibrary.Integration;
+﻿using SharedLibrary.RabbitMQ.Integration;
 
-namespace SharedLibrary.EventBus
+namespace SharedLibrary.RabbitMQ.EventBus
 {
     public interface IEventBus
     {

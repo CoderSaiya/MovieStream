@@ -1,7 +1,7 @@
 ﻿using Elastic.Clients.Elasticsearch;
 using Elastic.Clients.Elasticsearch.QueryDsl;
 using SearchService.DTOs;
-using SharedLibrary.Events;
+using SharedLibrary.RabbitMQ.Events;
 
 namespace SearchService.Services
 {

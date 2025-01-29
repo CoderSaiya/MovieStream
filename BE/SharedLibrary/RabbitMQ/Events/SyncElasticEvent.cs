@@ -1,6 +1,6 @@
-﻿using SharedLibrary.Integration;
+﻿using SharedLibrary.RabbitMQ.Integration;
 
-namespace SharedLibrary.Events
+namespace SharedLibrary.RabbitMQ.Events
 {
     public class SyncElasticEvent : IntegrationEvent
     {

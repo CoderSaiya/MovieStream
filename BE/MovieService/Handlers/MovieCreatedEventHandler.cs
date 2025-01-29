@@ -1,5 +1,5 @@
-﻿using SharedLibrary.Integration;
-using SharedLibrary.Events;
+﻿using SharedLibrary.RabbitMQ.Integration;
+using SharedLibrary.RabbitMQ.Events;
 
 namespace MovieService.Handlers
 {

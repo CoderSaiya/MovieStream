@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using MovieService.Repositories;
+using MovieService.Services;
 using MovieService.DTOs;
 
 [ApiController]

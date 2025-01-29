@@ -3,9 +3,9 @@ using RabbitMQ.Client.Events;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
 using System.Text;
-using SharedLibrary.Integration;
+using SharedLibrary.RabbitMQ.Integration;
 
-namespace SharedLibrary.EventBus
+namespace SharedLibrary.RabbitMQ.EventBus
 {
     public class EventBus : IEventBus, IDisposable
     {
