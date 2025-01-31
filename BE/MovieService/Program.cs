@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using MovieService.Data;
 using MovieService.Handlers;
 using MovieService.Services;
+using SharedLibrary.Middlewares;
 using SharedLibrary.RabbitMQ.EventBus;
 using SharedLibrary.RabbitMQ.Events;
 
@@ -53,6 +54,10 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseAuthorization();
+
+// Use middleware
+app.UseMiddleware<CheckRoleMiddleware>();
+
 app.MapControllers();
 
 // Subscribe to Events

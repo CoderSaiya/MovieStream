@@ -5,6 +5,7 @@ using UserService.Handlers;
 using UserService.Services;
 using SharedLibrary.RabbitMQ.Events;
 using Microsoft.AspNetCore.Identity;
+using SharedLibrary.Middlewares;
 using UserService.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -43,6 +44,10 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseAuthorization();
+
+// Use middleware
+app.UseMiddleware<CheckRoleMiddleware>();
+
 app.MapControllers();
 
 // Subscribe to Events

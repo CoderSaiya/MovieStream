@@ -6,6 +6,7 @@ using AuthService.Services;
 using SharedLibrary.RabbitMQ.EventBus;
 using SharedLibrary.RabbitMQ.Handler;
 using Microsoft.AspNetCore.Authentication.Google;
+using SharedLibrary.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -64,6 +65,10 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
+
+// Use middleware
+app.UseMiddleware<CheckRoleMiddleware>();
+
 app.MapControllers();
 
 // Subscribe to Events

@@ -1,4 +1,5 @@
 using RecommendationService.Services;
+using SharedLibrary.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,8 +22,10 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
 app.UseAuthorization();
+
+// Use middleware
+app.UseMiddleware<CheckRoleMiddleware>();
 
 app.MapControllers();
 

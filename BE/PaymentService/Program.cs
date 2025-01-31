@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using PaymentService.Data;
 using PaymentService.Services;
+using SharedLibrary.Middlewares;
 using SharedLibrary.RabbitMQ.EventBus;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -36,8 +37,10 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
 app.UseAuthorization();
+
+// Use middleware
+app.UseMiddleware<CheckRoleMiddleware>();
 
 app.MapControllers();
 
