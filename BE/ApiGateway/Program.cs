@@ -2,6 +2,7 @@ using Microsoft.IdentityModel.Tokens;
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
 using System.Text;
+using SharedLibrary.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -55,6 +56,9 @@ if (app.Environment.IsDevelopment())
 app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
+
+// Use middleware
+app.UseMiddleware<AccessControlMiddleware>();
 
 // Use Ocelot middleware
 await app.UseOcelot();
