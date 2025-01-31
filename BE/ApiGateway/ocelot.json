@@ -8,7 +8,7 @@
       "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
       "SwaggerKey": "movie",
       "AuthenticationOptions": {
-        "AuthenticationProviderKey": "JwtBearer",
+        "AuthenticationProviderKey": "JwtBearer"
       },
       "RouteClaimsRequirement": {
         "scope": "private"
@@ -22,7 +22,7 @@
       "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
       "SwaggerKey": "user",
       "AuthenticationOptions": {
-        "AuthenticationProviderKey": "JwtBearer",
+        "AuthenticationProviderKey": "JwtBearer"
       },
       "RouteClaimsRequirement": {
         "scope": "private"
@@ -55,8 +55,7 @@
       "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
       "SwaggerKey": "search",
       "AuthenticationOptions": {
-        "AuthenticationProviderKey": "JwtBearer",
-        "AllowedScopes": []
+        "AuthenticationProviderKey": "JwtBearer"
       },
       "RouteClaimsRequirement": {
         "scope": "private"
@@ -88,8 +87,7 @@
       "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
       "SwaggerKey": "auth",
       "AuthenticationOptions": {
-        "AuthenticationProviderKey": "JwtBearer",
-        "AllowedScopes": []
+        "AuthenticationProviderKey": "JwtBearer"
       },
       "RouteClaimsRequirement": {
         "scope": "private"
