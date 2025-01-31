@@ -133,6 +133,13 @@
       }
     }
   ],
+  "RateLimitOptions": {
+    "ClientWhitelist": ["127.0.0.1"],
+    "EnableRateLimiting": true,
+    "Period": "1m",
+    "PeriodTimespan": 60,
+    "Limit": 100
+  },
   "GlobalConfiguration": {
     "BaseUrl": "http://localhost:5000"
   }
