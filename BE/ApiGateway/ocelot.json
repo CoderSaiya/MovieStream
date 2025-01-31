@@ -1,95 +1,49 @@
 {
   "Routes": [
     {
-      "DownstreamPathTemplate": "/api/Movie/private/{everything}",
+      "DownstreamPathTemplate": "/api/Movie/{scope}/{everything}",
       "DownstreamScheme": "http",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "movieservice",
-          "Port": 80
-        }
-      ],
-      "UpstreamPathTemplate": "/api/Movie/private/{everything}",
+      "DownstreamHostAndPorts": [{"Host": "movieservice", "Port": 80}],
+      "UpstreamPathTemplate": "/api/Movie/{scope}/{everything}",
       "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
       "SwaggerKey": "movie",
       "AuthenticationOptions": {
         "AuthenticationProviderKey": "JwtBearer",
-        "AllowedScopes": []
+      },
+      "RouteClaimsRequirement": {
+        "scope": "private"
       }
     },
     {
-      "DownstreamPathTemplate": "/api/Movie/public/{everything}",
+      "DownstreamPathTemplate": "/api/User/{scope}/{everything}",
       "DownstreamScheme": "http",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "movieservice",
-          "Port": 80
-        }
-      ],
-      "UpstreamPathTemplate": "/api/Movie/public/{everything}",
-      "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete", "Option" ],
-      "SwaggerKey": "movie"
-    },
-    {
-      "DownstreamPathTemplate": "/api/User/private/{everything}",
-      "DownstreamScheme": "http",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "userservice",
-          "Port": 80
-        }
-      ],
-      "UpstreamPathTemplate": "/api/User/private/{everything}",
+      "DownstreamHostAndPorts": [{"Host": "userservice", "Port": 80}],
+      "UpstreamPathTemplate": "/api/User/{scope}/{everything}",
       "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
       "SwaggerKey": "user",
       "AuthenticationOptions": {
         "AuthenticationProviderKey": "JwtBearer",
-        "AllowedScopes": []
+      },
+      "RouteClaimsRequirement": {
+        "scope": "private"
       }
     },
     {
-      "DownstreamPathTemplate": "/api/User/public/{everything}",
+      "DownstreamPathTemplate": "/api/Recommendation/{scope}/{everything}",
       "DownstreamScheme": "http",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "userservice",
-          "Port": 80
-        }
-      ],
-      "UpstreamPathTemplate": "/api/User/public/{everything}",
-      "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete", "Option" ],
-      "SwaggerKey": "user"
-    },
-    {
-      "DownstreamPathTemplate": "/api/Recommendation/private/{everything}",
-      "DownstreamScheme": "http",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "recommendationservice",
-          "Port": 80
-        }
-      ],
-      "UpstreamPathTemplate": "/api/Recommendation/private/{everything}",
+      "DownstreamHostAndPorts": [{"Host": "recommendationservice", "Port": 80}],
+      "UpstreamPathTemplate": "/api/Recommendation/{scope}/{everything}",
       "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
       "AuthenticationOptions": {
         "AuthenticationProviderKey": "JwtBearer",
         "AllowedScopes": []
+      },
+      "RouteClaimsRequirement": {
+        "scope": "private"
       }
     },
     {
-      "DownstreamPathTemplate": "/api/Recommendation/public/{everything}",
-      "DownstreamScheme": "http",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "recommendationservice",
-          "Port": 80
-        }
-      ],
-      "UpstreamPathTemplate": "/api/Recommendation/public/{everything}",
-      "UpstreamHttpMethod": [ "Get" ]
-    },
-    {
-      "DownstreamPathTemplate": "/api/Search/private/{everything}",
+      "DownstreamPathTemplate": "/api/Search/{scope}/{everything}",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
@@ -97,26 +51,16 @@
           "Port": 80
         }
       ],
-      "UpstreamPathTemplate": "/api/Search/private/{everything}",
+      "UpstreamPathTemplate": "/api/Search/{scope}/{everything}",
       "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
       "SwaggerKey": "search",
       "AuthenticationOptions": {
         "AuthenticationProviderKey": "JwtBearer",
         "AllowedScopes": []
+      },
+      "RouteClaimsRequirement": {
+        "scope": "private"
       }
-    },
-    {
-      "DownstreamPathTemplate": "/api/Search/public/{everything}",
-      "DownstreamScheme": "http",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "searchservice",
-          "Port": 80
-        }
-      ],
-      "UpstreamPathTemplate": "/api/Search/public/{everything}",
-      "UpstreamHttpMethod": [ "Get" ],
-      "SwaggerKey": "search"
     },
     {
       "DownstreamPathTemplate": "/api/Gmail/{everything}",
@@ -132,7 +76,7 @@
       "SwaggerKey": "email"
     },
     {
-      "DownstreamPathTemplate": "/api/Auth/private/{everything}",
+      "DownstreamPathTemplate": "/api/Auth/{scope}/{everything}",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
@@ -140,26 +84,16 @@
           "Port": 80
         }
       ],
-      "UpstreamPathTemplate": "/api/Auth/private/{everything}",
+      "UpstreamPathTemplate": "/api/Auth/{scope}/{everything}",
       "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
       "SwaggerKey": "auth",
       "AuthenticationOptions": {
         "AuthenticationProviderKey": "JwtBearer",
         "AllowedScopes": []
+      },
+      "RouteClaimsRequirement": {
+        "scope": "private"
       }
-    },
-    {
-      "DownstreamPathTemplate": "/api/Auth/public/{everything}",
-      "DownstreamScheme": "http",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "authservice",
-          "Port": 80
-        }
-      ],
-      "UpstreamPathTemplate": "/api/Auth/public/{everything}",
-      "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
-      "SwaggerKey": "auth"
     }
   ],
   "SwaggerEndPoints": [
