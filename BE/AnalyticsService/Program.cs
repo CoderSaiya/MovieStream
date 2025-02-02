@@ -1,3 +1,4 @@
+using AnalyticsService.Services.Background;
 using Prometheus;
 using Prometheus.SystemMetrics;
 
@@ -11,6 +12,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddSingleton<ICollectorRegistry, CollectorRegistry>();
+builder.Services.AddHostedService<AlertWorker>();
 
 var app = builder.Build();
 
