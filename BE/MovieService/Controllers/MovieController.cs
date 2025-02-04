@@ -91,7 +91,7 @@ public class MovieController : ControllerBase
         return Ok(movies);
     }
 
-    [HttpPost("sync-elastic")]
+    [HttpPost("private/sync-elastic")]
     public async Task<IActionResult> SyncElastic()
     {
         var result = await _movieRepo.LoadListToElastic();
