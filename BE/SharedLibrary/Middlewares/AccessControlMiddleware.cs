@@ -4,7 +4,12 @@ namespace SharedLibrary.Middlewares;
 
 public class AccessControlMiddleware
 {
-    public async Task InvokeAsync(HttpContext context, RequestDelegate next)
+    private readonly RequestDelegate _next;
+    public AccessControlMiddleware(RequestDelegate next)
+    {
+        _next = next;
+    }
+    public async Task InvokeAsync(HttpContext context)
     {
         var path = context.Request.Path.Value.ToLower();
         var isPublic = path.Contains("/public/");
@@ -18,6 +23,6 @@ public class AccessControlMiddleware
                 return;
             }
         }
-        await next(context);
+        await _next(context);
     }
 }

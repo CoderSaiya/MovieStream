@@ -6,12 +6,18 @@ namespace SharedLibrary.Middlewares;
 
 public class CheckRoleMiddleware
 {
-    public async Task InvokeAsync(HttpContext context, RequestDelegate next)
+    private readonly RequestDelegate _next;
+
+    public CheckRoleMiddleware(RequestDelegate next)
+    {
+        _next = next;
+    }
+    public async Task InvokeAsync(HttpContext context)
     {
         var path = context.Request.Path.Value.ToLower();
         if (path.Contains("/public/"))
         {
-            await next(context);
+            await _next(context);
             return;
         }
         
@@ -24,7 +30,7 @@ public class CheckRoleMiddleware
             return;
         }
         
-        await next(context);
+        await _next(context);
     }
     
     private Role? GetUserRole(ClaimsPrincipal user)
