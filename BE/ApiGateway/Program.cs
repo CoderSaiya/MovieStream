@@ -43,7 +43,6 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddSwaggerForOcelot(builder.Configuration);
 
-
 var app = builder.Build();
 
 // Configure Swagger UI for Ocelot
@@ -52,7 +51,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerForOcelotUI(opt =>
     {
         opt.PathToSwaggerGenerator = "/swagger/docs";
-    }).UseOcelot().Wait();
+    });
 }
 
 app.UseRouting();

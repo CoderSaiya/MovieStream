@@ -1,200 +1,152 @@
 {
   "Routes": [
     {
-      "DownstreamPathTemplate": "/api/Movie/{scope}/{everything}",
-      "DownstreamScheme": "http",
-      "DownstreamHostAndPorts": [{"Host": "movieservice", "Port": 80}],
-      "UpstreamPathTemplate": "/api/Movie/{scope}/{everything}",
+      "DownstreamPathTemplate": "/api/Movie/{everything}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [{"Host": "localhost", "Port": 7225}],
+      "DangerousAcceptAnyServerCertificateValidator": true,
+      "UpstreamPathTemplate": "/api/Movie/{everything}",
       "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
-      "SwaggerKey": "movie",
-      "AuthenticationOptions": {
-        "AuthenticationProviderKey": "JwtBearer"
-      },
-      "RouteClaimsRequirement": {
-        "scope": "private"
-      }
+      "SwaggerKey": "movie"
     },
     {
-      "DownstreamPathTemplate": "/api/User/{scope}/{everything}",
-      "DownstreamScheme": "http",
-      "DownstreamHostAndPorts": [{"Host": "userservice", "Port": 80}],
-      "UpstreamPathTemplate": "/api/User/{scope}/{everything}",
+      "DownstreamPathTemplate": "/api/User/{everything}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [{"Host": "localhost", "Port": 80}],
+      "UpstreamPathTemplate": "/api/User/{everything}",
       "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
-      "SwaggerKey": "user",
-      "AuthenticationOptions": {
-        "AuthenticationProviderKey": "JwtBearer"
-      },
-      "RouteClaimsRequirement": {
-        "scope": "private"
-      }
+      "SwaggerKey": "user"
     },
     {
-      "DownstreamPathTemplate": "/api/Recommendation/{scope}/{everything}",
-      "DownstreamScheme": "http",
-      "DownstreamHostAndPorts": [{"Host": "recommendationservice", "Port": 80}],
-      "UpstreamPathTemplate": "/api/Recommendation/{scope}/{everything}",
-      "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
-      "SwaggerKey": "recommendation",
-      "AuthenticationOptions": {
-        "AuthenticationProviderKey": "JwtBearer",
-        "AllowedScopes": []
-      },
-      "RouteClaimsRequirement": {
-        "scope": "private"
-      }
+      "DownstreamPathTemplate": "/api/Recommendation/{everything}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [{"Host": "localhost", "Port": 80}],
+      "UpstreamPathTemplate": "/api/Recommendation/{everything}",
+      "UpstreamHttpMethod": ["Get", "Post", "Put", "Delete"],
+      "SwaggerKey": "recommendation"
     },
     {
-      "DownstreamPathTemplate": "/api/Search/{scope}/{everything}",
-      "DownstreamScheme": "http",
-      "DownstreamHostAndPorts": [{"Host": "searchservice", "Port": 80}],
-      "UpstreamPathTemplate": "/api/Search/{scope}/{everything}",
+      "DownstreamPathTemplate": "/api/Search/{everything}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [{"Host": "localhost", "Port": 80}],
+      "UpstreamPathTemplate": "/api/Search/{everything}",
       "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
-      "SwaggerKey": "search",
-      "AuthenticationOptions": {
-        "AuthenticationProviderKey": "JwtBearer"
-      },
-      "RouteClaimsRequirement": {
-        "scope": "private"
-      }
+      "SwaggerKey": "search"
     },
     {
       "DownstreamPathTemplate": "/api/Gmail/{everything}",
-      "DownstreamScheme": "http",
-      "DownstreamHostAndPorts": [{"Host": "emailservice", "Port": 80}],
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [{"Host": "localhost", "Port": 80}],
       "UpstreamPathTemplate": "/api/Gmail/{everything}",
       "UpstreamHttpMethod": [ "Get", "Post" ],
       "SwaggerKey": "email"
     },
     {
-      "DownstreamPathTemplate": "/api/Auth/{scope}/{everything}",
-      "DownstreamScheme": "http",
-      "DownstreamHostAndPorts": [{"Host": "authservice", "Port": 80}],
-      "UpstreamPathTemplate": "/api/Auth/{scope}/{everything}",
+      "DownstreamPathTemplate": "/api/Auth/{everything}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [{"Host": "localhost", "Port": 80}],
+      "UpstreamPathTemplate": "/api/Auth/{everything}",
       "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
-      "SwaggerKey": "auth",
-      "AuthenticationOptions": {
-        "AuthenticationProviderKey": "JwtBearer"
-      },
-      "RouteClaimsRequirement": {
-        "scope": "private"
-      }
+      "SwaggerKey": "auth"
     },
     {
-      "DownstreamPathTemplate": "/api/Payment/{scope}/{everything}",
-      "DownstreamScheme": "http",
-      "DownstreamHostAndPorts": [{"Host": "paymentservice", "Port": 80}],
-      "UpstreamPathTemplate": "/api/Auth/{scope}/{everything}",
+      "DownstreamPathTemplate": "/api/Payment/{everything}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [{"Host": "localhost", "Port": 80}],
+      "UpstreamPathTemplate": "/api/Payment/{everything}",
       "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
-      "SwaggerKey": "payment",
-      "AuthenticationOptions": {
-        "AuthenticationProviderKey": "JwtBearer"
-      },
-      "RouteClaimsRequirement": {
-        "scope": "private"
-      }
+      "SwaggerKey": "payment"
     },
     {
-      "DownstreamPathTemplate": "/api/Analytics/{scope}/{everything}",
-      "DownstreamScheme": "http",
-      "DownstreamHostAndPorts": [{"Host": "analyticsservice", "Port": 80}],
-      "UpstreamPathTemplate": "/api/Auth/{scope}/{everything}",
+      "DownstreamPathTemplate": "/api/Analytics/{everything}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [{"Host": "localhost", "Port": 80}],
+      "UpstreamPathTemplate": "/api/Analytics/{everything}",
       "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
-      "SwaggerKey": "analytics",
-      "AuthenticationOptions": {
-        "AuthenticationProviderKey": "JwtBearer"
-      },
-      "RouteClaimsRequirement": {
-        "scope": "private"
-      }
+      "SwaggerKey": "analytics"
     },
     {
       "DownstreamPathTemplate": "/api/Notification/{scope}/{everything}",
-      "DownstreamScheme": "http",
-      "DownstreamHostAndPorts": [{"Host": "notificationservice", "Port": 80}],
-      "UpstreamPathTemplate": "/api/Auth/{scope}/{everything}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [{"Host": "localhost", "Port": 80}],
+      "UpstreamPathTemplate": "/api/Notification/{scope}/{everything}",
       "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
-      "SwaggerKey": "notification",
-      "AuthenticationOptions": {
-        "AuthenticationProviderKey": "JwtBearer"
-      },
-      "RouteClaimsRequirement": {
-        "scope": "private"
-      }
+      "SwaggerKey": "notification"
     }
   ],
   "SwaggerEndPoints": [
     {
       "Key": "user",
-      "Config": {
-        "Url": "http://localhost:7228/swagger/v1/swagger.json",
+      "Config": [{
+        "Url": "https://localhost:7228/swagger/v1/swagger.json",
         "Name": "User Service"
-      }
+      }]
     },
     {
       "Key": "movie",
-      "Config": {
-        "Url": "http://localhost:7225/swagger/v1/swagger.json",
+      "Config": [{
+        "Url": "https://localhost:7225/swagger/v1/swagger.json",
         "Name": "Movie Service"
-      }
+      }]
     },
     {
       "Key": "auth",
-      "Config": {
-        "Url": "http://localhost:7226/swagger/v1/swagger.json",
+      "Config": [{
+        "Url": "https://localhost:7226/swagger/v1/swagger.json",
         "Name": "Auth Service"
-      }
+      }]
     },
     {
       "Key": "search",
-      "Config": {
-        "Url": "http://localhost:7227/swagger/v1/swagger.json",
+      "Config": [{
+        "Url": "https://localhost:7227/swagger/v1/swagger.json",
         "Name": "Search Service"
-      }
+      }]
     },
     {
       "Key": "email",
-      "Config": {
-        "Url": "http://localhost:7229/swagger/v1/swagger.json",
+      "Config": [{
+        "Url": "https://localhost:7229/swagger/v1/swagger.json",
         "Name": "Email Service"
-      }
+      }]
     },
     {
       "Key": "recommendation",
-      "Config": {
-        "Url": "http://localhost:7234/swagger/v1/swagger.json",
+      "Config": [{
+        "Url": "https://localhost:7234/swagger/v1/swagger.json",
         "Name": "Recommendation Service"
-      }
+      }]
     },
     {
       "Key": "payment",
-      "Config": {
-        "Url": "http://localhost:7230/swagger/v1/swagger.json",
+      "Config": [{
+        "Url": "https://localhost:7230/swagger/v1/swagger.json",
         "Name": "Payment Service"
-      }
+      }]
     },
     {
       "Key": "analytics",
-      "Config": {
-        "Url": "http://localhost:7232/swagger/v1/swagger.json",
+      "Config": [{
+        "Url": "https://localhost:7232/swagger/v1/swagger.json",
         "Name": "Analytics Service"
-      }
+      }]
     },
     {
       "Key": "notification",
-      "Config": {
-        "Url": "http://localhost:7233/swagger/v1/swagger.json",
+      "Config": [{
+        "Url": "https://localhost:7233/swagger/v1/swagger.json",
         "Name": "Notification Service"
-      }
+      }]
     }
   ],
   "RateLimitOptions": {
-    "ClientWhitelist": ["127.0.0.1"],
+    "ClientWhitelist": ["127.0.0.1", "::1"],
     "EnableRateLimiting": true,
     "Period": "1m",
     "PeriodTimespan": 60,
     "Limit": 100
   },
   "GlobalConfiguration": {
-    "BaseUrl": "http://localhost:5000"
+    "BaseUrl": "https://localhost:5000"
   }
 }
