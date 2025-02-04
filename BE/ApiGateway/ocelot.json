@@ -34,6 +34,7 @@
       "DownstreamHostAndPorts": [{"Host": "recommendationservice", "Port": 80}],
       "UpstreamPathTemplate": "/api/Recommendation/{scope}/{everything}",
       "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
+      "SwaggerKey": "recommendation",
       "AuthenticationOptions": {
         "AuthenticationProviderKey": "JwtBearer",
         "AllowedScopes": []
@@ -45,12 +46,7 @@
     {
       "DownstreamPathTemplate": "/api/Search/{scope}/{everything}",
       "DownstreamScheme": "http",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "searchservice",
-          "Port": 80
-        }
-      ],
+      "DownstreamHostAndPorts": [{"Host": "searchservice", "Port": 80}],
       "UpstreamPathTemplate": "/api/Search/{scope}/{everything}",
       "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
       "SwaggerKey": "search",
@@ -64,12 +60,7 @@
     {
       "DownstreamPathTemplate": "/api/Gmail/{everything}",
       "DownstreamScheme": "http",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "emailservice",
-          "Port": 80
-        }
-      ],
+      "DownstreamHostAndPorts": [{"Host": "emailservice", "Port": 80}],
       "UpstreamPathTemplate": "/api/Gmail/{everything}",
       "UpstreamHttpMethod": [ "Get", "Post" ],
       "SwaggerKey": "email"
@@ -77,15 +68,52 @@
     {
       "DownstreamPathTemplate": "/api/Auth/{scope}/{everything}",
       "DownstreamScheme": "http",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "authservice",
-          "Port": 80
-        }
-      ],
+      "DownstreamHostAndPorts": [{"Host": "authservice", "Port": 80}],
       "UpstreamPathTemplate": "/api/Auth/{scope}/{everything}",
       "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
       "SwaggerKey": "auth",
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "JwtBearer"
+      },
+      "RouteClaimsRequirement": {
+        "scope": "private"
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/api/Payment/{scope}/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [{"Host": "paymentservice", "Port": 80}],
+      "UpstreamPathTemplate": "/api/Auth/{scope}/{everything}",
+      "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
+      "SwaggerKey": "payment",
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "JwtBearer"
+      },
+      "RouteClaimsRequirement": {
+        "scope": "private"
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/api/Analytics/{scope}/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [{"Host": "analyticsservice", "Port": 80}],
+      "UpstreamPathTemplate": "/api/Auth/{scope}/{everything}",
+      "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
+      "SwaggerKey": "analytics",
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "JwtBearer"
+      },
+      "RouteClaimsRequirement": {
+        "scope": "private"
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/api/Notification/{scope}/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [{"Host": "notificationservice", "Port": 80}],
+      "UpstreamPathTemplate": "/api/Auth/{scope}/{everything}",
+      "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
+      "SwaggerKey": "notification",
       "AuthenticationOptions": {
         "AuthenticationProviderKey": "JwtBearer"
       },
@@ -128,6 +156,34 @@
       "Config": {
         "Url": "http://localhost:7229/swagger/v1/swagger.json",
         "Name": "Email Service"
+      }
+    },
+    {
+      "Key": "recommendation",
+      "Config": {
+        "Url": "http://localhost:7234/swagger/v1/swagger.json",
+        "Name": "Recommendation Service"
+      }
+    },
+    {
+      "Key": "payment",
+      "Config": {
+        "Url": "http://localhost:7230/swagger/v1/swagger.json",
+        "Name": "Payment Service"
+      }
+    },
+    {
+      "Key": "analytics",
+      "Config": {
+        "Url": "http://localhost:7232/swagger/v1/swagger.json",
+        "Name": "Analytics Service"
+      }
+    },
+    {
+      "Key": "notification",
+      "Config": {
+        "Url": "http://localhost:7233/swagger/v1/swagger.json",
+        "Name": "Notification Service"
       }
     }
   ],
