@@ -20,13 +20,13 @@ builder.Services.AddAuthentication("JwtBearer")
             ValidateLifetime = true,
             ValidIssuer = builder.Configuration["Jwt:Issuer"],
             ValidAudience = builder.Configuration["Jwt:Audience"],
-            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("MovieFlix2025"))
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
         };
         options.Events = new Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerEvents
         {
             OnAuthenticationFailed = context =>
             {
-                if(context.Exception is SecurityTokenExpiredException)
+                if (context.Exception is SecurityTokenExpiredException)
                 {
                     context.Response.StatusCode = 401;
                     context.Response.ContentType = "application/json";
@@ -39,8 +39,10 @@ builder.Services.AddAuthentication("JwtBearer")
 
 // Add Ocelot and Swagger for Ocelot
 builder.Services.AddOcelot();
-builder.Services.AddSwaggerForOcelot(builder.Configuration);
+builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerForOcelot(builder.Configuration);
+
 
 var app = builder.Build();
 
@@ -50,7 +52,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerForOcelotUI(opt =>
     {
         opt.PathToSwaggerGenerator = "/swagger/docs";
-    });
+    }).UseOcelot().Wait();
 }
 
 app.UseRouting();
