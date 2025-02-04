@@ -12,8 +12,8 @@ public class AccessControlMiddleware
     public async Task InvokeAsync(HttpContext context)
     {
         var path = context.Request.Path.Value.ToLower();
-        var isPublic = path.Contains("/public/");
-        if (!isPublic)
+        var isPrivate = path.Contains("/private/");
+        if (isPrivate)
         {
             var token = context.Request.Headers["Authorization"].FirstOrDefault();
             if (string.IsNullOrEmpty(token))
